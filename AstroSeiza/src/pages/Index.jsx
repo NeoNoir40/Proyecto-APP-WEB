@@ -7,7 +7,7 @@ import Lottie from "lottie-react";
 
 export default function Index() {
   return (
-    <main className="">
+    <>
       <div className="flex relative">
         <div>
           <img
@@ -93,6 +93,6 @@ export default function Index() {
           </div>
         </div>
       </div>
-    </main>
+      </>
   );
 }
