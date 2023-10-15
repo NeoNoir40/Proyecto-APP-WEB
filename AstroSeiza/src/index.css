@@ -9,3 +9,13 @@ main{
 body	{
   background-color: #0D102C;
 }
+
+.withus{
+  background-image: url(./assets/img/withus.jpg);
+  padding: 35px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 300px;
+  width: 75%;
+}
