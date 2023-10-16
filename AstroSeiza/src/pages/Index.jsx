@@ -4,6 +4,7 @@ import iconastro from "../assets/lottieIcons/FTOUb4lWpd.json";
 import iconquimica from "../assets/lottieIcons/quimica.json";
 import iconfisica from "../assets/lottieIcons/fisica.json";
 import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
@@ -19,7 +20,7 @@ export default function Index() {
         </div>
         <div className="relative  p-[250px] mb-[100px] flex flex-col justify-center items-center m-auto ">
           <div className="flex border-solid border border-white">
-            <h2 className="text-white text-[20px] flex h-[250px] p-24 ">
+            <h2 className="text-white text-[20px] font-serif flex h-[250px] p-24 ">
               "La tierra es un lugar maravilloso , pero es solo un punto azul
               pálido en un vasto océano cósmico."- Carl Sagan
             </h2>
@@ -54,11 +55,14 @@ export default function Index() {
             </p>
             <div className="flex flex-colum justify-center">
               <div>
-                <Lottie
-                  animationData={iconastro}
-                  className="h-[400px] w-[400px]"
-                />
-                <h1 className="font-bold text-[30px]">Astronomia</h1>
+                <Link to="/Astronomia">
+                  <Lottie
+                    animationData={iconastro}
+                    className="h-[400px] w-[400px]"
+                  />
+
+                  <h1 className="font-bold text-[30px]">Astronomia</h1>
+                </Link>
               </div>
               <div>
                 <Lottie
@@ -93,6 +97,6 @@ export default function Index() {
           </div>
         </div>
       </div>
-      </>
+    </>
   );
 }
