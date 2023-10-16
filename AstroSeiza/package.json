@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.13.0",
     "react-router-dom": "^6.16.0",
+    "react-tsparticles": "^2.12.2",
     "redux": "^4.2.1",
+    "tsparticles": "^2.12.0",
     "video-react": "^0.16.0"
   },
   "devDependencies": {

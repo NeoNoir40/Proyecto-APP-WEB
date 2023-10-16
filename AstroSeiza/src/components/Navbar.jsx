@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <header className="bg-body text-white flex w-auto h-[90px] ">
+    <header className="bg-header text-white flex w-auto h-[90px]">
       <div className="flex p-3">
         <div>
           <h1 className="text-[36px] font-bold">AstroSeiza</h1>
