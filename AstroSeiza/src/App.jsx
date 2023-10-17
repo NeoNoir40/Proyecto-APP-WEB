@@ -3,6 +3,7 @@ import Index from "./pages/Index";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Astronomia from "./pages/Astronomia";
+import Error from "./pages/Error";
 function App() {
   return (
     <BrowserRouter>
@@ -11,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/Astronomia" element={<Astronomia />}/>
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<Error/>} />
       </Routes>
       </main>
       <Footer/>

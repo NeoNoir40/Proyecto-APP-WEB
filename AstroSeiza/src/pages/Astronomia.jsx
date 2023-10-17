@@ -36,12 +36,12 @@ export default function Astronomia() {
             <div className="flex">
               <Lottie
                 animationData={secondIcon}
-                className="h-[300px] w-[300px]"
+                className="h-[200px] w-[200px]"
               ></Lottie>
             </div>
             <div className="grid  text-white">
               <div className=" h-12 w-auto">
-                <h1 className=" font-bold text-[30px] mt-20 text-center">
+                <h1 className=" font-bold text-[30px]  text-center">
                   Astronomia
                 </h1>
               </div>
