@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/Fisica" element={<Physical/>} />
+        <Route path="/Fisica" element={<Physical/>}/>
       </Routes>
       <Footer/>
       <Particlesbg/>
