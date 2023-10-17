@@ -13,8 +13,8 @@ function App() {
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route path="/Fisica" element={<Physical/>} />
       </Routes>
-      <Particlesbg/>
       <Footer/>
+      <Particlesbg/>
     </BrowserRouter>
   );
 }
