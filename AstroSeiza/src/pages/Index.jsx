@@ -19,7 +19,7 @@ export default function Index() {
             className="absolute object-cover h-[75%] w-[100%] blur-[3px]"
           />
         </div>
-        
+        {/* adsadadad */}
         <div className="relative  p-[250px] mb-[100px] flex flex-col justify-center items-center m-auto ">
           <div className="flex border-solid border border-white">
             <h2 className="text-white text-[20px] font-serif flex h-[250px] p-24 ">
