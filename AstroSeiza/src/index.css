@@ -19,3 +19,9 @@ body	{
   height: 300px;
   width: 75%;
 }
+
+.fondo-blanco{
+  background-color: #fff;
+  height: 400px;
+  width: 1000px;
+}
