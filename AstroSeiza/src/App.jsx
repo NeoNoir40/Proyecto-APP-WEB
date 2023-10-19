@@ -4,18 +4,25 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Astronomia from "./pages/Astronomia";
 import Error from "./pages/Error";
+import Dashboard from "./dashboard/dashboard";
+import NuevoUsuario from "./dashboard/newUser";
+import EditUser from "./dashboard/editUser";
+
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <main>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/Astronomia" element={<Astronomia />}/>
-        <Route path="*" element={<Error/>} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/Astronomia" element={<Astronomia />} />
+          <Route path="/Dash" element={<Dashboard />} />
+          <Route path="/New" element={<NuevoUsuario />} />
+          <Route path="/Update/:id" element={<EditUser />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
