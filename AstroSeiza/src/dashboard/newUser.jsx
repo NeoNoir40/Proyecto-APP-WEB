@@ -84,7 +84,10 @@ export default function NuevoUsuario() {
                       onChange={handleChange}
                       placeholder="Password"
                     />
-                    <button type="onSubmit" className="  bg-white w-[50px] rounded-sm hover:bg-gray-400 hover:text-white transition-colors font-semibold">
+                    <button
+                      type="onSubmit"
+                      className="  bg-white w-[50px] rounded-sm hover:bg-gray-400 hover:text-white transition-colors font-semibold"
+                    >
                       Crear
                     </button>
                   </form>
