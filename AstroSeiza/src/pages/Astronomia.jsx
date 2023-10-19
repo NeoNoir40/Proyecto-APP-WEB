@@ -78,7 +78,7 @@ export default function Astronomia() {
               <div className="grid">
                 <div className="flex flex-row">
                   <div className=" ">
-                    <Lottie
+                  <Lottie
                       animationData={EarthIcon}
                       className="h-[150px] w-[150px]"
                     ></Lottie>
