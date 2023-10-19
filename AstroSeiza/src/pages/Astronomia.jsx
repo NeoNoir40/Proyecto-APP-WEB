@@ -6,8 +6,15 @@ import SunIcon from "../assets/lottieIcons/Sun.json";
 import AsteroidIcon from "../assets/lottieIcons/Asteroid.json";
 import MoonIcon from "../assets/lottieIcons/MoonIcon.json";
 import GalaxyIcon from "../assets/lottieIcons/Galaxyicon.json";
+import { useState } from "react";
 
 export default function Astronomia() {
+  const [apiFondo, setApiFondo] = useState(false);
+
+  const cambiarFondo = () => {
+    setApiFondo(true);
+  };
+
   return (
     <>
       <div className="grid p-20">
@@ -64,7 +71,9 @@ export default function Astronomia() {
           </div>
         </div>
         <div className="flex flex-colum justify-center m-auto p-[100px]">
-          <div className="bg-white h-[400px] w-[1000px]"></div>
+          <div className="bg-white h-[400px] w-[1000px]">
+            <h1 className="text-black">Pinteresst API</h1>
+          </div>
         </div>
         <div>
           <div className="flex flex-colum justify-center">
@@ -75,38 +84,53 @@ export default function Astronomia() {
                 </h1>
               </div>
 
-              <div className="grid">
+              <div className=" ml-auto mr-auto grid">
                 <div className="flex flex-row">
                   <div className=" ">
-                    <Lottie
-                      animationData={EarthIcon}
-                      className="h-[150px] w-[150px]"
-                    ></Lottie>
+                    <button onClick={cambiarFondo}>
+                      <Lottie
+                        animationData={EarthIcon}
+                        className="h-[150px] w-[150px]"
+                      ></Lottie>
+                    </button>
                   </div>
                   <div className="b">
-                    <Lottie
-                      animationData={SunIcon}
-                      className="h-[150px] w-[150px] "
-                    ></Lottie>
+                    <button onClick={cambiarFondo}>
+                      <Lottie
+                        animationData={SunIcon}
+                        className="h-[150px] w-[150px] "
+                      ></Lottie>
+                    </button>
                   </div>
                   <div className="">
-                    <Lottie
-                      animationData={AsteroidIcon}
-                      className="h-[150px] w-[150px]"
-                    ></Lottie>
+                    <button onClick={cambiarFondo}>
+                      <Lottie
+                        animationData={AsteroidIcon}
+                        className="h-[150px] w-[150px]"
+                      ></Lottie>
+                    </button>
                   </div>
                   <div className="">
-                    <Lottie
-                      animationData={MoonIcon}
-                      className="h-[150px] w-[150px]"
-                    ></Lottie>
+                    <button onClick={cambiarFondo}>
+                      <Lottie
+                        animationData={MoonIcon}
+                        className="h-[150px] w-[150px]"
+                      ></Lottie>
+                    </button>
                   </div>
                   <div className="">
-                    <Lottie
-                      animationData={GalaxyIcon}
-                      className="h-[150px] w-[150px]"
-                    ></Lottie>
+                    <button onClick={cambiarFondo}>
+                      <Lottie
+                        animationData={GalaxyIcon}
+                        className="h-[150px] w-[150px]"
+                      ></Lottie>
+                    </button>
                   </div>
+                </div>
+              </div>
+              <div className="flex flex-colum justify-center m-auto p-[100px]">
+                <div className={apiFondo ? "fondo-blanco" : ""}>
+                  <h1 className="text-black text-center">Informacion del astro</h1>
                 </div>
               </div>
             </div>
