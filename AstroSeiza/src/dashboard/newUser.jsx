@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { Formik } from "formik";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function NuevoUsuario() {
   const navigate = useNavigate();
@@ -28,10 +28,17 @@ export default function NuevoUsuario() {
                     "http://localhost:3000/user",
                     values
                   );
-
                   actions.resetForm();
-                  alert("Datos agregados correctamente");
-                  navigate("/");
+                  Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Se ah creado el usuario correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  setTimeout (()=>{
+                    navigate("/Dash");
+                  }, 1500)
                 }}
               >
                 {({ handleChange, handleSubmit, values }) => (
