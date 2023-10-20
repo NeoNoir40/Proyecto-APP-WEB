@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -19,13 +20,35 @@ export default function Dashboard() {
 
   const HandleDelete = async (id) => {
     const response = await axios.delete(`http://localhost:3000/user/${id}`);
-
-    if (response.status == 200) {
-      alert("Usuario eliminado");
+    if (response.status === 200) {
+      console.log("Datos borrados correctamente");
     } else {
-      alert("Error al eliminar usuario");
+      console.log("No se pudo borrar");
     }
     fetchUsers();
+  };
+
+  const confirmDelete = (id) => {
+    Swal.fire({
+      title: "Seguro que quieres eliminar?",
+      text: "No podras desacer el cambio!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        HandleDelete(id);
+        Swal.fire({
+           position: "top-center",
+           icon: "success",
+            title: "Usuario eliminado correctamente",
+            showConfirmButton: false,
+            timer: 1500,
+           });
+      }
+    });
   };
 
   return (
@@ -90,7 +113,7 @@ export default function Dashboard() {
                       <th>{users.Username}</th>
                       <th>{users.Nombre}</th>
                       <th>{users.Apellido}</th>
-                      <a onClick={() => HandleDelete(users.id)}>Eliminar </a>
+                      <a onClick={() => confirmDelete(users.id)}>Eliminar </a>
 
                       <th>
                         <a onClick={() => navigate(`/Update/${users.id}`)}>

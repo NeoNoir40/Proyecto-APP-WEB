@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export default function EditUser() {
   const navigate = useNavigate();
   const params = useParams();
@@ -53,11 +54,24 @@ export default function EditUser() {
                     values
                   );
                   actions.resetForm();
-                  alert("Datos actualizados correctamente");
                   if (res.status === 200) {
-                    navigate("/Dash");
+                    Swal.fire({
+                      position: "top-center",
+                      icon: "success",
+                      title: "Se ah actualizado el usuario correctamente",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    setTimeout(() => {
+                      navigate("/Dash");
+                    }, 1500);
                   } else {
-                    alert("Sucedio algun error");
+                    Swal.fire({
+                      icon: "error",
+                      title: "Oops...",
+                      text: "Ocurrio un error, durando la actualizacion!",
+                      footer: '<a href="">Why do I have this issue?</a>',
+                    });
                   }
                 }}
               >
