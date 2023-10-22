@@ -14,7 +14,6 @@ function App() {
         <Route path="/Fisica" element={<Physical/>}/>
       </Routes>
       <Footer/>
-      <Particlesbg/>
     </BrowserRouter>
   );
 }

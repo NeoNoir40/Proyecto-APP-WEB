@@ -3,6 +3,9 @@ import fis from '../assets/lottieIcons/animation_lntab4at.json';
 import sec from '../assets/lottieIcons/icons8-casa.json'
 import thre from '../assets/lottieIcons/clima.json'
 import img from '../assets/img/arrow.png'
+import newton from '../assets/img/Isaac-Newton.png'
+import ohm from '../assets/img/georg-ohm.png'
+import tesla from '../assets/img/nikolatesla.png'
 
 export default function Physical() {
     return (
@@ -62,6 +65,42 @@ export default function Physical() {
                 </div>
                 <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-1">
                     <p className="ml-5 mt-1 text-left font-medium">Por Localidad</p>
+                </div>
+            </div>
+            <div>
+                <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
+                <div className="text-white items-center justify-center flex flex-row">
+                    <h3 className="font-medium mb-32 text-left">ISAAC NEWTON</h3>
+                    <p className="mt-7">Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de
+                        <br />Kepler sobre las órbitas de los planetas, Newton estableció las leyes
+                        <br />fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y
+                        <br />aceleración y principio de acción y reacción) y dedujo de ellas la ley de
+                        <br />gravitación universal.</p>
+                    <img className="w-44 h-44 object-contain" src={newton} alt="isacc newton" />
+                </div>
+            </div>
+            <div className="my-5">
+                <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
+                <div className="text-white items-center justify-center flex flex-row">
+                    <h3 className="font-medium mb-32 text-left">ISAAC NEWTON</h3>
+                    <p className="mt-7">Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de
+                        <br />Kepler sobre las órbitas de los planetas, Newton estableció las leyes
+                        <br />fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y
+                        <br />aceleración y principio de acción y reacción) y dedujo de ellas la ley de
+                        <br />gravitación universal.</p>
+                    <img className="w-44 h-44 object-contain" src={tesla} alt="isacc newton" />
+                </div>
+            </div>
+            <div className="mt-5">
+                <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
+                <div className="text-white items-center justify-center flex flex-row">
+                    <h3 className="font-medium mb-32 text-left">ISAAC NEWTON</h3>
+                    <p className="mt-7">Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de
+                        <br />Kepler sobre las órbitas de los planetas, Newton estableció las leyes
+                        <br />fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y
+                        <br />aceleración y principio de acción y reacción) y dedujo de ellas la ley de
+                        <br />gravitación universal.</p>
+                    <img className="w-44 h-44 object-contain" src={ohm} alt="isacc newton" />
                 </div>
             </div>
         </>
