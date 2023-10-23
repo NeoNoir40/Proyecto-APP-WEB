@@ -1,15 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { googleLogout } from "@react-oauth/google";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function Dashboard() {
+  const params = useParams();
+  var userAccesToken = params.userAccesToFken
+  console.log(userAccesToken)
   const navigate = useNavigate();
+  // const [profile, setProfile] = useState([]);
   const [Users, setUsers] = useState([]);
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.userAccesToken}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          setProfile(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
+  // log out function to log the user out of google and set the profile array to null
+  const logOut = () => {
+    googleLogout();
+    setProfile(null);
+  };
 
   const fetchUsers = async () => {
     const response = await axios.get("http://localhost:3000/user");
@@ -41,12 +71,12 @@ export default function Dashboard() {
       if (result.isConfirmed) {
         HandleDelete(id);
         Swal.fire({
-           position: "top-center",
-           icon: "success",
-            title: "Usuario eliminado correctamente",
-            showConfirmButton: false,
-            timer: 1500,
-           });
+          position: "top-center",
+          icon: "success",
+          title: "Usuario eliminado correctamente",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };
@@ -88,6 +118,19 @@ export default function Dashboard() {
         </div>
         <div className="m-auto mt-[60px]">
           <div className="grid">
+            //
+            {/* <div>
+              <div>
+                <img src={profile.picture} alt="user image" />
+                <h3>User Logged in</h3>
+                <p>Name: {profile.name}</p>
+                <p>Email Address: {profile.email}</p>
+                <br />
+                <br />
+                <button onClick={logOut}>Log out</button>
+              </div>
+            </div>
+            // */}
             <div className="mb-10  m-auto">
               <Link to="/New">
                 <button className="h-6 w-20 bg-white font-bold rounded-sm ">

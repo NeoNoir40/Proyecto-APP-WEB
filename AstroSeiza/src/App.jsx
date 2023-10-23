@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import Dashboard from "./dashboard/dashboard";
 import NuevoUsuario from "./dashboard/newUser";
 import EditUser from "./dashboard/editUser";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/Astronomia" element={<Astronomia />} />
-          <Route path="/Dash" element={<Dashboard />} />
+          <Route path="/Dash/:id" element={<Dashboard />} />
           <Route path="/New" element={<NuevoUsuario />} />
           <Route path="/Update/:id" element={<EditUser />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>
