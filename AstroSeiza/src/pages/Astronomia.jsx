@@ -6,6 +6,7 @@ import AstronomiStartModule from "../components/astronomicStartModule";
 import BigBangModule from "../components/bigBangModule";
 import TypeOfAstros from "../components/typesOfPlanets";
 import PinterestApi from "../components/pinterestApi";
+import ZodicalSing from "../components/zodiacalSing";
 export default function Astronomia() {
   return (
     <>
@@ -17,17 +18,22 @@ export default function Astronomia() {
         <>
           <BigBangModule />
         </>
-        <></>
+        <>
+          {" "}
+          <PinterestApi />
+        </>
         {/* Modulo de tipo de astros */}
         <>
           <TypeOfAstros />
         </>
-        <PinterestApi />
         <>
           <MoonModule />
         </>
         <>
           <AtmosphereModule />
+        </>
+        <>
+        <ZodicalSing/>
         </>
       </div>
     </>

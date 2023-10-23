@@ -1,22 +1,23 @@
 import Lottie from "lottie-react";
 import ModuleIcon from "../assets/lottieIcons/MoonModuleIcon.json";
+import MoonCarousel from "./carouselMoon";
 
 export default function MoonModule() {
   return (
-    <div className="flex  justify-start bg-black">
+    <div className="flex  justify-start">
       <div className="flex text-white font-bold">
         {/* Modulo de la luna */}
-        <div className="bg-red-900">
-          <div className="bg-blue-900 text-center">
+        <div className="mt-20">
+          <div className=" text-center">
             <h1>Fases de la luna</h1>
           </div>
-          <div className="bg-green-900 flex justify-center">
+          <div className=" flex justify-center">
             <Lottie
               animationData={ModuleIcon}
-              className="h-[150px] w-[150px]"
+              className="h-[150px] w-[200px]"
             ></Lottie>
           </div>
-          <div className="bg-pink-400 mt-10">
+          <div className=" mt-10">
             <p>
               Laika fue el primer ser vivo en orbitar la Tierra. Fue una perra
               enviada al espacio por la Unión Soviética en 1957, pero
@@ -26,14 +27,13 @@ export default function MoonModule() {
         </div>
       </div>
       {/* Modulo de la luna */}
-      <div className="bg-purple-400 p-10 ">
-        <div className="bg-purple-700 text-center font-bold text-white">
-          Fase del dia de hoy
+      <div className=" p-10 ">
+        <div className="flex items-center justify-center">
+          <div className="max-w-xl">
+            <MoonCarousel></MoonCarousel>
+          </div>
         </div>
-        <div className="bg-red-500 h-[200px] mt-10">
-          <h1>Container</h1>
-        </div>
-        <div className="bg-green-400 mt-10 text-white">
+        <div className=" mt-10 text-white">
           <p>
             Las fases de la luna son diferentes aspectos visibles de la Luna a
             medida que orbita alrededor de la Tierra. Van desde la Luna nueva,
