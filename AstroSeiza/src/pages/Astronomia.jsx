@@ -23,7 +23,6 @@ export default function Astronomia() {
           <BigBangModule />
         </>
         <>
-          {" "}
           <PinterestApi />
         </>
         {/* Modulo de tipo de astros */}
