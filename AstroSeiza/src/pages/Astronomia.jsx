@@ -7,9 +7,13 @@ import BigBangModule from "../components/bigBangModule";
 import TypeOfAstros from "../components/typesOfPlanets";
 import PinterestApi from "../components/pinterestApi";
 import ZodicalSing from "../components/zodiacalSing";
+import AstroSong from "../components/musicPlayerAstronomi";
 export default function Astronomia() {
   return (
-    <>
+    <>  
+      <>
+      <AstroSong/>
+      </>
       <div className="grid p-20">
         {/* Modulo de incio */}
         <>
