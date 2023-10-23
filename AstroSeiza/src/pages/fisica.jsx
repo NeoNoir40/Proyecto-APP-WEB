@@ -6,8 +6,33 @@ import img from '../assets/img/arrow.png'
 import newton from '../assets/img/Isaac-Newton.png'
 import ohm from '../assets/img/georg-ohm.png'
 import tesla from '../assets/img/nikolatesla.png'
+import DetSumm from "../components/details";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { verClima } from "../components/apiclima";
 
 export default function Physical() {
+
+    const [weatherdata, setWeatherData] = useState(null);
+    const [city, setCity] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const getData = async () => {
+        try {
+            setLoading(true);
+            const data = await verClima(city);
+            setWeatherData(data);
+            console.log(data)
+            setLoading(false);
+        } catch (error) {
+            console.log(error.message);
+            setLoading(false);
+        }
+    }
+    useEffect(() => {
+        getData();
+    }, []);
+
     return (
         <>
             <div className="text-white p-12 flex flex-row items-center justify-center">
@@ -48,24 +73,57 @@ export default function Physical() {
                 </div>
             </div>
             <div className=" flex justify-center items-center h-auto flex-col">
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600">
-                    <p className="ml-5 mt-1 text-left font-medium">Clima hoy</p>
-                </div>
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-1">
-                    <p className="ml-5 mt-1 text-left font-medium">Incendios Forestales</p>
-                </div>
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-0">
-                    <p className="ml-5 mt-1 text-left font-medium">Ciudades Vecinas</p>
-                </div>
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-1">
-                    <p className="ml-5 mt-1 text-left font-medium">Ciclones</p>
-                </div>
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-0">
-                    <p className="ml-5 mt-1 text-left font-medium">Ciclones del Año</p>
-                </div>
-                <div className=" bg-yellow-200 w-72 h-10 rounded-[30px_30px_30px_30px] border-4 border-yellow-600 my-1">
-                    <p className="ml-5 mt-1 text-left font-medium">Por Localidad</p>
-                </div>
+                <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Consultar Clima</summary>
+                    <div className="p-4 h-auto text-center object-center justify-center">
+                        <div className="card">
+                            <h2 className="font-bold"><i className="fa fa-cloud"></i>Clima de Hoy</h2>
+                            <div className="search-form">
+                                <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Ingrese una ciudad" className="rounded-[5px_5px_5px_5px] h-8 shadow-md border-yellow-600 border-2" />
+                                <button type="button" className="w-15 h-8 border-2 rounded-[5px_5px_5px_5px] ml-2 border-yellow-600 bg-yellow-400" onClick={() => getData()}>Buscar</button>
+                            </div>
+                        </div>
+                        {weatherdata !== null ? (
+                            <div className="main-container">
+                                <div className="location">
+                                    <h3><i className="fa fa-street-view"></i>{weatherdata.name} | {weatherdata.sys.country}</h3>
+                                </div>
+                                <div className="weather-icon flex justify-center content-center">
+                                    <img src={`http://openweathermap.org/img/w/${weatherdata.weather[0].icon}.png`} alt="imgicon" />
+                                </div>
+                                <h3 className="uppercase">{weatherdata.weather[0].description}</h3>
+                                <div className="temprature">
+                                    <h1>{parseFloat(weatherdata.main.temp - 273.15).toFixed(1)}&deg;C</h1>
+                                </div>
+                                <div className="temprature-range">
+                                    <h6>Min: {parseFloat(weatherdata.main.temp_min - 273.15).toFixed(1)}&deg;C
+                                        || Máx: {parseFloat(weatherdata.main.temp_max - 273.15).toFixed(1)}&deg;C
+                                        Húmedad: {weatherdata.main.humidity}%</h6>
+                                </div>
+                            </div>
+                        ) : null}
+                    </div>
+                </details>
+                {/*<details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Incendios Forestales</summary>
+                    <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                </details>
+                <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Ciudades Vecinas</summary>
+                    <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                </details>
+                <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Ciclones</summary>
+                    <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                </details>
+                <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Ciclones del Año</summary>
+                    <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                </details>
+                <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                    <summary className="ml-5 mt-1 text-left font-medium">Por Localidad</summary>
+                    <p className="ml-5 mt-1 text-left">Clima hoy</p>
+            </details>*/}
             </div>
             <div>
                 <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
@@ -78,28 +136,48 @@ export default function Physical() {
                         <br />gravitación universal.</p>
                     <img className="w-44 h-44 object-contain" src={newton} alt="isacc newton" />
                 </div>
+                <div className="flex flex-col justify-center items-center">
+                    <h3 className=" text-xl leading-2 tracking-tight text-white font-semibold">LEYES:</h3>
+                    <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                        <summary className="ml-5 mt-1 text-left font-medium">1ra. Ley</summary>
+                        <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                    </details>
+                    <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                        <summary className="ml-5 mt-1 text-left font-medium">2da. Ley</summary>
+                        <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                    </details>
+                    <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                        <summary className="ml-5 mt-1 text-left font-medium">3ra. Ley</summary>
+                        <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                    </details>
+                </div>
             </div>
             <div className="my-5">
-                <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
+                <h2 className="text-white font-semibold text-2xl mx-52 mt-5 uppercase">¿Quién es..?</h2>
                 <div className="text-white items-center justify-center flex flex-row">
-                    <h3 className="font-medium mb-32 text-left">ISAAC NEWTON</h3>
-                    <p className="mt-7">Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de
-                        <br />Kepler sobre las órbitas de los planetas, Newton estableció las leyes
-                        <br />fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y
-                        <br />aceleración y principio de acción y reacción) y dedujo de ellas la ley de
-                        <br />gravitación universal.</p>
+                    <h3 className="font-medium mb-32 text-left">NIKOLA TESLA</h3>
+                    <p className="mt-7">Nikola Tesla fue un físico, matemático, ingeniero eléctrico y mecánico, y célebre
+                        <br />inventor, un verdadero visionario muy por delante de sus contemporáneos en el
+                        <br />campo del desarrollo científico, que revolucionó la teoría eléctrica desarrollando
+                        <br />las bases para la, generación de corriente alterna (AC).</p>
                     <img className="w-44 h-44 object-contain" src={tesla} alt="isacc newton" />
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                    <h3 className=" text-xl leading-2 tracking-tight text-white font-semibold">INVENTOS:</h3>
+                    <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
+                        <summary className="ml-5 mt-1 text-left font-medium">Motor eléctrico</summary>
+                        <p className="ml-5 mt-1 text-left">Clima hoy</p>
+                    </details>
                 </div>
             </div>
             <div className="mt-5">
                 <h2 className="text-white font-semibold text-2xl mx-56 mt-5 uppercase">¿Quién es..?</h2>
                 <div className="text-white items-center justify-center flex flex-row">
-                    <h3 className="font-medium mb-32 text-left">ISAAC NEWTON</h3>
-                    <p className="mt-7">Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de
-                        <br />Kepler sobre las órbitas de los planetas, Newton estableció las leyes
-                        <br />fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y
-                        <br />aceleración y principio de acción y reacción) y dedujo de ellas la ley de
-                        <br />gravitación universal.</p>
+                    <h3 className="font-medium mb-32 text-left">GOERGE SIMON OHM</h3>
+                    <p className="mt-7">Georg Simon Ohm fue un físico y matemático alemán conocido principalmente
+                        <br />por su investigación sobre las corrientes eléctricas., formulando la ley que lleva
+                        <br />su nombre. También se interesó por la acústica, la polarización de las pilas y las
+                        <br />interferencias luminosas.</p>
                     <img className="w-44 h-44 object-contain" src={ohm} alt="isacc newton" />
                 </div>
             </div>
