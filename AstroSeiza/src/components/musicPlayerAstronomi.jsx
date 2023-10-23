@@ -1,4 +1,3 @@
-import Player from "@madzadev/audio-player";
 import music from "../assets/audio/HaydenFolkerAdrift.mp3";
 export default function AstroSong() {
 //   const tracks = [
