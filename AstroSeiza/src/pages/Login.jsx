@@ -5,14 +5,18 @@ import axios from "axios";
 export default function Login() {
     const navigate = useNavigate();
   const [user, setUser] = useState
-  ([]);
+  ({});
+
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
         setUser(codeResponse) 
         console.log(codeResponse)
+        localStorage.setItem('userId', codeResponse.access_token);
+
+
         setTimeout (()=>{
-          navigate(`/dash/${access_token}`)
+          navigate(`/dash/${codeResponse.access_token}`)
 
         },2000)
     },

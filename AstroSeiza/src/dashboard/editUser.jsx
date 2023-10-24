@@ -5,8 +5,10 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 export default function EditUser() {
+
   const navigate = useNavigate();
   const params = useParams();
+  
   console.log(params);
   var id = params.id;
   console.log(id);

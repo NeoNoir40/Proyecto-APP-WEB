@@ -5,12 +5,16 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function Dashboard() {
-  const params = useParams();
-  var userAccesToken = params.userAccesToFken
-  console.log(userAccesToken)
-  const navigate = useNavigate();
-  // const [profile, setProfile] = useState([]);
+  
+  const [user, setUser] = useState([]);
+  const [profile, setProfile] = useState([]);
   const [Users, setUsers] = useState([]);
+
+  const params = useParams();
+  var id = params.id;
+  console.log(id);
+  const navigate = useNavigate();
+ 
 
   useEffect(() => {
     fetchUsers();
@@ -20,10 +24,10 @@ export default function Dashboard() {
     if (user) {
       axios
         .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.userAccesToken}`,
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${id}`,
           {
             headers: {
-              Authorization: `Bearer ${user.access_token}`,
+              Authorization: `Bearer ${id}`,
               Accept: "application/json",
             },
           }
@@ -39,6 +43,7 @@ export default function Dashboard() {
   const logOut = () => {
     googleLogout();
     setProfile(null);
+    navigate('/login')
   };
 
   const fetchUsers = async () => {
@@ -118,8 +123,8 @@ export default function Dashboard() {
         </div>
         <div className="m-auto mt-[60px]">
           <div className="grid">
-            //
-            {/* <div>
+            
+            <div>
               <div>
                 <img src={profile.picture} alt="user image" />
                 <h3>User Logged in</h3>
@@ -130,7 +135,7 @@ export default function Dashboard() {
                 <button onClick={logOut}>Log out</button>
               </div>
             </div>
-            // */}
+            
             <div className="mb-10  m-auto">
               <Link to="/New">
                 <button className="h-6 w-20 bg-white font-bold rounded-sm ">
