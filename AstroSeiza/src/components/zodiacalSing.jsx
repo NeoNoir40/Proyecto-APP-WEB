@@ -1,6 +1,6 @@
 export default function ZodicalSing() {
   return (
-    <div className="flex flex-colum  justify-start bg-black mt-[200px]">
+    <div className="flex flex-colum  w-auto justify-start bg-black mt-[200px]">
       {/* Modulo de la luna */}
       <div className="bg-purple-400">
         <div className="bg-purple-700">
