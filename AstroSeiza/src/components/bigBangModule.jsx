@@ -19,7 +19,7 @@ export default function BigBangModule() {
             </h1>
           </div>
           <div className=" h-[140px] w-[650px]">
-            F
+            
             <p className="text-[20px] ">
               La teoría del Big Bang es la explicación científica del origen del
               universo. Hace unos 13.8 mil millones de años, todo estaba
