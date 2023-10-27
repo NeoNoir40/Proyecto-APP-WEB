@@ -5,19 +5,19 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function Dashboard() {
-  
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState([]);
   const [Users, setUsers] = useState([]);
+  const [Clima , setClima] = useState([])
 
   const params = useParams();
   var id = params.id;
   console.log(id);
   const navigate = useNavigate();
- 
 
   useEffect(() => {
     fetchUsers();
+    fetchClima();
   }, []);
 
   useEffect(() => {
@@ -43,8 +43,16 @@ export default function Dashboard() {
   const logOut = () => {
     googleLogout();
     setProfile(null);
-    navigate('/login')
+    navigate("/login");
   };
+
+  const fetchClima = async () =>{
+    const response = await axios.get('https://api.datos.gob.mx/v1/condiciones-atmosfericas')
+    const resultados = response.data.results;
+    setClima(resultados);
+    console.log('datos de la api clima')
+    console.log(resultados)
+  }
 
   const fetchUsers = async () => {
     const response = await axios.get("http://localhost:3000/user");
@@ -123,7 +131,6 @@ export default function Dashboard() {
         </div>
         <div className="m-auto mt-[60px]">
           <div className="grid">
-            
             <div>
               <div>
                 <img src={profile.picture} alt="user image" />
@@ -135,7 +142,6 @@ export default function Dashboard() {
                 <button onClick={logOut}>Log out</button>
               </div>
             </div>
-            
             <div className="mb-10  m-auto">
               <Link to="/New">
                 <button className="h-6 w-20 bg-white font-bold rounded-sm ">
@@ -170,6 +176,31 @@ export default function Dashboard() {
                       </th>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <table className=" user grid h-auto p-2 w-auto rounded-lg text-center font-bold bg-white ">
+                <thead>Api de condiciones atmosfericas</thead>
+                <tbody className="">
+                  <tr className="">
+                    <th className="p-3">#</th>
+                    <th className="p-3">Nombre</th>
+                    <th className="p-3">Estado</th>
+                    <th className="p-3">Descripción del cielo</th>
+                    <th className="p-3">Temperature</th>
+                    <th className="p-3">Viento km</th>
+                  </tr>
+                  {Clima.map((clima, i) => (
+                    <tr>
+                      <th>{i + 1}</th>
+                      <th>{clima.name}</th>
+                      <th>{clima.state}</th>
+                      <th>{clima.skydescriptionlong}</th>
+                      <th>{clima.tempc}°C</th>
+                      <th>{clima.windspeedkm}  km</th>
+                    </tr>
+                  ))} 
                 </tbody>
               </table>
             </div>

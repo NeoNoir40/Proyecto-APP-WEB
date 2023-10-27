@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/Astronomia" element={<Astronomia />} />
           <Route path="/Dash/:id" element={<Dashboard />} />
+          <Route path="/Dash" element={<Dashboard />} />
           <Route path="/New" element={<NuevoUsuario />} />
           <Route path="/Update/:id" element={<EditUser />} />
           <Route path="/Login" element={<Login />} />
