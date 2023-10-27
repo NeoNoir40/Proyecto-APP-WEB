@@ -38,14 +38,14 @@ export default function PinterestApi() {
               </div>
             ) : (
               <div>
-                <img scr={nasa.url} alt="imagen de la nasa" />
+                <img src={nasa.url} alt="imagen de la nasa" />
               </div>
             )}
 
             <div className="">
               <p>Derechos de autor: {nasa.copyright}</p>
-              <p> Fecha: {nasa.date}</p>
-              <p>Explicació: {nasa.explanation}</p>
+              <p>Fecha: {nasa.date}</p>
+              <p>Explicación: {nasa.explanation}</p>
               <p>Titulo: {nasa.title}</p>
             </div>
           </div>
