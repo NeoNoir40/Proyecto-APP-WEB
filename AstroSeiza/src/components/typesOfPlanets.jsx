@@ -4,13 +4,54 @@ import SunIcon from "../assets/lottieIcons/Sun.json";
 import AsteroidIcon from "../assets/lottieIcons/Asteroid.json";
 import MoonIcon from "../assets/lottieIcons/MoonIcon.json";
 import GalaxyIcon from "../assets/lottieIcons/Galaxyicon.json";
-import { useState } from "react";
-
+import { createClient } from "pexels";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "react-feather";
 export default function TypeOfAstros() {
+  const apiKey = "7oRIFLnyrcf8UgLAUi30Z3RW1RNr8XXEdsejMNT87R2tjDkv8MCREbAQ";
+  const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(15);
+  const [dataPexels, setDataPexels] = useState([]);
   const [apiFondo, setApiFondo] = useState(false);
+  const [showImages, setShowImages] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    getPexelsApi();
+  }, [currentPage]);
+
+  const getPexelsApi = async () => {
+    setIsLoading(true);
+    const response = await axios.get(
+      `https://api.pexels.com/v1/search?query=${query}&page=${currentPage}&per_page=${perPage}`,
+      {
+        headers: {
+          Authorization: apiKey,
+        },
+      }
+    );
+
+    const fotos = response.data.photos;
+
+    setDataPexels(fotos);
+    console.log("Datos de la api de pexels");
+    console.log(response);
+    setIsLoading(false);
+  };
 
   const cambiarFondo = () => {
-    setApiFondo(true);
+    setApiFondo(!apiFondo);
+  };
+  const cambiarQuery = (e) => {
+    setQuery(e);
+  };
+
+  const handleIconClick = (e) => {
+    cambiarFondo();
+    cambiarQuery(e);
+    setShowImages(true);
   };
   return (
     <div className="mt-[150px]">
@@ -25,15 +66,15 @@ export default function TypeOfAstros() {
           <div className=" ml-auto mr-auto grid">
             <div className="flex flex-row">
               <div className=" ">
-                <button onClick={cambiarFondo}>
+                <button onClick={() => handleIconClick("planeta")}>
                   <Lottie
                     animationData={EarthIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
                 </button>
               </div>
-              <div className="b">
-                <button onClick={cambiarFondo}>
+              <div className="">
+                <button onClick={() => handleIconClick("sun")}>
                   <Lottie
                     animationData={SunIcon}
                     className="h-[150px] w-[150px] "
@@ -41,7 +82,7 @@ export default function TypeOfAstros() {
                 </button>
               </div>
               <div className="">
-                <button onClick={cambiarFondo}>
+                <button onClick={() => handleIconClick("meteorites")}>
                   <Lottie
                     animationData={AsteroidIcon}
                     className="h-[150px] w-[150px]"
@@ -49,7 +90,7 @@ export default function TypeOfAstros() {
                 </button>
               </div>
               <div className="">
-                <button onClick={cambiarFondo}>
+                <button onClick={() => handleIconClick("moon")}>
                   <Lottie
                     animationData={MoonIcon}
                     className="h-[150px] w-[150px]"
@@ -57,7 +98,7 @@ export default function TypeOfAstros() {
                 </button>
               </div>
               <div className="">
-                <button onClick={cambiarFondo}>
+                <button onClick={() => handleIconClick("galaxia")}>
                   <Lottie
                     animationData={GalaxyIcon}
                     className="h-[150px] w-[150px]"
@@ -66,9 +107,136 @@ export default function TypeOfAstros() {
               </div>
             </div>
           </div>
-          <div className="flex flex-colum justify-center m-auto p-[100px]">
-            <div className={apiFondo ? "fondo-blanco" : ""}></div>
-          </div>
+
+          {isLoading ? (
+            <div> Cargando contenido</div>
+          ) : (
+            <div>
+              {showImages && (
+                <>
+                  <div className="grid grid-rows-4 w-[100%] grid-flow-col gap-4 mt-10">
+                    {dataPexels.map((photos, index) => (
+                      <div>
+                        <img
+                          key={index}
+                          src={photos.src.original}
+                          alt=""
+                          loading="lazy"
+                          className="h-[350px] w-[600px] "
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex  justify-center items-center gap-4 mt-10">
+                    <button
+                      className="w-10 h-10 text-white hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:text-gray-400 "
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                    >
+                      {" "}
+                      <ArrowLeft size={30} />
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(1)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      1
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(2)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      2
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(3)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      3
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(4)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      4
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(5)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      5
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(6)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      6
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(7)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      7
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(8)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      8
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(9)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      9
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(10)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      10
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(11)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      11
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(12)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      12
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(13)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      13
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(14)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      14
+                    </button>
+                    <button
+                      onClick={() => setCurrentPage(15)}
+                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
+                    >
+                      15
+                    </button>
+                    <button
+                      className="w-10 h-10 text-white hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:text-gray-400"
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                    >
+                      <ArrowRight size={30} />
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -37,8 +37,8 @@ export default function PinterestApi() {
                 <YouTube videoId={nasa.url.split("/embed/")[1]} opts={opts} />
               </div>
             ) : (
-              <div>
-                <img src={nasa.url} alt="imagen de la nasa" />
+              <div className="flex">
+                <img src={nasa.url} alt="imagen de la nasa" className="h-[400px] w-[400px]" />
               </div>
             )}
 
