@@ -4,7 +4,7 @@ import secondIcon from "../assets/lottieIcons/Astronomia2nd.json";
 
 export default function BigBangModule() {
   return (
-    <div className="flex flex-colum justify-start ml-[200px] ">
+    <div className="flex flex-colum justify-center  ">
       <div className="flex">
         <div className="flex">
           <Lottie

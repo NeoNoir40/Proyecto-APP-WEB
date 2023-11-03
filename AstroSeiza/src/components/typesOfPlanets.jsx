@@ -17,10 +17,12 @@ export default function TypeOfAstros() {
   const [apiFondo, setApiFondo] = useState(false);
   const [showImages, setShowImages] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const totalPages = 15;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   useEffect(() => {
     getPexelsApi();
-  }, [currentPage]);
+  }, [currentPage, query]);
 
   const getPexelsApi = async () => {
     setIsLoading(true);
@@ -51,6 +53,7 @@ export default function TypeOfAstros() {
   const handleIconClick = (e) => {
     cambiarFondo();
     cambiarQuery(e);
+    setCurrentPage(1);
     setShowImages(true);
   };
   return (
@@ -61,6 +64,10 @@ export default function TypeOfAstros() {
             <h1 className="text-white font-bold text-[20px] text-center">
               Tipos de Astros
             </h1>
+            <p className="text-center text-white p-4">
+              Haga click en cualquiera de los siguientes iconos para ver
+              imagenes acerca de los siguientes astros:
+            </p>
           </div>
 
           <div className=" ml-auto mr-auto grid">
@@ -71,6 +78,7 @@ export default function TypeOfAstros() {
                     animationData={EarthIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
+                  <p className="text-white font-bold">Tierra</p>
                 </button>
               </div>
               <div className="">
@@ -79,14 +87,16 @@ export default function TypeOfAstros() {
                     animationData={SunIcon}
                     className="h-[150px] w-[150px] "
                   ></Lottie>
+                  <p className="text-white font-bold">Sol</p>
                 </button>
               </div>
               <div className="">
-                <button onClick={() => handleIconClick("meteorites")}>
+                <button onClick={() => handleIconClick("meteorite")}>
                   <Lottie
                     animationData={AsteroidIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
+                  <p className="text-white font-bold">Asteroide</p>
                 </button>
               </div>
               <div className="">
@@ -95,14 +105,16 @@ export default function TypeOfAstros() {
                     animationData={MoonIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
+                  <p className="text-white font-bold">Luna</p>
                 </button>
               </div>
               <div className="">
-                <button onClick={() => handleIconClick("galaxia")}>
+                <button onClick={() => handleIconClick("galaxy")}>
                   <Lottie
                     animationData={GalaxyIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
+                  <p className="text-white font-bold">Galaxia</p>
                 </button>
               </div>
             </div>
@@ -119,8 +131,8 @@ export default function TypeOfAstros() {
                       <div>
                         <img
                           key={index}
-                          src={photos.src.original}
-                          alt=""
+                          src={photos.src.medium}
+                          alt="Cargando Imagen"
                           loading="lazy"
                           className="h-[350px] w-[600px] "
                         />
@@ -135,96 +147,19 @@ export default function TypeOfAstros() {
                       {" "}
                       <ArrowLeft size={30} />
                     </button>
-                    <button
-                      onClick={() => setCurrentPage(1)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      1
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(2)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      2
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(3)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      3
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(4)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      4
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(5)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      5
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(6)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      6
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(7)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      7
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(8)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      8
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(9)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      9
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(10)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      10
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(11)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      11
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(12)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      12
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(13)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      13
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(14)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      14
-                    </button>
-                    <button
-                      onClick={() => setCurrentPage(15)}
-                      className="bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:bg-gray-400"
-                    >
-                      15
-                    </button>
+
+                    {pages.map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`bg-white w-10 h-10 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ${
+                          currentPage === page ? "hover:bg-gray-400" : ""
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+
                     <button
                       className="w-10 h-10 text-white hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:text-gray-400"
                       onClick={() => setCurrentPage(currentPage - 1)}

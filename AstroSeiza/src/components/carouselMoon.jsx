@@ -4,72 +4,62 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 
 export default function MoonCarousel() {
   const [curr, setCurrent] = useState(0);
-  const prev = () =>
-    setCurrent((curr) => (curr === 0 ? moon.length - 1 : curr - 1));
-  const next = () =>
-    setCurrent((curr) => (curr === moon.length - 1 ? 0 : curr + 1));
-
   const [moon, setMoon] = useState([]);
+
   useEffect(() => {
     fetchMoonPhase();
   }, []);
 
-  const imageWidth = "400px";
-  const imageHeight = "400px";
-
   const fetchMoonPhase = async () => {
     const response = await axios.get("http://localhost:3001/moonPhase/1");
     setMoon(response.data);
-    console.log("Datos de la api");
-    console.log(response);
   };
+
+  const prev = () => setCurrent(curr === 0 ? moon.length - 1 : curr - 1);
+  const next = () => setCurrent(curr === moon.length - 1 ? 0 : curr + 1);
+
+  const carouselWidth = 400; // Width of each image in the carousel
+
   return (
-    <div className="overflow-hidden relative p-2 m-auto">
-      <div
-        className="flex transition-transform ease-out duration-500"
-        style={{ transform: `translateX(-${curr * 100}%)` }}
-      >
-        {moon.map((item) => (
-       
+    <div className="overflow-hidden relative w-[400px] mx-auto">
+      <div className="flex transition-transform ease-out duration-500"
+           style={{ width: `${moon.length * carouselWidth}px`, transform: `translateX(-${curr * carouselWidth}px)` }}>
+        {moon.map((item, index) => (
+          <div key={index} className="flex-none" style={{ width: `${carouselWidth}px` }}>
+            <p className="text-white text-center">{item.nombre}</p>
             <img
-              className={`w-${imageWidth} h-${imageHeight} object-cover p-2 m-auto`}
-              key={item.id}
+              className="object-cover"
               src={item.img}
-              alt=""
+              alt={item.nombre}
+              style={{ width: `${carouselWidth}px`, height: '400px' }}
             />
+          </div>
         ))}
       </div>
-      <div
-        className="absolute inset-0 flex items-center
-      justify-between p-4"
+
+      <button
+        onClick={prev}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-1 rounded-full shadow text-gray-800 hover:bg-gray-100 z-10"
       >
-        <button
-          onClick={prev}
-          className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
-        >
-          <ChevronLeft size={50} />
-        </button>
-        <button
-          onClick={next}
-          className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
-        >
-          {" "}
-          <ChevronRight size={50} />{" "}
-        </button>
-      </div>
-      <div className="absolute bottom-4 right-0 left-0">
+        <ChevronLeft size={50} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-1 rounded-full shadow text-gray-800 hover:bg-gray-100 z-10"
+      >
+        <ChevronRight size={50} />
+      </button>
+      <div className="absolute bottom-4 left-0 right-0">
         <div className="flex items-center justify-center gap-2">
           {moon.map((_, i) => (
             <div
               key={i}
-              className={`transition-all w-3 h-3 bg-white rounded-full ${
-                curr === i ? "p-4" : "bg-opacity-50"
-              }`}
+              className={`transition-all w-3 h-3 bg-white rounded-full ${curr === i ? "bg-opacity-100" : "bg-opacity-50"}`}
+              onClick={() => setCurrent(i)}
             ></div>
           ))}
         </div>
       </div>
     </div>
-    
   );
 }

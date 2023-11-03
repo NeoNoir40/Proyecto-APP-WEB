@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 
 export default function AstronomiStartModule() {
   return (
-    <div className="flex flex-colum justify-start ">
+    <div className="flex flex-colum justify-center ">
       <div className="flex">
         <div className="flex">
           <Lottie

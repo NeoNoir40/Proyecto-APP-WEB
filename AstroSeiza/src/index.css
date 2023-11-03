@@ -25,3 +25,12 @@ body	{
   height: 400px;
   width: 1000px;
 }
+
+
+.zodiacalBG{
+  background-image: url(./assets/ZodiacalSing/zodiacalBG.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
