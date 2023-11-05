@@ -1,12 +1,14 @@
 import React from "react";
 
-function DetSumm(tittle, info) {
+function DetSumm({tittle, info, subtittle, src}) {
     return (
         <>
-            <details className=" bg-yellow-200 w-72 h-auto rounded-[30px_30px_30px_30px] border-4 border-yellow-600 mt-1 cursor-pointer">
-                <summary className="ml-5 mt-1 text-left font-medium">{tittle}</summary>
-                <p className="ml-5 mt-1 text-left">{info}</p>
-            </details>
+                    <details className="bg-transparent w-72 h-auto rounded-[10px_10px_10px_10px] border-2 border-white cursor-pointer mt-1">
+                        <summary className="ml-5 mt-1 text-left font-mediumml-5 font-medium text-white">{tittle}</summary>
+                        <p className="text-center text-white my-3">{subtittle}</p>
+                        <p className="ml-5 mt-1 text-left text-white my-3 font-thin">{info}</p>
+                        <img className="justify-center flex content-center" src={src}/>
+                    </details>
         </>
     )
 }

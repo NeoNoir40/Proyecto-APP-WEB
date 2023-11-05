@@ -6,6 +6,7 @@ import Physical from "./pages/fisica";
 import Particlesbg from "./assets/particles/particlesBackground";
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -15,6 +16,7 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ function Particlesbg(){
         <>
         <Particles
         //id=""
+        className=""
         options={bg}
         init={particlesInit}
         />
