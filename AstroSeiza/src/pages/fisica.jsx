@@ -21,16 +21,32 @@ export default function Physical() {
 
     const [formula1, setFormula1] = useState(null);
 
+    const [earthquake, setEarthquake] = useState([]);
+
     useEffect(() => {
         const apiUrl = 'https://newton.vercel.app/api/v2/simplify/2%5E2+2(2)';
         axios.get(apiUrl)
             .then(response => {
-                const {data} = response;
+                const { data } = response;
                 setFormula1(data);
             })
             .catch(error => {
                 console.error('No se obtuvo la fórmula', error);
             });
+    }, []);
+
+    useEffect(() => {
+        const apiURL = 'https://6547df5a902874dff3acd475.mockapi.io/physic/earthquakes';
+        const fetchEarthquake = async () => {
+            try {
+                const response = await axios.get(apiURL);
+                setEarthquake(response.data);
+                console.log("🚀 ~ file: fisica.jsx:44 ~ fetchEarthquake ~ data:", response)
+            } catch (error) {
+                console.error('No hay datos' + error);
+            }
+        }
+        fetchEarthquake();
     }, []);
 
     const getData = async () => {
@@ -74,6 +90,31 @@ export default function Physical() {
                     animationData={sec}
                     className="h-[180px] w-[180px] mr-4"
                 />
+            </div>
+            <div className="text-white flex flex-col justify-center items-center my-3">
+                <h1 className="uppercase text-xl font-semibold my-4">Terremotos más terroríficos</h1>
+                <table>
+                    <thead>
+                        <tr className="">
+                            <th className="w-44">País</th>
+                            <th className="w-44">Nombre del País</th>
+                            <th className="w-44">Ciudad</th>
+                            <th className="w-44">Magnitud</th>
+                            <th className="w-44">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody className="">
+                        {earthquake.map(terremoto => (
+                            <tr key={terremoto.id} className="text-center border-y-2">
+                                <td><img src={terremoto.img} alt="img" className=" w-[45px] h-[45px] mx-auto my-auto" /></td>
+                                <td>{terremoto.country}</td>
+                                <td>{terremoto.city}</td>
+                                <td>{terremoto.magnitude}</td>
+                                <td>{terremoto.date}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
             <div className="text-white flex flex-row items-center justify-center mr-48">
                 <Lottie
