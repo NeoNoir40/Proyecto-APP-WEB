@@ -39,7 +39,7 @@ export default function PinterestApi() {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data.data.translatedText)
+      console.log(response.data.data.translatedText);
       setTraduccion(response.data.data.translatedText);
     } catch (error) {
       console.error(error);
@@ -53,13 +53,13 @@ export default function PinterestApi() {
     setNasa(response.data);
     console.log("Nasa Api");
     console.log(response);
-    fetchTranslation(response.data.explanation)
+    fetchTranslation(response.data.explanation);
   };
   return (
     <div className="flex flex-colum justify-center m-auto p-[100px]">
       <div className=" h-[400px] w-[1100px] text-white">
         <h1 className="text-center font-bold text-[20px]">
-          Video de la nasa del dia
+          Dato dario de la nasa
         </h1>
         <div className="mt-10">
           <div className="flex gap-4 m-auto p-2 ">
@@ -68,14 +68,18 @@ export default function PinterestApi() {
                 <YouTube videoId={nasa.url.split("/embed/")[1]} opts={opts} />
               </div>
             ) : (
-                <img src={nasa.url} alt="imagen de la nasa" className="h-[450px] w-[450px]" />
+              <img
+                src={nasa.url}
+                alt="imagen de la nasa"
+                className="h-[450px] w-[450px]"
+              />
             )}
 
             <div className="">
-              <p>Derechos de autor: {nasa.copyright}</p>
               <p>Fecha: {nasa.date}</p>
               <p>Explicación: {traduccion || nasa.explanation}</p>
               <p>Titulo: {nasa.title}</p>
+              <p>Derechos de autor: {nasa.copyright}</p>
             </div>
           </div>
         </div>

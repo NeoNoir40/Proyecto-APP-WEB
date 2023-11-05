@@ -17,8 +17,19 @@ export default function TypeOfAstros() {
   const [apiFondo, setApiFondo] = useState(false);
   const [showImages, setShowImages] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentDescription, setCurrentDescription] = useState("");
   const totalPages = 15;
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+
+  const descriptions = {
+    planeta: "Los planetas son cuerpos celestes que orbitan alrededor de una estrella, como nuestra Tierra que gira alrededor del Sol. Están compuestos principalmente de roca o gas y su tamaño puede variar enormemente.",
+    sun: "El Sol es una estrella de tipo espectral G2V que se encuentra en el centro de nuestro sistema solar. Es la fuente principal de energía lumínica y calor para los planetas que orbitan a su alrededor.",
+    meteorite: "Los meteoritos son fragmentos de cometas o asteroides que ingresan a la atmósfera terrestre y sobreviven hasta impactar la superficie. Nos ofrecen pistas únicas sobre la composición del sistema solar primitivo.",
+    moon: "La Luna es el único satélite natural de la Tierra y juega un papel crucial en influir en las mareas oceánicas. Su superficie está marcada por cráteres y amplias llanuras llamadas mares lunares.",
+    galaxy: "Las galaxias son enormes sistemas que contienen millones o incluso billones de estrellas, junto con gas y polvo, unidos por la gravedad. Nuestra galaxia, la Vía Láctea, es solo una de las muchas que existen en el universo."
+  };
+  
 
   useEffect(() => {
     getPexelsApi();
@@ -55,6 +66,8 @@ export default function TypeOfAstros() {
     cambiarQuery(e);
     setCurrentPage(1);
     setShowImages(true);
+    setCurrentDescription(descriptions[e]);
+
   };
   return (
     <div className="mt-[150px]">
@@ -64,7 +77,7 @@ export default function TypeOfAstros() {
             <h1 className="text-white font-bold text-[20px] text-center">
               Tipos de Astros
             </h1>
-            <p className="text-center text-white p-4">
+            <p className="text-center text-white text-[20px] p-4">
               Haga click en cualquiera de los siguientes iconos para ver
               imagenes acerca de los siguientes astros:
             </p>
@@ -78,7 +91,7 @@ export default function TypeOfAstros() {
                     animationData={EarthIcon}
                     className="h-[150px] w-[150px]"
                   ></Lottie>
-                  <p className="text-white font-bold">Tierra</p>
+                  <p className="text-white font-bold">Planeta</p>
                 </button>
               </div>
               <div className="">
@@ -126,13 +139,20 @@ export default function TypeOfAstros() {
             <div>
               {showImages && (
                 <>
+                <div className=" flex justify-center">
+                <p  className="text-white text-center text-[15px] w-[250px] h-[50px] mb-[100px] mt-[30px]">{currentDescription}</p>
+
+                </div>
+
                   <div className="grid grid-rows-4 w-[100%] grid-flow-col gap-4 mt-10">
+
                     {dataPexels.map((photos, index) => (
                       <div>
+                        <p className="text-white text-[10px]">Autor: {photos.photographer}</p>
                         <img
                           key={index}
                           src={photos.src.medium}
-                          alt="Cargando Imagen"
+                          alt={photos.alt}
                           loading="lazy"
                           className="h-[350px] w-[600px] "
                         />

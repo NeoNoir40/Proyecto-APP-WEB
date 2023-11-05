@@ -14,7 +14,7 @@ export default function MoonModule() {
           <div className=" flex justify-center">
             <Lottie
               animationData={ModuleIcon}
-              className="h-[150px] w-[200px]"
+              className="h-[350px] w-[400px]"
             ></Lottie>
           </div>
           <div className=" mt-10">

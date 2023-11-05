@@ -28,7 +28,7 @@ body	{
 
 
 .zodiacalBG{
-  background-image: url(./assets/ZodiacalSing/zodiacalBG.jpg);
+  background: url(./assets/ZodiacalSing/zodiacalBG.jpg);
   object-fit: cover;
   background-size: cover;
   background-repeat: no-repeat;
