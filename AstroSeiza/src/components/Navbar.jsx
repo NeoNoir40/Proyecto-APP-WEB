@@ -12,7 +12,10 @@ export default function Navbar() {
             <li>Inicio</li>
           </Link>
           <li>Nosotros</li>
+          <Link to="login">
           <li className="">Inicio de sesion</li>
+
+          </Link>
         </ul>
       </div>
     </header>

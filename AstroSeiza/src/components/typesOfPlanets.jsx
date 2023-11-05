@@ -32,43 +32,54 @@ export default function TypeOfAstros() {
   
 
   useEffect(() => {
-    getPexelsApi();
+    if (query !== "") {
+      getPexelsApi();
+    }
   }, [currentPage, query]);
 
   const getPexelsApi = async () => {
     setIsLoading(true);
-    const response = await axios.get(
-      `https://api.pexels.com/v1/search?query=${query}&page=${currentPage}&per_page=${perPage}`,
-      {
-        headers: {
-          Authorization: apiKey,
-        },
-      }
-    );
-
-    const fotos = response.data.photos;
-
-    setDataPexels(fotos);
-    console.log("Datos de la api de pexels");
-    console.log(response);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        `https://api.pexels.com/v1/search?query=${query}&page=${currentPage}&per_page=${perPage}`,
+        {
+          headers: {
+            Authorization: apiKey,
+          },
+        }
+      );
+      setDataPexels(response.data.photos);
+    } catch (error) {
+      console.error("Error fetching data from Pexels:", error);
+      setDataPexels([]); // Reset data on error
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const cambiarFondo = () => {
-    setApiFondo(!apiFondo);
-  };
-  const cambiarQuery = (e) => {
-    setQuery(e);
+    setApiFondo((prevApiFondo) => !prevApiFondo);
   };
 
-  const handleIconClick = (e) => {
+  const cambiarQuery = (newQuery) => {
+    if (query === newQuery) {
+      setShowImages((prevShowImages) => !prevShowImages);
+      if (showImages) {
+        setCurrentDescription("");
+      }
+    } else {
+      setQuery(newQuery);
+      setCurrentPage(1);
+      setShowImages(true);
+      setCurrentDescription(descriptions[newQuery]);
+    }
+  };
+
+  const handleIconClick = (icon) => {
     cambiarFondo();
-    cambiarQuery(e);
-    setCurrentPage(1);
-    setShowImages(true);
-    setCurrentDescription(descriptions[e]);
-
+    cambiarQuery(icon);
   };
+
   return (
     <div className="mt-[150px]">
       <div className="flex flex-colum justify-center">

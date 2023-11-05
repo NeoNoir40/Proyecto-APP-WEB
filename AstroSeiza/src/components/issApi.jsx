@@ -30,13 +30,13 @@ const ISSLocationMap = () => {
 
     const interval = setInterval(() => {
       fetchISSLocation();
-    }, 5000); // Update the position every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, []);
 
   const issIcon = new L.Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/5551/5551492.png", // Replace with the path to your ISS icon image
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/5551/5551492.png", 
     iconSize: [50, 50],
     iconAnchor: [25, 25],
   });
@@ -46,8 +46,8 @@ const ISSLocationMap = () => {
 
   return (
     <>
-      <div className="iss-info text-white ">
-        <h1 className="font-bold text-center">
+      <div className="iss-info text-white p-10 ">
+        <h1 className="font-bold text-center ">
           Posiciónde la Estación Espacial Internacional (ISS)
         </h1>
         <p>
@@ -71,7 +71,7 @@ const ISSLocationMap = () => {
       </div>
       <MapContainer
         center={[issPosition.lat, issPosition.lon]}
-        zoom={3}
+        zoom={5}
         style={{ height: "500px", width: "100%" }}
       >
         <TileLayer
