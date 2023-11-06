@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { AuthProvider } from "./api/context/AuthContext";
 import Index from "./pages/Index";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import SingUP from "./pages/SignUp";
 function App() {
   return (
+    <AuthProvider>
+
     <BrowserRouter>
       <Navbar />
       <main>
@@ -22,6 +24,8 @@ function App() {
       </main>
       <Footer/>
     </BrowserRouter>
+    </AuthProvider>
+
   );
 }
 

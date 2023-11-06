@@ -71,7 +71,7 @@ export default function PinterestApi() {
               <img
                 src={nasa.url}
                 alt="imagen de la nasa"
-                className="h-[450px] w-[450px]"
+                className="h-[450px] w-[450px] "
               />
             )}
 

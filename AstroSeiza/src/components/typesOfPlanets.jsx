@@ -63,10 +63,12 @@ export default function TypeOfAstros() {
 
   const cambiarQuery = (newQuery) => {
     if (query === newQuery) {
-      setShowImages((prevShowImages) => !prevShowImages);
-      if (showImages) {
-        setCurrentDescription("");
-      }
+      setShowImages(prevShowImages => {
+        if (prevShowImages) {
+          setCurrentDescription("");
+        }
+        return !prevShowImages;
+      });
     } else {
       setQuery(newQuery);
       setCurrentPage(1);
@@ -74,7 +76,6 @@ export default function TypeOfAstros() {
       setCurrentDescription(descriptions[newQuery]);
     }
   };
-
   const handleIconClick = (icon) => {
     cambiarFondo();
     cambiarQuery(icon);

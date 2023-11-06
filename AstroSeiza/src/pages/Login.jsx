@@ -1,7 +1,18 @@
 import video from "../assets/videos/backgroundVideo.mp4";
 import googleicon from "../assets/login/Google__G__Logo.svg";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../api/context/AuthContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 export default function Login() {
+
+  const {register , handleSubmit , formState : {errors}} = useForm();
+  const {sigin , error : siginErrors} = useAuth()
+
+  const onSubmit = handleSubmit(data => sigin(data))
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <video
@@ -21,41 +32,56 @@ export default function Login() {
             <p className="mb-2">
               Bienvenido, ingresa tus datos de para inciar sesion
             </p>
-            <div>
-              <input
-                type="email"
-                placeholder="Correo electronico"
-                className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="Contraseña"
-                className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-              />
-            </div>
-            <p className="mb-2">Olvide mi contraseña</p>
-            <div>
-              <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors ">
-                Inciar Sesion
-              </button>
-            </div>
-            <div>
-                <Link to={'/SingUP'}>
-              <button className="w-full  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
-                Registrarse
-              </button>
-              </Link>
-            </div>
-            <p className="text-center text-gray-400">
-              otras formas de inciar sesion
-            </p>
-            <div>
-              <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
-                <img src={googleicon} alt="" className="mr-2" /> Google
-              </button>
-            </div>
+            {siginErrors.map((err , i) => (
+              <div className="bg-red-500 p-2 text-white" key={i}>
+                 {err}
+              </div>
+            ))}
+            <form onSubmit={onSubmit}>
+              <div>
+                <input
+                  {...register("email", { required: true})}
+                  type="email"
+                  placeholder="Correo electronico"
+                  className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
+                />
+                 {
+                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
+              }
+              </div>
+              <div>
+                <input
+                  {...register("password", { required: true})}
+                  type="password"
+                  placeholder="Contraseña"
+                  className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
+                />
+                 {
+                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
+              }
+              </div>
+              <p className="mb-2">Olvide mi contraseña</p>
+              <div>
+                <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors ">
+                  Inciar Sesion
+                </button>
+              </div>
+              <div>
+                <Link to={"/SingUP"}>
+                  <button className="w-full  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
+                    Registrarse
+                  </button>
+                </Link>
+              </div>
+              <p className="text-center text-gray-400">
+                otras formas de inciar sesion
+              </p>
+              <div>
+                <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
+                  <img src={googleicon} alt="" className="mr-2" /> Google
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
