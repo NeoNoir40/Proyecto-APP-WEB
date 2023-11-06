@@ -12,6 +12,7 @@ import axios from 'axios';
 import { verClima } from "../components/apiclima";
 import DatosPhy from "../components/physics";
 import leyohm from '../assets/img/leyohm.png'
+import Paragraph from "../components/expressions";
 
 export default function Physical() {
 
@@ -19,19 +20,153 @@ export default function Physical() {
     const [city, setCity] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const [formula1, setFormula1] = useState(null);
+    const [formula1, setFormula1] = useState([]);
 
     const [earthquake, setEarthquake] = useState([]);
+
+    const [formula2, setFormula2] = useState([]);
+
+    const [formula3, setFormula3] = useState([]);
+    
+    const [formula4, setFormula4] = useState([]);
+
+    const [formula5, setFormula5] = useState([]);
+
+    const [formula6, setFormula6] = useState([]);
+
+    const [formula7, setFormula7] = useState([]);
+    
+    const [formula8, setFormula8] = useState([]);
+
+    const [formula9, setFormula9] = useState([]);
+
+    const [formula10, setFormula10] = useState([]);
 
     useEffect(() => {
         const apiUrl = 'https://newton.vercel.app/api/v2/simplify/2%5E2+2(2)';
         axios.get(apiUrl)
             .then(response => {
                 const { data } = response;
+                console.log("🚀 ~ formula 1", response)
                 setFormula1(data);
             })
             .catch(error => {
                 console.error('No se obtuvo la fórmula', error);
+            });
+    }, []);
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/cos/pi';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                console.log("🚀 ~ formula 2", response)
+                setFormula2(data);
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula', error);
+            });
+    }, []);
+
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/area/2:4lx%5E3';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula3(data);
+                console.log("🚀 ~ formula3", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula3', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/zeroes/x%5E2+2x';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula4(data);
+                console.log("🚀 ~ formula4", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula4', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/tan/0';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula5(data);
+                console.log("🚀 ~ formula5", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula5', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/integrate/x%5E2+2x';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula6(data);
+                console.log("🚀 ~ formula6", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula6', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/arcsin/0';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula7(data);
+                console.log("🚀 ~ formula7", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula7', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/abs/-1';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula8(data);
+                console.log("🚀 ~ formula8", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula8', error);
+            });
+    }, []);
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/arctan/0';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula9(data);
+                console.log("🚀 ~ formula9", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula9', error);
+            });
+    }, []);
+    useEffect(() => {
+        const apiUrl = 'https://newton.vercel.app/api/v2/log/2l8';
+        axios.get(apiUrl)
+            .then(response => {
+                const { data } = response;
+                setFormula10(data);
+                console.log("🚀 ~ formula10", response)
+            })
+            .catch(error => {
+                console.error('No se obtuvo la fórmula10', error);
             });
     }, []);
 
@@ -95,7 +230,7 @@ export default function Physical() {
                 <h1 className="uppercase text-xl font-semibold my-4">Terremotos más terroríficos</h1>
                 <table>
                     <thead>
-                        <tr className="">
+                        <tr>
                             <th className="w-44">País</th>
                             <th className="w-44">Nombre del País</th>
                             <th className="w-44">Ciudad</th>
@@ -187,13 +322,27 @@ export default function Physical() {
                         info={'"Con toda acción ocurre siempre una reacción igual y contraria: o sea, las acciones mutuas de dos cuerpos siempre son iguales y dirigidas en direcciones opuestas."'}
                     />
                     <div className="text-white my-3">
-                        {formula1 && (
-                            <div>
-                                <p>La Expresión: <span className=" font-serif">{formula1.expression}</span></p>
-                                <p>La Operación: <span className=" font-serif">{formula1.operation}</span></p>
-                                <p>El Resultado: <span className=" font-serif">{formula1.result}</span></p>
-                            </div>
-                        )}
+                        <h2 className="uppercase font-semibold text-lg my-3">expresiones de newton</h2>
+                        <div className="flex flex-row gap-4">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th className="w-44 border-y-2">Expresión</th>
+                                        <th className="w-44 border-y-2">Operación</th>
+                                        <th className="w-44 border-y-2">Resultado</th>
+                                    </tr>
+                                </thead>
+                                <tbody className=" text-sm font-mono">
+                                    {formula1 && formula2 && (
+                                        <tr className=" font-serif">
+                                            <th className=" font-sans">{formula1.expression} <span className="flex flex-row ml-20 mr-20">{formula2.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula3.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula4.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula5.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula6.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula7.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula8.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula9.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula10.expression}</span></th>
+                                            <th className="font-sans">{formula1.operation} <span className="flex flex-row ml-20 mr-20">{formula2.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula3.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula4.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula5.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula6.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula7.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula8.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula9.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula10.operation}</span></th>
+                                            <th className="font-sans">{formula1.result} <span className="flex flex-row ml-20 mr-20">{formula2.result}</span> <span className="flex flex-row ml-20 mr-16">{formula3.result}</span> <span className="flex flex-row ml-16 mr-16">{formula4.result}</span> <span className="flex flex-row ml-20 mr-16">{formula5.result}</span> <span className="flex flex-row ml-20 mr-16">{formula6.result}</span> <span className="flex flex-row ml-20 mr-16">{formula7.result}</span> <span className="flex flex-row ml-20 mr-16">{formula8.result}</span> <span className="flex flex-row ml-20 mr-16">{formula9.result}</span> <span className="flex flex-row ml-20 mr-16">{formula10.result}</span></th>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
