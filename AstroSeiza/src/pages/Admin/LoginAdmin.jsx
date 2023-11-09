@@ -1,26 +1,26 @@
-import video from "../assets/videos/backgroundVideo.mp4";
-import googleicon from "../assets/login/Google__G__Logo.svg";
+import video from "../../assets/videos/backgroundVideo.mp4";
+import googleicon from "../../assets/login/Google__G__Logo.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../api/context/AuthContext";
+import { useAuth } from "../../api/context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Login() {
+export default function LoginAdmin() {
 
   const {register , handleSubmit , formState : {errors}} = useForm();
-  const {sigin , error : siginErrors , isAuthenticated} = useAuth()
+  const {siginAdmin , error : siginErrors , isAuthenticatedAdmin} = useAuth()
   const navigate = useNavigate()
-  const onSubmit = handleSubmit(data => sigin(data))
+  const onSubmit = handleSubmit(data => siginAdmin(data))
 
   useEffect(() => {
-    if (isAuthenticated) {
-      if (isAuthenticated) {
-        navigate('/Perfil')
+    if (isAuthenticatedAdmin) {
+      if (isAuthenticatedAdmin) {
+        navigate('/')
       }
     }
-  }, [isAuthenticated])
+  }, [isAuthenticatedAdmin])
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <video
@@ -38,7 +38,7 @@ export default function Login() {
               Inicio de sesion
             </h1>
             <p className="mb-2">
-              Bienvenido, ingresa tus datos de para inciar sesion
+              Bienvenido Administrador, ingresa tus datos de para inciar sesion
             </p>
             {siginErrors.map((err , i) => (
               <div className="bg-red-500 p-2 text-white" key={i}>

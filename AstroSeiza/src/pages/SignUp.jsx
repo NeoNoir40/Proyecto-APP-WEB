@@ -11,6 +11,7 @@ export default function SingUP() {
   } } = useForm();
   const {singup ,isAuthenticated , error: registerErrors } = useAuth()
   const navigate = useNavigate()
+  
   useEffect(() => {
     if (isAuthenticated) {
       if (isAuthenticated) {

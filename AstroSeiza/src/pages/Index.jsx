@@ -58,7 +58,7 @@ export default function Index() {
               apartados:
             </p>
             <div className="flex flex-colum justify-center">
-              <div>
+              <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                 <Link to="/Astronomia">
                   <Lottie
                     animationData={iconastro}
@@ -68,14 +68,14 @@ export default function Index() {
                   <h1 className="font-bold text-[30px]">Astronomia</h1>
                 </Link>
               </div>
-              <div>
+              <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                 <Lottie
                   animationData={iconquimica}
-                  className="h-[400px] w-[400px]"
+                  className="h-[400px] w-[400px] "
                 />
                 <h1 className="font-bold text-[30px]">Quimica</h1>
               </div>
-              <div>
+              <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                 <Lottie
                   animationData={iconfisica}
                   className="h-[400px] w-[400px]"
@@ -95,7 +95,7 @@ export default function Index() {
             registrarte! , es gratis
           </h2>
           <Link to={'/SingUP'}>
-          <div className="mt-10">
+          <div className="mt-10  hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
             <button className="bg-white border-2 border-solid  border-yellow-300 rounded-md text-black m-auto p-1 text-[15px]">
               Registrate
             </button>
