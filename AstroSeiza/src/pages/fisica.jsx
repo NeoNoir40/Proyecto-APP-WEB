@@ -13,6 +13,7 @@ import { verClima } from "../components/apiclima";
 import DatosPhy from "../components/physics";
 import leyohm from '../assets/img/leyohm.png'
 import Paragraph from "../components/expressions";
+import Cuadro from "../components/square";
 
 export default function Physical() {
 
@@ -27,7 +28,7 @@ export default function Physical() {
     const [formula2, setFormula2] = useState([]);
 
     const [formula3, setFormula3] = useState([]);
-    
+
     const [formula4, setFormula4] = useState([]);
 
     const [formula5, setFormula5] = useState([]);
@@ -35,7 +36,7 @@ export default function Physical() {
     const [formula6, setFormula6] = useState([]);
 
     const [formula7, setFormula7] = useState([]);
-    
+
     const [formula8, setFormula8] = useState([]);
 
     const [formula9, setFormula9] = useState([]);
@@ -297,53 +298,47 @@ export default function Physical() {
                     </div>
                 </details>
             </div>
-            <div>
+            <div className="flex flex-col">
                 <h2 className="text-white font-semibold text-2xl ml-72 mt-8 uppercase">¿Quién es..?</h2>
                 <DatosPhy
                     src={newton}
                     name={'Isaac Newton'}
                     info={'Conocedor de los estudios sobre el movimiento de Galileo y de las leyes de Kepler sobre las órbitas de los planetas, Newton estableció las leyes fundamentales de la dinámica (ley de inercia, proporcionalidad de fuerza y aceleración y principio de acción y reacción) y dedujo de ellas la ley de gravitación universal.'}
                 />
-                <div className="flex flex-col justify-center items-center">
-                    <h3 className=" text-xl leading-2 tracking-tight text-white font-semibold">LEYES:</h3>
-                    <DetSumm
-                        tittle={'1ra. Ley'}
-                        subtittle={'Ley de la Inercia'}
+                <h3 className=" text-2xl leading-2 tracking-tight text-white font-semibold text-center mb-2">LEYES:</h3>
+                <div className="flex flex-row justify-center items-center gap-7">
+                    <Cuadro tittle={'1ra. Ley'} subtittle={'Ley de la Inercia'}
                         info={'"Todo cuerpo preserva su estado de reposo o movimiento uniforme y rectilíneo a no ser que sea obligado a cambiar su estado por fuerzas impresas sobre él."'}
                     />
-                    <DetSumm
-                        tittle={'2da. Ley'}
-                        subtittle={'Ley Fundamental de la Dinámica'}
+                    <Cuadro tittle={'2da. Ley'} subtittle={'Ley Fundamental de la Dinámica'}
                         info={'"Cuando una fuerza actúa sobre un objeto este se pone en movimiento, acelera, desacelera o varía su trayectoria."'}
                     />
-                    <DetSumm
-                        tittle={'3ra. Ley'}
-                        subtittle={'Ley de acción-reacción'}
+                    <Cuadro tittle={'3ra. Ley'} subtittle={'Ley de Acción-Reacción'}
                         info={'"Con toda acción ocurre siempre una reacción igual y contraria: o sea, las acciones mutuas de dos cuerpos siempre son iguales y dirigidas en direcciones opuestas."'}
                     />
-                    <div className="text-white my-3">
-                        <h2 className="uppercase font-semibold text-lg my-3">expresiones de newton</h2>
-                        <div className="flex flex-row gap-4">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th className="w-44 border-y-2">Expresión</th>
-                                        <th className="w-44 border-y-2">Operación</th>
-                                        <th className="w-44 border-y-2">Resultado</th>
-                                    </tr>
-                                </thead>
-                                <tbody className=" text-sm font-mono">
-                                    {formula1 && formula2 && (
-                                        <tr className=" font-serif">
-                                            <th className=" font-sans">{formula1.expression} <span className="flex flex-row ml-20 mr-20">{formula2.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula3.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula4.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula5.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula6.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula7.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula8.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula9.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula10.expression}</span></th>
-                                            <th className="font-sans">{formula1.operation} <span className="flex flex-row ml-20 mr-20">{formula2.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula3.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula4.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula5.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula6.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula7.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula8.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula9.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula10.operation}</span></th>
-                                            <th className="font-sans">{formula1.result} <span className="flex flex-row ml-20 mr-20">{formula2.result}</span> <span className="flex flex-row ml-20 mr-16">{formula3.result}</span> <span className="flex flex-row ml-16 mr-16">{formula4.result}</span> <span className="flex flex-row ml-20 mr-16">{formula5.result}</span> <span className="flex flex-row ml-20 mr-16">{formula6.result}</span> <span className="flex flex-row ml-20 mr-16">{formula7.result}</span> <span className="flex flex-row ml-20 mr-16">{formula8.result}</span> <span className="flex flex-row ml-20 mr-16">{formula9.result}</span> <span className="flex flex-row ml-20 mr-16">{formula10.result}</span></th>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div className="text-white my-3 flex justify-center flex-col items-center">
+                <h2 className="uppercase font-semibold text-lg my-3">expresiones de newton</h2>
+                <div className="flex flex-row gap-4">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className="w-44 border-y-2">Expresión</th>
+                                <th className="w-44 border-y-2">Operación</th>
+                                <th className="w-44 border-y-2">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody className=" text-sm font-mono">
+                            {formula1 && formula2 && (
+                                <tr className=" font-serif">
+                                    <th className=" font-sans">{formula1.expression} <span className="flex flex-row ml-20 mr-20">{formula2.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula3.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula4.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula5.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula6.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula7.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula8.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula9.expression}</span> <span className="flex flex-row ml-20 mr-20">{formula10.expression}</span></th>
+                                    <th className="font-sans">{formula1.operation} <span className="flex flex-row ml-20 mr-20">{formula2.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula3.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula4.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula5.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula6.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula7.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula8.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula9.operation}</span> <span className="flex flex-row ml-20 mr-20">{formula10.operation}</span></th>
+                                    <th className="font-sans">{formula1.result} <span className="flex flex-row ml-20 mr-20">{formula2.result}</span> <span className="flex flex-row ml-20 mr-16">{formula3.result}</span> <span className="flex flex-row ml-16 mr-16">{formula4.result}</span> <span className="flex flex-row ml-20 mr-16">{formula5.result}</span> <span className="flex flex-row ml-20 mr-16">{formula6.result}</span> <span className="flex flex-row ml-20 mr-16">{formula7.result}</span> <span className="flex flex-row ml-20 mr-16">{formula8.result}</span> <span className="flex flex-row ml-20 mr-16">{formula9.result}</span> <span className="flex flex-row ml-20 mr-16">{formula10.result}</span></th>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div className="my-5">
