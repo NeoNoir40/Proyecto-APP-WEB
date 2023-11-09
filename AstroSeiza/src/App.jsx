@@ -12,10 +12,13 @@ import Perfil from './pages/Perfil'
 import LoginAdmin from './pages/Admin/LoginAdmin'
 import IndexAdmin from "./pages/Admin/AdminDashBoard/adminDash";
 import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
+import Physical from "./pages/fisica";
+import Particlesbg from "./assets/particles/particlesBackground";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      
+    <BrowserRouter>
         <Navbar />
         <main>
           <Routes>
@@ -35,11 +38,13 @@ function App() {
             <Route path="indexAdmin" element={<IndexAdmin />} />
             </Route>
 
-          </Routes>
+            <Route path="/Fisica" element={<Physical/>}/>
+      </Routes>
         </main>
         <Footer />
       </BrowserRouter>
     </AuthProvider>
+  
   );
 }
 

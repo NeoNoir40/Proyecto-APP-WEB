@@ -82,7 +82,7 @@ export default function Navbar() {
                   Quimica
                 </li>
               </Link>
-              <Link to="/">
+              <Link to="/Fisica">
                 <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                   Fisica
                 </li>
@@ -101,3 +101,4 @@ export default function Navbar() {
     </header>
   );
 }
+
