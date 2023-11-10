@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
       console.log(res.data);
       setIsAuthenticatedAdmin(true);
       setAdmin(res.data);
+      console.log(admin);
     } catch (error) {
       console.log(error);
       const errorsToSet = Array.isArray(error.response.data)
@@ -79,9 +80,12 @@ export const AuthProvider = ({ children }) => {
 
   const sigin = async (user) => {
     try {
+      console.log(user);
       const res = await loginRequest(user);
+      console.log(res.data);
       setIsAuthenticated(true);
       setUser(res.data);
+      console.log(user);
     } catch (error) {
       console.log(error);
       const errorsToSet = Array.isArray(error.response.data)
@@ -153,7 +157,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutAdmin = () => {
     Cookies.remove("token");
-    setIsAuthenticated(false);
+    setIsAuthenticatedAdmin(false);
     setAdmin(null);
   };
 

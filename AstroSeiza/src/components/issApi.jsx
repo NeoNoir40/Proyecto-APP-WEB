@@ -69,9 +69,10 @@ const ISSLocationMap = () => {
           únicas del planeta que compartimos.
         </p>
       </div>
+      
       <MapContainer
         center={[issPosition.lat, issPosition.lon]}
-        zoom={5}
+        zoom={10}
         style={{ height: "500px", width: "100%" }}
       >
         <TileLayer

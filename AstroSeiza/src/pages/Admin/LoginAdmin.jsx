@@ -17,7 +17,7 @@ export default function LoginAdmin() {
   useEffect(() => {
     if (isAuthenticatedAdmin) {
       if (isAuthenticatedAdmin) {
-        navigate('/')
+        navigate('/indexAdmin')
       }
     }
   }, [isAuthenticatedAdmin])

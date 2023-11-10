@@ -43,7 +43,13 @@ function App() {
         </main>
         <Footer />
       </BrowserRouter>
+      
+
     </AuthProvider>
+
+
+
+    
   
   );
 }

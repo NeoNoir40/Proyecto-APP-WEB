@@ -4,24 +4,19 @@ import iconastro from "../assets/lottieIcons/FTOUb4lWpd.json";
 import iconquimica from "../assets/lottieIcons/quimica.json";
 import iconfisica from "../assets/lottieIcons/fisica.json";
 import Lottie from "lottie-react";
-import videoBackground from '../assets/videos/indexVideo1.mp4'
+import videoBackground from "../assets/videos/indexVideo1.mp4";
 import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
     <>
-       <div className="flex relative">
+      <div className="flex relative">
         <div className="absolute w-full h-[75%] overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            className="object-cover w-full h-full"
-          >
+          <video autoPlay loop muted className="object-cover w-full h-full">
             <source src={videoBackground} type="video/mp4" />
           </video>
         </div>
-        
+
         <div className="relative  p-[250px] mb-[100px] flex flex-col justify-center items-center m-auto ">
           <div className="flex border-solid border border-white">
             <h2 className="text-white text-[20px] font-serif flex h-[250px] p-24 ">
@@ -75,13 +70,15 @@ export default function Index() {
                 />
                 <h1 className="font-bold text-[30px]">Quimica</h1>
               </div>
-              <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
-                <Lottie
-                  animationData={iconfisica}
-                  className="h-[400px] w-[400px]"
-                />
-                <h1 className="font-bold text-[30px]">Fisica</h1>
-              </div>
+              <Link to="/Fisica">
+                <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
+                  <Lottie
+                    animationData={iconfisica}
+                    className="h-[400px] w-[400px]"
+                  />
+                  <h1 className="font-bold text-[30px]">Fisica</h1>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -94,16 +91,15 @@ export default function Index() {
             del espacio, la quimica y la fisica, Solo haz click en el boton para
             registrarte! , es gratis
           </h2>
-          <Link to={'/SingUP'}>
-          <div className="mt-10  hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
-            <button className="bg-white border-2 border-solid  border-yellow-300 rounded-md text-black m-auto p-1 text-[15px]">
-              Registrate
-            </button>
-          </div>
+          <Link to={"/SingUP"}>
+            <div className="mt-10  hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
+              <button className="bg-white border-2 border-solid  border-yellow-300 rounded-md text-black m-auto p-1 text-[15px]">
+                Registrate
+              </button>
+            </div>
           </Link>
         </div>
       </div>
     </>
   );
 }
-
