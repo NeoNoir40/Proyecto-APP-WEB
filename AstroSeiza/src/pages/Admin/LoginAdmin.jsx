@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginAdmin() {
 
-  const {register , handleSubmit , formState : {errors}} = useForm();
-  const {siginAdmin , error : siginErrors , isAuthenticatedAdmin} = useAuth()
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { siginAdmin, error: siginErrors, isAuthenticatedAdmin } = useAuth()
   const navigate = useNavigate()
   const onSubmit = handleSubmit(data => siginAdmin(data))
 
@@ -40,33 +40,33 @@ export default function LoginAdmin() {
             <p className="mb-2">
               Bienvenido Administrador, ingresa tus datos de para inciar sesion
             </p>
-            {siginErrors.map((err , i) => (
+            {siginErrors.map((err, i) => (
               <div className="bg-red-500 p-2 text-white" key={i}>
-                 {err}
+                {err}
               </div>
             ))}
             <form onSubmit={onSubmit}>
               <div>
                 <input
-                  {...register("email", { required: true})}
+                  {...register("email", { required: true })}
                   type="email"
                   placeholder="Correo electronico"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                 {
-                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-              }
+                {
+                  errors.nombre && <span className="text-red-500">Este campo es requerido</span>
+                }
               </div>
               <div>
                 <input
-                  {...register("password", { required: true})}
+                  {...register("password", { required: true })}
                   type="password"
                   placeholder="Contraseña"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                 {
-                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-              }
+                {
+                  errors.nombre && <span className="text-red-500">Este campo es requerido</span>
+                }
               </div>
               <p className="mb-2">Olvide mi contraseña</p>
               <div>

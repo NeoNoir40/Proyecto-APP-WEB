@@ -14,6 +14,7 @@ import IndexAdmin from "./pages/Admin/AdminDashBoard/adminDash";
 import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
 import Physical from "./pages/fisica";
 import Particlesbg from "./assets/particles/particlesBackground";
+import UsuariosAdmin from "./pages/Admin/UsersAdmin";
 function App() {
   return (
     <AuthProvider>
@@ -36,6 +37,7 @@ function App() {
             
             <Route element={<ProtectedRouteAdmin/>}>
             <Route path="indexAdmin" element={<IndexAdmin />} />
+            <Route path="usuarios" element={<UsuariosAdmin/>} />
             </Route>
 
             <Route path="/Fisica" element={<Physical/>}/>

@@ -33,7 +33,7 @@ export default function NavbarUser({params}) {
               Quimica
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/Fisica">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
               Fisica
             </li>
