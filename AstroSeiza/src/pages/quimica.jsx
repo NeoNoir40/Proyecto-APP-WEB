@@ -1,14 +1,52 @@
 import React from "react";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 import iconQuimica from "../assets/lottieIcons/iconquimica.json";
 import CompIcon from "../assets/lottieIcons/comp.json"
 import orbital from "../assets/lottieIcons/orbital.json"
 import Lottie from "lottie-react";
-import cloro from "../assets/img/cloro.jpg";
 import atomo from "../assets/img/atomo.png";
 import molecula from "../assets/img/molecula.png";
-import viñeta from "../assets/img/flechaAbajo.png";
 import dinmolecula from "../assets/img/dinamicaMolec.png";
+import elemento from "../assets/img/elemquimico.png"
 export default function quimica() {
+
+    const elemPag = 20;
+    const [Actual, setActual] = useState(1);
+    const [Quimica, setQuimica] = useState([]);
+    const [Categ, setCateg] = useState([]);
+    useEffect(() => {
+
+        const fetchquimicApi = async () => {
+            try {
+                const response = await axios.get("http://localhost:3002/quimicApi/1");
+                setQuimica(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchquimicApi();
+    }, []);
+
+    useEffect(() => {
+
+        const fetchcategApi = async () => {
+            try {
+                const response = await axios.get("http://localhost:3002/categApi/");
+                setCateg(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchcategApi();
+    }, []);
+
+    const indiceInicial = (Actual - 1) * elemPag;
+    const indiceFinal = Actual * elemPag;
+
+    // Obtiene la porción de elementos para la página actual
+    const elementos = Quimica.slice(indiceInicial, indiceFinal);
+
     return (
         <>
             <h1 className="text-white text-center font-bold text-4xl mt-10"> Química </h1>
@@ -25,7 +63,7 @@ export default function quimica() {
                 </div>
 
             </div>
-            <h1 className=" text-white text-center font-bold text-3xl p-10">Principios de la quimica moderna</h1>
+            <h1 className=" text-white text-center font-bold text-3xl p-5 mb-5">Principios de la quimica moderna</h1>
             <div className=" mb-10 ml-10 justify-center flex">
                 <p className=" text-white text-center font-bold text-1xl ">
                     La química moderna se rige por el llamado principio cuántico,<br />
@@ -38,7 +76,7 @@ export default function quimica() {
                 <div className=" mx-20">
                     <h1 className="text-white font-bold ml-5 text-2xl p-5"> elemento quimico </h1>
                     <img
-                        src={cloro}
+                        src={elemento}
                         className=" h-[300px] w-[300px] rounded-2xl"
                     />
                 </div>
@@ -50,22 +88,77 @@ export default function quimica() {
                     />
                 </div>
             </div>
-            <div className="justify-center items-center flex p-5 mt-5 mr-[450px]">
-                <details className="bg-transparent w-80 h-auto rounded-[10px_10px_10px_10px] border-2 border-white cursor-pointer mt-1">
-                    <summary className="ml-5 py-3 text-left font-mediumml-5 font-medium text-white">¿Qué elemento quieres ver?</summary>
-                    <p className="ml-5 mt-1 text-left text-white"></p>
-                </details>
-            </div>
-            <div className="justify-center items-center flex p-10 flex-row">
-                <div className="  bg-white h-[500px] w-[900px] rounded-2xl">
-                    <p className=" font-bold"></p>
-                    <img
-                        src={cloro}
-                        className=" h-[250px] w-[250px]  ml-10 mt-32 rounded-2xl"
-                    />
-                    
+            <h1 className=" text-white font-bold text-3xl text-center mt-5">Tabla Periódica</h1>
+            <div className="justify-center items-center flex flex-col p-10">
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="w-44 text-white font-bold">Elemento</th>
+                            <th className="w-44 text-white font-bold">Número atómico</th>
+                            <th className="w-44 text-white font-bold">Nombre</th>
+                            <th className="w-44 text-white font-bold">Símbolo</th>
+                            <th className="w-44 text-white font-bold">Peso atómico (uma)</th>
+                            <th className="w-44 text-white font-bold">Periodo-Grupo</th>
+                        </tr>
+                    </thead>
+                    <tbody className="">
+                        {elementos.map(compuesto => (
+                            <tr key={compuesto.id} className="text-center border-y-2 text-white h-5">
+                                <td><img src={compuesto.img} alt="img" className=" w-[45px] h-[45px] mx-auto my-auto" /></td>
+                                <td>{compuesto.numero}</td>
+                                <td>{compuesto.nombre}</td>
+                                <td>{compuesto.simbolo}</td>
+                                <td>{compuesto.masa}</td>
+                                <td>{compuesto.periodoGrupo}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <div className="flex justify-center mt-4">
+                    <button
+                        onClick={() => setActual(Actual - 1)}
+                        disabled={Actual === 1}
+                        className="mx-2 px-4 py-2 bg-transparent text-white rounded"
+                    >
+                        Anterior
+                    </button>
+                    <button
+                        onClick={() => setActual(Actual + 1)}
+                        disabled={indiceFinal >= Quimica.length}
+                        className="mx-2 px-4 py-2 bg-transparent text-white rounded"
+                    >
+                        Siguiente
+                    </button>
                 </div>
             </div>
+            <div className=" mb-10 flex justify-center flex-col">
+                <p className="text-white font-bold text-1xl mt-[40px] text-center">
+                    En la tabla periódica, se puede observar que los elementos químicos cuentan con unos colores diferentes entre ellos,
+                    <br />
+                    estos colores se deben a que forman parte de una categoría en particular, usando de ejemplo los elementos, te mostraré la categorías,
+                    <br />
+                    estas son:
+                </p>
+                <div className="text-white mt-10 ml-auto mr-auto font-bold text-[20px]">
+                    <table>
+                        <thead>
+                            <tr className="">
+                                <th className="w-40"></th>
+                                <th className="w-40"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Categ.map(cate => (
+                            <tr key={cate.id} className="text-center border-b-2 text-white h-14" >
+                                <th className=" border-r-2 ">{cate.nombreCat}</th>
+                                <th className=" border-l-2 "><img src={cate.img} className="w-[45px] h-[45px] mx-auto my-auto"></img></th>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <h1 className=" text-white font-bold text-3xl text-center mt-5">Calculos quimicos cuanticos </h1>
             <div className=" ml-52 mb-10 flex justify-center">
                 <p className=" text-white font-bold text-1xl mr-20 mt-[100px] ">
