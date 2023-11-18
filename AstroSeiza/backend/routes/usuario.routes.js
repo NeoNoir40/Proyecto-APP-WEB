@@ -5,7 +5,6 @@ const {validateSchema} = require('../middleware/validator.middleware')
 const {registerSchema, loginSchema}= require ('../schemas/auth.schema.js');
 
 router.get('/verify',user.verifyToken)
-
 router.get('/profile',user.AuthReq,user.profile)
 router.get('/',user.obtenerUsuarios)
 router.get('/:id',user.obtenerUsuariosId)

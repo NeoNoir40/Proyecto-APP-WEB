@@ -1,71 +1,142 @@
-import { BiMenu, BiSolidDashboard, BiLogIn } from 'react-icons/bi';
-import { PiUserSquareFill } from 'react-icons/pi';
-import { MdAdminPanelSettings } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import React, { useState } from "react";
+import SideBar from "./adminComponents/sidebar";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { allUsers } from "../../api/auth";
 
 export default function IndexAdmin() {
+  const [userInfo, setUserInfo] = useState([]);
+  const [popWindows, setPopWindow] = useState(false);
 
-    const menus = [
-        { name: 'Dashboard', link: '/indexAdmin', icon: BiSolidDashboard },
-        { name: 'Administradores', link: '/indexAdmin', icon: MdAdminPanelSettings },
-        { name: 'Usuarios', link: '/Usuarios', icon: PiUserSquareFill },
-        { name: 'Cerrar Sesión', link: '/indexAdmin', icon: BiLogIn, margin: true }
-    ];
+  useEffect(() => {
+    console.log(popWindows);
+    fetchUsers();
+  }, [popWindows]);
 
-    const [open, setOpen] = useState(true);
+  const fetchUsers = async () => {
+    try {
+      const response = await allUsers();
+      setUserInfo(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    return (
-        <div className="flex flex-col  h-screen bg-white">
-            {/*<div className="flex flex-col w-[15%] h-full justify-start sticky bg-red-500 py-5">
-        <h1 className="p-2 text-center">Side bar</h1>
-        <div className="flex flex-col gap-4 items-center ">
-          <ul>
-            <li>Administradores</li>
-          </ul>
-          <ul>
-            <li>Usuarios</li>
-          </ul>
-          <ul>
-            <li>Cerrar Sesion</li>
-          </ul>
-        </div>
-      </div>
-      <p>{admin.email}</p>*/}
-            <section className="flex gap-6">
-                <div className={`bg-[#0D102C] min-h-screen ${open ? 'w-72' : 'w-16'} text-white px-4`}>
-                    <div className="py-3 flex justify-end">
-                        <BiMenu size={26} className="cursor-pointer mb-5" onClick={() => setOpen(!open)} />
-                    </div>
-                    <div className="mt-4 flex flex-col gap-4 relative">
-                        {
-                            menus?.map((menu, i) => (
-                                <Link to={menu?.link} key={i}
-                                    className={`${menu?.margin && 'mt-96'} group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-700 rounded-md`}>
-                                    <div>
-                                        {React.createElement(menu?.icon, { size: '20' })}
-                                    </div>
-                                    <h2 style={{ transitionDelay: `${i + 3}00ms` }}
-                                        className={`whitespace-pre duration-500 ${!open && 'opacity-0 translate-x-28 overflow-hidden'}`}>{menu?.name}</h2>
-                                    <h2 className={`${open && 'hidden'} absolute left-48 bg-[#0D102C] font-semibold whitespace-pre text-white rounded-md drop-shadow-lg px-0 
-                                        py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1  group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}>
-                                        {menu?.name}
-                                    </h2>
-                                </Link>
-                            ))
-                        }
-                    </div>
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/users/${id}`);
+      fetchUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const openPopWindows = () => {
+    setPopWindow(true);
+  };
+
+  const closePopWindows = () => {
+    setPopWindow(false);
+  };
+
+  return (
+    <div className="flex flex-col h-screen bg-white">
+      <section className="flex gap-6">
+        <SideBar />
+        <div className="texto h-full w-full">
+          <div className="m-3 text-xl text-black font-semibold text-center">
+            DASHBOARD ASTROSEIZA
+          </div>
+
+          {popWindows ? (
+            <>
+              <div>
+                <div className="bg-red-400 w-full">
+                  <div className="text-center flex justify-center items-center">
+
+                    <form className="flex flex-col w-1/4 gap-4 h-1/2 ">
+                      <input type="text" placeholder="Ingresa el nombre" />
+                      <input type="text" placeholder="Ingresa el usuario" />
+                      <input type="text" placeholder="Ingresa el email" />
+                      <input type="text" placeholder="Ingresa el contraseña" />
+                    </form>
+                  </div>
                 </div>
-                <div className="texto">{/*escribe dentro de este div*/}
-                    <div className="m-3 text-xl text-black font-semibold">
-                        DASHBOARD ASTROSEIZA
-                    </div>
-                    <div>
-                        <p>este es el dashboard de astroseiza, escribe dentro del div "texto"</p>
-                        <p>APARTADO DE USUARIO</p>
-                    </div>
+                <div className="flex items-center justify-center">
+                  <button
+                    onClick={closePopWindows}
+                    className="  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors"
+                  >
+                    Cerrar ventana
+                  </button>
                 </div>
-            </section>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center justify-center">
+                <button
+                  onClick={openPopWindows}
+                  className="  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors"
+                >
+                  Agregar usuario/s
+                </button>
+              </div>
+            </>
+          )}
+
+          <div className=" flex flex-col justify-center items-center my-3">
+            {userInfo.length > 0 ? (
+              <table>
+                <thead>
+                  <tr>
+                    <th className="w-44 p-3 text-blue-950 uppercase">id</th>
+                    <th className="w-1/5">Nombre</th>
+                    <th className="w-1/5">Usuario</th>
+                    <th className="w-1/5">Email</th>
+                    <th className="w-1/5">Actualizar</th>
+                    <th className="w-1/5">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userInfo.map((user, index) => (
+                    <tr key={index} className="text-center">
+                      <td className="p-3 border-y-2 border-black">
+                        {index + 1}
+                      </td>
+                      <td className="p-3 border-y-2 border-black">
+                        {user.nombre}
+                      </td>
+                      <td className="p-3 border-y-2 border-black">
+                        {user.usuario}
+                      </td>
+                      <td className="p-3 border-y-2 border-black">
+                        {user.email}
+                      </td>
+                      <td className="p-3 border-y-2 border-black">
+                        Actualizar
+                      </td>
+
+                      <td className="p-3 border-y-2 border-black">
+                        {" "}
+                        <button onClick={() => handleDelete(user.id)}>
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className="flex  justify-center items-center">
+                <p className="text-red-700 font-bold text-[40px] ">
+                  No hay usuarios registrados
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-    );
+      </section>
+    </div>
+  );
 }

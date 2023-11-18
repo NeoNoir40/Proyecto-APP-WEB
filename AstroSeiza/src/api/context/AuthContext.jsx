@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticatedAdmin, setIsAuthenticatedAdmin] = useState(false);
 
 
-
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
