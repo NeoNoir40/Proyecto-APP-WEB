@@ -72,7 +72,7 @@ export default function SingUP() {
                 <input
                   {...register("nombre", { required: true, maxLength: 45 })}
                   type="text"
-                  placeholder="nombre"
+                  placeholder="Nombre"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
                 {errors.nombre && (
@@ -83,7 +83,7 @@ export default function SingUP() {
                 <input
                   {...register("usuario", { required: true, maxLength: 45 })}
                   type="text"
-                  placeholder="usuario"
+                  placeholder="Usuario"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
                 {errors.usuario && (
@@ -94,7 +94,7 @@ export default function SingUP() {
                 <input
                   {...register("email", { required: true, maxLength: 45 })}
                   type="email"
-                  placeholder="correo electronico"
+                  placeholder="Correo electronico"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
                 {errors.email && (
@@ -105,7 +105,7 @@ export default function SingUP() {
                 <input
                   {...register("password", { required: true, maxLength: 45 })}
                   type="password"
-                  placeholder="contraseña"
+                  placeholder="Contraseña"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
                 {errors.password && (

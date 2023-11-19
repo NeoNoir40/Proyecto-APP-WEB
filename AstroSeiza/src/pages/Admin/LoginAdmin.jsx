@@ -5,22 +5,36 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 export default function LoginAdmin() {
-
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const { siginAdmin, error: siginErrors, isAuthenticatedAdmin } = useAuth()
-  const navigate = useNavigate()
-  const onSubmit = handleSubmit(data => siginAdmin(data))
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { siginAdmin, error: siginErrors, isAuthenticatedAdmin } = useAuth();
+  const navigate = useNavigate();
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      siginAdmin(data);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Inicio de sesion correcto, bienvenido",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {}
+  });
 
   useEffect(() => {
     if (isAuthenticatedAdmin) {
       if (isAuthenticatedAdmin) {
-        navigate('/indexAdmin')
+        navigate("/indexAdmin");
       }
     }
-  }, [isAuthenticatedAdmin])
+  }, [isAuthenticatedAdmin]);
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <video
@@ -53,9 +67,9 @@ export default function LoginAdmin() {
                   placeholder="Correo electronico"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                {
-                  errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-                }
+                {errors.nombre && (
+                  <span className="text-red-500">Este campo es requerido</span>
+                )}
               </div>
               <div>
                 <input
@@ -64,31 +78,16 @@ export default function LoginAdmin() {
                   placeholder="Contraseña"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                {
-                  errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-                }
+                {errors.nombre && (
+                  <span className="text-red-500">Este campo es requerido</span>
+                )}
               </div>
-              <p className="mb-2">Olvide mi contraseña</p>
               <div>
                 <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors ">
                   Inciar Sesion
                 </button>
               </div>
-              <div>
-                <Link to={"/SingUP"}>
-                  <button className="w-full  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
-                    Registrarse
-                  </button>
-                </Link>
-              </div>
-              <p className="text-center text-gray-400">
-                otras formas de inciar sesion
-              </p>
-              <div>
-                <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">
-                  <img src={googleicon} alt="" className="mr-2" /> Google
-                </button>
-              </div>
+             
             </form>
           </div>
         </div>
