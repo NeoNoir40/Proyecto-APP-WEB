@@ -5,22 +5,42 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../api/context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { sigin, error: siginErrors, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
-  const {register , handleSubmit , formState : {errors}} = useForm();
-  const {sigin , error : siginErrors , isAuthenticated} = useAuth()
-  const navigate = useNavigate()
-  const onSubmit = handleSubmit(data => sigin(data))
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await sigin(data);
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Inicio de sesion correcto, bienvenido",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
   useEffect(() => {
     if (isAuthenticated) {
       if (isAuthenticated) {
-        navigate('/')
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1500);
       }
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <video
@@ -40,33 +60,33 @@ export default function Login() {
             <p className="mb-2">
               Bienvenido, ingresa tus datos de para inciar sesion
             </p>
-            {siginErrors.map((err , i) => (
+            {siginErrors.map((err, i) => (
               <div className="bg-red-500 p-2 text-white" key={i}>
-                 {err}
+                {err}
               </div>
             ))}
             <form onSubmit={onSubmit}>
               <div>
                 <input
-                  {...register("email", { required: true})}
+                  {...register("email", { required: true })}
                   type="email"
                   placeholder="Correo electronico"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                 {
-                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-              }
+                {errors.email && (
+                  <span className="text-red-500">Este campo es requerido</span>
+                )}
               </div>
               <div>
                 <input
-                  {...register("password", { required: true})}
+                  {...register("password", { required: true })}
                   type="password"
                   placeholder="Contraseña"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
-                 {
-                errors.nombre && <span className="text-red-500">Este campo es requerido</span>
-              }
+                {errors.password && (
+                  <span className="text-red-500">Este campo es requerido</span>
+                )}
               </div>
               <p className="mb-2">Olvide mi contraseña</p>
               <div>

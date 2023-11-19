@@ -1,10 +1,12 @@
-import { createContext, useState, useContext, useEffect } from "react";
+  import { createContext, useState, useContext, useEffect } from "react";
 import {
   registerRequest,
   loginRequest,
   verifyTokenRequest,
   loginRequestAdmin,
   verifyTokenRequestAdmin,
+  newUsers,
+  registerRequestAdmin,
 } from "../auth";
 import Cookies from "js-cookie";
 
@@ -19,6 +21,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+  
   const [admin, setAdmin] = useState(null);
   const [isAuthenticatedAdmin, setIsAuthenticatedAdmin] = useState(false);
 
@@ -94,6 +97,31 @@ export const AuthProvider = ({ children }) => {
       setError(errorsToSet);
     }
   };
+
+  const CreateAdmin = async (user) => {
+    try {
+      const res = await   registerRequestAdmin(user);
+      console.log(res.data);
+      setAdmin(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+      setError(error.response.data);
+    }
+  };
+
+  const CreateUser = async (user) => {
+    try {
+      const res = await registerRequest(user);
+      console.log(res.data);
+      setUser(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+      setError(error.response.data);
+    }
+  };
+  
+ 
+
 
   const singup = async (user) => {
     try {
@@ -174,6 +202,8 @@ export const AuthProvider = ({ children }) => {
         admin,
         siginAdmin,
         isAuthenticatedAdmin,
+        CreateUser,
+        CreateAdmin,
       }}
     >
       {children}

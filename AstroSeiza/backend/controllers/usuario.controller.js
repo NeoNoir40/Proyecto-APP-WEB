@@ -26,6 +26,10 @@ const obtenerUsuariosId = (req, res) => {
   });
 };
 
+
+
+
+
 const crearUsuario = (req, res) => {
   const { nombre, usuario, password, email, foto } = req.body;
 

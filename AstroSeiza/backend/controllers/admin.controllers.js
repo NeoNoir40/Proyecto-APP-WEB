@@ -77,7 +77,7 @@ const editarAdmin = (req, res) => {
 
   db.query(
     "UPDATE Admin SET nombre = ?, password = ?, email = ? , foto = ? WHERE id_admin = ?",
-    [nombre, admin, encryptedPassword, email, foto, id],
+    [nombre,  encryptedPassword, email, foto, id],
     (error, results) => {
       if (error) {
         res.status(500).json({ message: "Error al actualizar el usaurio" });

@@ -2,8 +2,37 @@ import SideBar from "./adminComponents/sidebar";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { allUsers } from "../../api/auth";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../../api/context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function IndexAdmin() {
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { CreateUser, error: siginErrors } = useAuth();
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await CreateUser(data);
+      fetchUsers();
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Se ah creado correctamente el usuario",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
   const [userInfo, setUserInfo] = useState([]);
   const [popWindows, setPopWindow] = useState(false);
 
@@ -23,12 +52,35 @@ export default function IndexAdmin() {
   };
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3000/users/${id}`);
-      fetchUsers();
-    } catch (error) {
-      console.log(error);
-    }
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: "No seras capaz de revertir este cambio!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, borrar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`http://localhost:3000/users/${id}`);
+          fetchUsers();
+
+          Swal.fire({
+            title: "Eliminado!",
+            text: "El usuario se elimino correctamente!.",
+            icon: "success",
+          });
+        } catch (error) {
+          console.log(error);
+          Swal.fire({
+            title: "Error!",
+            text: "Ocurrio un error inesperado.",
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   const openPopWindows = () => {
@@ -40,7 +92,7 @@ export default function IndexAdmin() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-white">
       <section className="flex gap-6">
         <SideBar />
         <div className="texto h-full w-full">
@@ -51,21 +103,80 @@ export default function IndexAdmin() {
           {popWindows ? (
             <>
               <div>
-                <div className="bg-red-400 w-full">
-                  <div className="text-center flex justify-center items-center">
+                <div className=" w-full">
+                  <div className=" flex justify-center items-center">
+                    <form
+                      onSubmit={onSubmit}
+                      className=" shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
+                    >
+                      {siginErrors.map((err, i) => (
+                        <div className="bg-red-500 p-2 text-white" key={i}>
+                          {err}
+                        </div>
+                      ))}
 
-                    <form className="flex flex-col w-1/4 gap-4 h-1/2 ">
-                      <input type="text" placeholder="Ingresa el nombre" />
-                      <input type="text" placeholder="Ingresa el usuario" />
-                      <input type="text" placeholder="Ingresa el email" />
-                      <input type="text" placeholder="Ingresa el contraseña" />
+                      <label htmlFor="">Nombre</label>
+                      {errors.nombre && (
+                        <span className="text-red-500">
+                          Este campo es requerido
+                        </span>
+                      )}
+                      <input
+                        {...register("nombre", { required: true })}
+                        className="w-full text-black my-2 bg-t ransparent border-b border-black outline-none focus:outline-none"
+                        type="text"
+                        placeholder="Ingresa el nombre"
+                      />
+
+                      <label htmlFor="">Usuario</label>
+                      {errors.usuario && (
+                        <span className="text-red-500">
+                          Este campo es requerido
+                        </span>
+                      )}
+                      <input
+                        {...register("usuario", { required: true })}
+                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
+                        type="text"
+                        placeholder="Ingresa el usuario"
+                      />
+                      <label htmlFor="">Email</label>
+                      {errors.email && (
+                        <span className="text-red-500">
+                          Este campo es requerido
+                        </span>
+                      )}
+                      <input
+                        {...register("email", { required: true })}
+                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
+                        type="text"
+                        placeholder="Ingresa el email"
+                      />
+                      <label htmlFor="">Contraseña</label>
+                      {errors.password && (
+                        <span className="text-red-500">
+                          Este campo es requerido
+                        </span>
+                      )}
+                      <input
+                        {...register("password", { required: true })}
+                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
+                        type="password"
+                        placeholder="Ingresa el contraseña"
+                      />
+
+                      <div className="flex flex-row items-center justify-center  ">
+                        <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
+                          Crear
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center p-10">
                   <button
                     onClick={closePopWindows}
-                    className="  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors"
+                    className="bg-red-500  text-white font-bold py-2 px-4 rounded  hover:bg-red-400 transition-colors"
                   >
                     Cerrar ventana
                   </button>
@@ -77,7 +188,7 @@ export default function IndexAdmin() {
               <div className="flex items-center justify-center">
                 <button
                   onClick={openPopWindows}
-                  className="  my-2 text-[#060606] bg-white  border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors"
+                  className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
                 >
                   Agregar usuario/s
                 </button>
@@ -114,11 +225,14 @@ export default function IndexAdmin() {
                         {user.email}
                       </td>
                       <td className="p-3 border-y-2 border-black">
-                        Actualizar
+                        <button
+                          onClick={() => navigate(`/updateUser/${user.id}`)}
+                        >
+                          Actualizar
+                        </button>
                       </td>
 
                       <td className="p-3 border-y-2 border-black">
-                        {" "}
                         <button onClick={() => handleDelete(user.id)}>
                           Eliminar
                         </button>
