@@ -31,7 +31,7 @@ const obtenerUsuariosId = (req, res) => {
 
 
 const crearUsuario = (req, res) => {
-  const { nombre, usuario, password, email, foto } = req.body;
+  const { nombre, usuario, password, email } = req.body;
 
   // Primero, verifica si ya existe un usuario con ese email
   db.query(
@@ -56,7 +56,7 @@ const crearUsuario = (req, res) => {
 
         db.query(
           "INSERT INTO usuarios (nombre, usuario, password, email ) VALUES (?, ? ,? ,? )",
-          [nombre, usuario, encryptedPassword, email, foto],
+          [nombre, usuario, encryptedPassword, email],
           (error, results) => {
             if (error) {
               return res
@@ -75,6 +75,7 @@ const crearUsuario = (req, res) => {
     }
   );
 };
+
 
 const editarUsuario = (req, res) => {
   const id = req.params.id;
@@ -106,40 +107,33 @@ const eliminarUsuario = (req, res) => {
 };
 
 
+//
 
 const login = (req, res) => {
   const { email, password } = req.body;
-  db.query(
-    "SELECT * FROM usuarios WHERE email = ?",
-    [email],
-    (error, resultado) => {
-      if (error) {
-        res.status(500).json({ message: "Error al obtener el usuario" });
-      } else if (resultado.length === 0) {
-        res.status(400).json({ message: "Usuario no encontrado" });
+  db.query("SELECT * FROM usuarios WHERE email = ?", [email], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: "Error al obtener el usuario" });
+    } else if (result.length === 0) {
+      res.status(400).json({ message: "Usuario no encontrado" });
+    } else {
+      const response = result[0];
+      const contraseñaValida = bcrypt.compareSync(password.trim(), response.password.trim());
+
+      if (contraseñaValida) {
+        const token = jwt.sign({ id: response.id }, tokenSecret, {
+          expiresIn: "1d",
+        });
+        res.cookie("token", token);
+        res.json({ message: "Login exitoso" });
       } else {
-        const response = resultado[0];
-        console.log(response);
-        const contraseñaValida = bcrypt.compare(password, response.password);
-
-        if (contraseñaValida) {
-          const token = jwt.sign({ id: response.id }, tokenSecret, {
-            expiresIn: "1d",
-          });
-          res.cookie("token", token);
-          console.log(contraseñaValida);
-          res.json({ message: "Login exitoso", token: token });
-
-        } else {
-          console.log(contraseñaValida);
-          res.status(400).json({ message: "Contraseña incorrecta" });
-        }
+        res.status(400).json({ message: "Contraseña incorrecta" });
       }
     }
-  );
+  });
 };
 
-
+//
 const verifyToken = async (req, res) => {
   const { token } = req.cookies;
   if (!token) return res.json({ authenticated: false });

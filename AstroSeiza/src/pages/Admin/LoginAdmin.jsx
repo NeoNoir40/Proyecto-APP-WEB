@@ -1,10 +1,9 @@
 import video from "../../assets/videos/backgroundVideo.mp4";
-import googleicon from "../../assets/login/Google__G__Logo.svg";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/context/AuthContext";
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
 import { useNavigate } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
 export default function LoginAdmin() {
@@ -15,9 +14,20 @@ export default function LoginAdmin() {
   } = useForm();
   const { siginAdmin, error: siginErrors, isAuthenticatedAdmin } = useAuth();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
   const onSubmit = handleSubmit(async (data) => {
     try {
       siginAdmin(data);
+      setShow(true);
+    } catch (error) {
+      console.log(error);
+      setShow(false);
+    }
+  });
+
+  useEffect(() => {
+    if (isAuthenticatedAdmin && show) {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -25,14 +35,11 @@ export default function LoginAdmin() {
         showConfirmButton: false,
         timer: 1500,
       });
-    } catch (error) {}
-  });
 
-  useEffect(() => {
-    if (isAuthenticatedAdmin) {
-      if (isAuthenticatedAdmin) {
+      setTimeout(() => {
         navigate("/indexAdmin");
-      }
+      }, 1500);
+      
     }
   }, [isAuthenticatedAdmin]);
   return (

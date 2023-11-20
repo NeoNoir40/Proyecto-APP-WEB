@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../api/context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 export default function Login() {
@@ -14,11 +15,21 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const { sigin, error: siginErrors, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
       await sigin(data);
+      setShow(true);
+    } catch (error) {
+      console.log(error);
+      setShow(false); 
+    }
+  });
+
+  useEffect(() => {
+    if (isAuthenticated && show) {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -26,14 +37,9 @@ export default function Login() {
         showConfirmButton: false,
         timer: 1500,
       });
-    } catch (error) {
-      console.log(error);
-    }
-  });
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      // window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     }
   }, [isAuthenticated]);
 

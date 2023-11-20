@@ -112,11 +112,7 @@ const login = (req, res) => {
       } else {
         const response = resultado[0];
 
-        const contraseñaValida = bcrypt.compare(password, response.password);
-
-        console.log("Contraseña Ingresada:", password);
-        console.log("Contraseña Almacenada:", response.password);
-        console.log("¿Contraseña Válida?", contraseñaValida);
+        const contraseñaValida = bcrypt.compareSync(password, response.password);
 
 
         if (contraseñaValida) {
