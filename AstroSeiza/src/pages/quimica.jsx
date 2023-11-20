@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { useState, useEffect } from "react";
 import iconQuimica from "../assets/lottieIcons/iconquimica.json";
-import CompIcon from "../assets/lottieIcons/comp.json"
 import orbital from "../assets/lottieIcons/orbital.json"
 import Lottie from "lottie-react";
 import atomo from "../assets/img/atomo.png";
 import molecula from "../assets/img/molecula.png";
 import dinmolecula from "../assets/img/dinamicaMolec.png";
 import elemento from "../assets/img/elemquimico.png"
+import InfoQuimica from "../components/InfoQuimica";
+
 export default function quimica() {
 
     const elemPag = 20;
     const [Actual, setActual] = useState(1);
     const [Quimica, setQuimica] = useState([]);
     const [Categ, setCateg] = useState([]);
+    const [busqueda, setBusqueda] = useState("");
+    const [ordenPeriodo, setOrdenPeriodo] = useState('asc');
+    const [ordenGrupo, setOrdenGrupo] = useState('asc');
+
     useEffect(() => {
 
         const fetchquimicApi = async () => {
@@ -43,19 +47,42 @@ export default function quimica() {
 
     const indiceInicial = (Actual - 1) * elemPag;
     const indiceFinal = Actual * elemPag;
-
-    // Obtiene la porción de elementos para la página actual
     const elementos = Quimica.slice(indiceInicial, indiceFinal);
+
+    const Filtro = elementos.filter(compuesto =>
+        compuesto.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        || compuesto.simbolo.toLowerCase().includes(busqueda.toLowerCase())
+    );
+
+    const ordPeriodo = () => {
+        const newOrd = ordenPeriodo === 'asc' ? 'desc' : 'asc';
+        setOrdenPeriodo(newOrd);
+        const elemOrd = [...Quimica].sort((a, b) => {
+            return newOrd === 'asc' ? a.periodo - b.periodo : b.periodo - a.periodo;
+        });
+        setQuimica(elemOrd);
+    };
+
+    const ordGrupo = () => {
+        const newOrd = ordenGrupo === 'asc' ? 'desc' : 'asc';
+        setOrdenGrupo(newOrd);
+        const elemOrd = [...Quimica].sort((a, b) => {
+            return newOrd === 'asc' ? a.grupo - b.grupo : b.grupo - a.grupo;
+        });
+        setQuimica(elemOrd);
+    };
+
+
 
     return (
         <>
             <h1 className="text-white text-center font-bold text-4xl mt-10"> Química </h1>
-            <div className=" flex flex-row p-10 items-center justify-center mr-40">
+            <div className=" flex flex-row mt-5 items-center justify-center mr-40">
                 <Lottie
                     animationData={iconQuimica}
                     className="h-[300px] w-[300px]"
                 />
-                <div className=" mb-10 ml-10">
+                <div className=" ml-10">
                     <p className=" text-white text-center font-bold text-1xl container ">
                         La química es una ciencia que tiene por finalidad no sólo descubrir,<br />
                         sino también, y sobre todo, crear, ya que es el arte de hacer compleja la materia.
@@ -63,33 +90,40 @@ export default function quimica() {
                 </div>
 
             </div>
-            <h1 className=" text-white text-center font-bold text-3xl p-5 mb-5">Principios de la quimica moderna</h1>
-            <div className=" mb-10 ml-10 justify-center flex">
-                <p className=" text-white text-center font-bold text-1xl ">
-                    La química moderna se rige por el llamado principio cuántico,<br />
-                    fruto de la teoría atómica que considera a la materia desde diferentes niveles de complejidad,<br />
-                    como son: Materia. Cualquier cosa que tenga masa, volumen y esté compuesta de partículas.<br />
-                    Puede estar compuesta de sustancias puras o mezclas.
-                </p>
-            </div>
-            <div className="flex flex-row p-10 justify-center items-center">
+
+            <div className="flex flex-row p-5 justify-center items-center">
                 <div className=" mx-20">
-                    <h1 className="text-white font-bold ml-5 text-2xl p-5"> elemento quimico </h1>
+                    <h1 className="text-white font-bold text-2xl p-5 mb-5">Principios de la quimica moderna</h1>
+                    <p className=" text-white font-bold text-1xl ">
+                        La química moderna se rige por el llamado principio cuántico,<br />
+                        fruto de la teoría atómica que considera a la materia desde diferentes niveles de complejidad,<br />
+                        como son: Materia. Cualquier cosa que tenga masa, volumen y esté compuesta de partículas.<br />
+                        Puede estar compuesta de sustancias puras o mezclas.
+                    </p>
+                </div>
+                <div className=" mx-20">
+                    <h1 className="text-white font-bold ml-5 text-2xl p-5"> Elemento químico </h1>
                     <img
                         src={elemento}
                         className=" h-[300px] w-[300px] rounded-2xl"
                     />
                 </div>
-                <div className=" mx-20">
-                    <h1 className=" text-white ml-4 font-bold text-2xl p-5"> compuesto quimico</h1>
-                    <Lottie
-                        animationData={CompIcon}
-                        className="h-[300px] w-[300px] bg-slate-400 rounded-[150px]"
-                    />
-                </div>
             </div>
             <h1 className=" text-white font-bold text-3xl text-center mt-5">Tabla Periódica</h1>
             <div className="justify-center items-center flex flex-col p-10">
+                <div className="flex items-center">
+                    <input
+                        type="text"
+                        className="flex m-5 rounded-md border-2 border-white p-[4px] bg-transparent text-white font-semibold mr-[500px] "
+                        placeholder="Buscar Elemento..."
+                        value={busqueda}
+                        onChange={(e) => setBusqueda(e.target.value)}
+                    />
+                    <button onClick={ordPeriodo} className=" text-white flex rounded-md p-[4px] border-2 border-white font-semibold m-5">Ordenar por Periodo
+                        {ordenPeriodo === 'asc' ? '↑' : '↓'}</button>
+                    <button onClick={ordGrupo} className=" text-white flex rounded-md p-[4px] border-2 border-white font-semibold m-5">Ordenar por Grupo
+                        {ordenGrupo === 'asc' ? '↑' : '↓'}</button>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -98,18 +132,20 @@ export default function quimica() {
                             <th className="w-44 text-white font-bold">Nombre</th>
                             <th className="w-44 text-white font-bold">Símbolo</th>
                             <th className="w-44 text-white font-bold">Peso atómico (uma)</th>
-                            <th className="w-44 text-white font-bold">Periodo-Grupo</th>
+                            <th className="w-44 text-white font-bold">Periodo</th>
+                            <th className="w-44 text-white font-bold">Grupo</th>
                         </tr>
                     </thead>
                     <tbody className="">
-                        {elementos.map(compuesto => (
+                        {Filtro.map(compuesto => (
                             <tr key={compuesto.id} className="text-center border-y-2 text-white h-5">
                                 <td><img src={compuesto.img} alt="img" className=" w-[45px] h-[45px] mx-auto my-auto" /></td>
                                 <td>{compuesto.numero}</td>
                                 <td>{compuesto.nombre}</td>
                                 <td>{compuesto.simbolo}</td>
                                 <td>{compuesto.masa}</td>
-                                <td>{compuesto.periodoGrupo}</td>
+                                <td>{compuesto.periodo}</td>
+                                <td>{compuesto.grupo}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -149,56 +185,41 @@ export default function quimica() {
                         </thead>
                         <tbody>
                             {Categ.map(cate => (
-                            <tr key={cate.id} className="text-center border-b-2 text-white h-14" >
-                                <th className=" border-r-2 ">{cate.nombreCat}</th>
-                                <th className=" border-l-2 "><img src={cate.img} className="w-[45px] h-[45px] mx-auto my-auto"></img></th>
-                            </tr>
+                                <tr key={cate.id} className="text-center border-b-2 text-white h-14" >
+                                    <th className=" border-r-2 ">{cate.nombreCat}</th>
+                                    <th className=" border-l-2 "><img src={cate.img} className="w-[45px] h-[45px] mx-auto my-auto"></img></th>
+                                </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
             </div>
+            <InfoQuimica
+                titulo={"Cálculos químicos cuánticos"}
+                texto={`Los cálculos químicos cuánticos son un conjunto de técnicas matemáticas
+                        y computacionales utilizadas para resolver y modelar problemas en la química cuántica.
+                        Estos cálculos se basan en los principios de la mecánica cuántica, que es la teoría fundamental 
+                        que describe el comportamiento de las partículas subatómicas, como electrones y núcleos, 
+                        en sistemas moleculares y atómicos`}
+                imagen={atomo}
+            />
+            <InfoQuimica
+                titulo={`Mecanica molecular`}
+                texto={`La mecánica molecular es una rama de la química computacional que se utiliza
+            para modelar y simular el comportamiento de moléculas y sistemas moleculares
+            utilizando enfoques basados en la mecánica clásica, en lugar de la mecánica cuántica.
+            Permite simular y analizar una amplia gama de sistemas químicos y biológicos,
+            proporcionando información valiosa sobre la dinámica y las propiedades de estas estructuras.`}
+                imagen={molecula}
+            />
+            <InfoQuimica
+                titulo={`Datos de dinámica para una gran cantidad de moléculas`}
+                texto={`La obtención de datos de dinámica para una gran cantidad de moléculas es una tarea crucial
+            en la investigación científica y en aplicaciones prácticas en campos como la química, la biología,
+            la física y la ciencia de los materiales.`}
+                imagen={dinmolecula}
+            />
 
-            <h1 className=" text-white font-bold text-3xl text-center mt-5">Calculos quimicos cuanticos </h1>
-            <div className=" ml-52 mb-10 flex justify-center">
-                <p className=" text-white font-bold text-1xl mr-20 mt-[100px] ">
-                    Los cálculos químicos cuánticos son un conjunto de técnicas matemáticas y <br />
-                    computacionales utilizadas para resolver y modelar problemas en la química cuántica.<br />
-                    Estos cálculos se basan en los principios de la mecánica cuántica, que es la teoría fundamental<br />
-                    que describe el comportamiento de las partículas subatómicas, como electrones y núcleos,<br />
-                    en sistemas moleculares y atómicos.
-                </p>
-                <img
-                    src={atomo}
-                    className=" h-[300px] w-[300px]"
-                />
-            </div>
-            <h1 className=" text-white text-center mt-5 font-bold text-3xl">Mecanica molecular</h1>
-            <div className=" mb-10 ml-52 justify-center flex">
-                <p className=" text-white font-bold text-1xl mr-20 mt-[100px]">
-                    La mecánica molecular es una rama de la química computacional que se utiliza<br />
-                    para modelar y simular el comportamiento de moléculas y sistemas moleculares<br />
-                    utilizando enfoques basados en la mecánica clásica, en lugar de la mecánica cuántica.<br />
-                    Permite simular y analizar una amplia gama de sistemas químicos y biológicos,<br />
-                    proporcionando información valiosa sobre la dinámica y las propiedades de estas estructuras.
-                </p>
-                <img
-                    src={molecula}
-                    className=" h-[300px] w-[300px]"
-                />
-            </div>
-            <h1 className=" text-white text-center mt-5 font-bold text-3xl">Datos de dinámica para una gran cantidad de moléculas</h1>
-            <div className=" mb-10 ml-52 justify-center flex">
-                <p className=" text-white font-bold text-1xl mr-20 mt-[100px]">
-                    La obtención de datos de dinámica para una gran cantidad de moléculas es una tarea crucial <br />
-                    en la investigación científica y en aplicaciones prácticas en campos como la química, la biología, <br />
-                    la física y la ciencia de los materiales.
-                </p>
-                <img
-                    src={dinmolecula}
-                    className=" h-[300px] w-[300px]"
-                />
-            </div>
             <h1 className=" text-white text-center font-bold text-3xl mt-10">Representacion orbital molecular</h1>
             <div className="justify-center items-center flex p-10">
                 <Lottie
@@ -206,7 +227,6 @@ export default function quimica() {
                     className="h-[300px] w-[300px]"
                 />
             </div>
-
 
         </>
 

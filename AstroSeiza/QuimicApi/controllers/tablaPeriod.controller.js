@@ -12,7 +12,8 @@ const tablaPeriodica = [
         simbolo: "H",
         numero: "1",
         masa: "1.00784(7)",
-        periodoGrupo: "1,1",
+        periodo: "1",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027019.png"
     },
     {
@@ -21,7 +22,8 @@ const tablaPeriodica = [
         simbolo: "He",
         numero: "2",
         masa: "4.002602(2)",
-        periodoGrupo: "1,18",
+        periodo: "1",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027107.png"
     },
     {
@@ -30,7 +32,8 @@ const tablaPeriodica = [
         simbolo: "Li",
         numero: "3",
         masa: "6.941(2)",
-        periodoGrupo: "2,1",
+        periodo: "2",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027022.png"
     },
     {
@@ -39,7 +42,8 @@ const tablaPeriodica = [
         simbolo: "Be",
         numero: "4",
         masa: "9.012182(3)",
-        periodoGrupo: "2,2",
+        periodo: "2",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027025.png"
     },
     {
@@ -48,7 +52,8 @@ const tablaPeriodica = [
         simbolo: "B",
         numero: "5",
         masa: "10.811(7)",
-        periodoGrupo: "2,13",
+        periodo: "2",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027083.png"
     },
     {
@@ -57,7 +62,8 @@ const tablaPeriodica = [
         simbolo: "C",
         numero: "6",
         masa: "12.0107(8)",
-        periodoGrupo: "2,14",
+        periodo: "2",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027087.png"
     },
     {
@@ -66,7 +72,8 @@ const tablaPeriodica = [
         simbolo: "N",
         numero: "7",
         masa: "14.0067(2)",
-        periodoGrupo: "2,15",
+        periodo: "2",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027091.png"
     },
     {
@@ -75,7 +82,8 @@ const tablaPeriodica = [
         simbolo: "O",
         numero: "8",
         masa: "15.9994(3)",
-        periodoGrupo: "2,16",
+        periodo: "2",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027093.png"
     },
     {
@@ -84,7 +92,8 @@ const tablaPeriodica = [
         simbolo: "F",
         numero: "9",
         masa: "18.9984032(5)",
-        periodoGrupo: "2,17",
+        periodo: "2",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027099.png"
     },
     {
@@ -93,7 +102,8 @@ const tablaPeriodica = [
         simbolo: "Ne",
         numero: "10",
         masa: "20.1797(6)",
-        periodoGrupo: "2,18",
+        periodo: "2",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027103.png"
     },
     {
@@ -102,7 +112,8 @@ const tablaPeriodica = [
         simbolo: "Na",
         numero: "11",
         masa: "22.98976928(2)",
-        periodoGrupo: "3,1",
+        periodo: "3",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027028.png"
     },
     {
@@ -111,7 +122,8 @@ const tablaPeriodica = [
         simbolo: "Mg",
         numero: "12",
         masa: "24.3050(6)",
-        periodoGrupo: "3,2",
+        periodo: "3",
+        grupo: "2",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027033.png"
     },
     {
@@ -120,7 +132,8 @@ const tablaPeriodica = [
         simbolo: "Al",
         numero: "13",
         masa: "26.9815386(8)",
-        periodoGrupo: "3,13",
+        periodo: "3",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027110.png"
     },
     {
@@ -129,7 +142,8 @@ const tablaPeriodica = [
         simbolo: "Si",
         numero: "14",
         masa: "28.0855(3)",
-        periodoGrupo: "3,14",
+        periodo: "3",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027113.png"
     },
     {
@@ -138,7 +152,8 @@ const tablaPeriodica = [
         simbolo: "P",
         numero: "15",
         masa: "30.973762(2)",
-        periodoGrupo: "3,15",
+        periodo: "3",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027117.png"
     },
     {
@@ -147,7 +162,8 @@ const tablaPeriodica = [
         simbolo: "S",
         numero: "16",
         masa: "32.065(5)",
-        periodoGrupo: "3,16",
+        periodo: "3",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027123.png"
     },
     {
@@ -156,7 +172,8 @@ const tablaPeriodica = [
         simbolo: "Cl",
         numero: "17",
         masa: "35.453(2)",
-        periodoGrupo: "3,17",
+        periodo: "3",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027126.png"
     },
     {
@@ -165,7 +182,8 @@ const tablaPeriodica = [
         simbolo: "Ar",
         numero: "18",
         masa: "39.948(1)",
-        periodoGrupo: "3,18",
+        periodo: "3",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027128.png"
     },
     {
@@ -174,7 +192,8 @@ const tablaPeriodica = [
         simbolo: "K",
         numero: "19",
         masa: "39.0983(1)",
-        periodoGrupo: "4,1",
+        periodo: "4",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027035.png"
     },
     {
@@ -183,7 +202,8 @@ const tablaPeriodica = [
         simbolo: "Ca",
         numero: "20",
         masa: "40.078(4)",
-        periodoGrupo: "4,2",
+        periodo: "4",
+        grupo: "2",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027040.png"
     },
     {
@@ -192,7 +212,8 @@ const tablaPeriodica = [
         simbolo: "Sc",
         numero: "21",
         masa: "44.955912(6)",
-        periodoGrupo: "4,3",
+        periodo: "4",
+        grupo: "3",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027045.png"
     },
     {
@@ -201,7 +222,8 @@ const tablaPeriodica = [
         simbolo: "Ti",
         numero: "22",
         masa: "	47.867(1)",
-        periodoGrupo: "4,4",
+        periodo: "4",
+        grupo: "4",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027049.png"
     },
     {
@@ -210,7 +232,8 @@ const tablaPeriodica = [
         simbolo: "V",
         numero: "23",
         masa: "50.9415(1)",
-        periodoGrupo: "4,5",
+        periodo: "4",
+        grupo: "5",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027051.png"
     },
     {
@@ -219,7 +242,8 @@ const tablaPeriodica = [
         simbolo: "Cr",
         numero: "25",
         masa: "51.9961(6)",
-        periodoGrupo: "4,6",
+        periodo: "4",
+        grupo: "6",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027057.png"
     },
     {
@@ -228,7 +252,8 @@ const tablaPeriodica = [
         simbolo: "Mn",
         numero: "25",
         masa: "54.938045(5)",
-        periodoGrupo: "4,7",
+        periodo: "4",
+        grupo: "7",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027060.png"
     },
     {
@@ -237,7 +262,8 @@ const tablaPeriodica = [
         simbolo: "Fe",
         numero: "26",
         masa: "55.845(2)",
-        periodoGrupo: "4,8",
+        periodo: "4",
+        grupo: "8",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027064.png"
     },
     {
@@ -246,7 +272,8 @@ const tablaPeriodica = [
         simbolo: "Co",
         numero: "27",
         masa: "58.933200(9)",
-        periodoGrupo: "4,9",
+        periodo: "4",
+        grupo: "9",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027069.png"
     },
     {
@@ -255,7 +282,8 @@ const tablaPeriodica = [
         simbolo: "Ni",
         numero: "28",
         masa: "58.6934(2)",
-        periodoGrupo: "4,10",
+        periodo: "4",
+        grupo: "10",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027073.png"
     },
     {
@@ -264,7 +292,8 @@ const tablaPeriodica = [
         simbolo: "Cu",
         numero: "29",
         masa: "63.546(3)",
-        periodoGrupo: "4,11",
+        periodo: "4",
+        grupo: "11",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027077.png"
     },
     {
@@ -273,7 +302,8 @@ const tablaPeriodica = [
         simbolo: "Zn",
         numero: "30",
         masa: "65.409(4)",
-        periodoGrupo: "4,12",
+        periodo: "4",
+        grupo: "12",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027081.png"
     },
     {
@@ -282,7 +312,8 @@ const tablaPeriodica = [
         simbolo: "Ga",
         numero: "31",
         masa: "69.723(1)",
-        periodoGrupo: "4,13",
+        periodo: "4",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027132.png"
     },
     {
@@ -291,7 +322,8 @@ const tablaPeriodica = [
         simbolo: "Ge",
         numero: "32",
         masa: "72.64(1)",
-        periodoGrupo: "4,14",
+        periodo: "4",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027135.png"
     },
     {
@@ -300,7 +332,8 @@ const tablaPeriodica = [
         simbolo: "As",
         numero: "33",
         masa: "74.92160(2)",
-        periodoGrupo: "4,15",
+        periodo: "4",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027139.png"
     },
     {
@@ -309,7 +342,8 @@ const tablaPeriodica = [
         simbolo: "Se",
         numero: "34",
         masa: "78.96(3)",
-        periodoGrupo: "4,16",
+        periodo: "4",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027143.png"
     },
     {
@@ -318,7 +352,8 @@ const tablaPeriodica = [
         simbolo: "Br",
         numero: "35",
         masa: "79.904(1)",
-        periodoGrupo: "4,17",
+        periodo: "4",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027146.png"
     },
     {
@@ -327,7 +362,8 @@ const tablaPeriodica = [
         simbolo: "Kr",
         numero: "36",
         masa: "83.798(2)",
-        periodoGrupo: "4,18",
+        periodo: "4",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027148.png"
     },
     {
@@ -336,7 +372,8 @@ const tablaPeriodica = [
         simbolo: "Rb",
         numero: "37",
         masa: "85.4678(3)",
-        periodoGrupo: "5,1",
+        periodo: "5",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027152.png"
     },
     {
@@ -345,7 +382,8 @@ const tablaPeriodica = [
         simbolo: "Sr",
         numero: "38",
         masa: "87.62(1)",
-        periodoGrupo: "5,2",
+        periodo: "5",
+        grupo: "2",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027155.png"
     },
     {
@@ -354,7 +392,8 @@ const tablaPeriodica = [
         simbolo: "Y",
         numero: "39",
         masa: "88.90585(2)",
-        periodoGrupo: "5,3",
+        periodo: "5",
+        grupo: "3",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027175.png"
     },
     {
@@ -363,7 +402,8 @@ const tablaPeriodica = [
         simbolo: "Zr",
         numero: "40",
         masa: "91.224(2)",
-        periodoGrupo: "5,4",
+        periodo: "5",
+        grupo: "4",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027181.png"
     },
     {
@@ -372,7 +412,8 @@ const tablaPeriodica = [
         simbolo: "Nb",
         numero: "41",
         masa: "92.906 38(2)",
-        periodoGrupo: "5,5",
+        periodo: "5",
+        grupo: "5",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027185.png"
     },
     {
@@ -381,7 +422,8 @@ const tablaPeriodica = [
         simbolo: "Mo",
         numero: "42",
         masa: "95.94(2)",
-        periodoGrupo: "5,6",
+        periodo: "5",
+        grupo: "6",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027189.png"
     },
     {
@@ -390,7 +432,8 @@ const tablaPeriodica = [
         simbolo: "Tc",
         numero: "43",
         masa: "[98.9063]",
-        periodoGrupo: "5,7",
+        periodo: "5",
+        grupo: "7",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027193.png"
     },
     {
@@ -399,7 +442,8 @@ const tablaPeriodica = [
         simbolo: "Ru",
         numero: "44",
         masa: "101.07(2)",
-        periodoGrupo: "5,8",
+        periodo: "5",
+        grupo: "8",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027197.png"
     },
     {
@@ -408,7 +452,8 @@ const tablaPeriodica = [
         simbolo: "Rh",
         numero: "45",
         masa: "102.90550(2)",
-        periodoGrupo: "5,9",
+        periodo: "5",
+        grupo: "9",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027201.png"
     },
     {
@@ -417,7 +462,8 @@ const tablaPeriodica = [
         simbolo: "Pd",
         numero: "46",
         masa: "106.42(1)",
-        periodoGrupo: "5,10",
+        periodo: "5",
+        grupo: "10",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027204.png"
     },
     {
@@ -426,7 +472,8 @@ const tablaPeriodica = [
         simbolo: "Ag",
         numero: "47",
         masa: "107.8682(2)",
-        periodoGrupo: "5,11",
+        periodo: "5",
+        grupo: "11",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027208.png"
     },
     {
@@ -435,7 +482,8 @@ const tablaPeriodica = [
         simbolo: "Cd",
         numero: "48",
         masa: "112.411(8)",
-        periodoGrupo: "5,12",
+        periodo: "5",
+        grupo: "12",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027212.png"
     },
     {
@@ -444,7 +492,8 @@ const tablaPeriodica = [
         simbolo: "In",
         numero: "49",
         masa: "114.818(3)",
-        periodoGrupo: "5,13",
+        periodo: "5",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027217.png"
     },
     {
@@ -453,7 +502,8 @@ const tablaPeriodica = [
         simbolo: "Sn",
         numero: "50",
         masa: "118.710(7)",
-        periodoGrupo: "5,14",
+        periodo: "5",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027225.png"
     },
     {
@@ -462,7 +512,8 @@ const tablaPeriodica = [
         simbolo: "Sb",
         numero: "51",
         masa: "121.760(1)",
-        periodoGrupo: "5,15",
+        periodo: "5",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027230.png"
     },
     {
@@ -471,7 +522,8 @@ const tablaPeriodica = [
         simbolo: "Te",
         numero: "52",
         masa: "127.60(3)",
-        periodoGrupo: "5,16",
+        periodo: "5",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027234.png"
     },
     {
@@ -480,7 +532,8 @@ const tablaPeriodica = [
         simbolo: "I",
         numero: "53",
         masa: "126.90447(3)",
-        periodoGrupo: "5,17",
+        periodo: "5",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027238.png"
     },
     {
@@ -489,7 +542,8 @@ const tablaPeriodica = [
         simbolo: "Xe",
         numero: "54",
         masa: "131.293(6)",
-        periodoGrupo: "5,18",
+        periodo: "5",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027242.png"
     },
     {
@@ -498,7 +552,8 @@ const tablaPeriodica = [
         simbolo: "Cs",
         numero: "55",
         masa: "132.9054519(2)",
-        periodoGrupo: "6,1",
+        periodo: "6",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027159.png"
     },
     {
@@ -507,7 +562,8 @@ const tablaPeriodica = [
         simbolo: "Ba",
         numero: "56",
         masa: "137.327(7)",
-        periodoGrupo: "6,2",
+        periodo: "6",
+        grupo: "2",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027163.png"
     },
     {
@@ -516,7 +572,8 @@ const tablaPeriodica = [
         simbolo: "La",
         numero: "57",
         masa: "138.90547(7)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027362.png"
     },
     {
@@ -525,7 +582,8 @@ const tablaPeriodica = [
         simbolo: "Ce",
         numero: "58",
         masa: "140.116(1)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027366.png"
     },
     {
@@ -534,7 +592,8 @@ const tablaPeriodica = [
         simbolo: "Pr",
         numero: "59",
         masa: "140.90765(2)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027369.png"
     },
     {
@@ -543,7 +602,8 @@ const tablaPeriodica = [
         simbolo: "Nd",
         numero: "60",
         masa: "144.242(3)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027374.png"
     },
     {
@@ -552,7 +612,8 @@ const tablaPeriodica = [
         simbolo: "Pm",
         numero: "61",
         masa: "[146.9151]",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027378.png"
     },
     {
@@ -561,7 +622,8 @@ const tablaPeriodica = [
         simbolo: "Sm",
         numero: "63",
         masa: "150.36(2)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027381.png"
     },
     {
@@ -570,7 +632,8 @@ const tablaPeriodica = [
         simbolo: "Eu",
         numero: "63",
         masa: "151.964(1)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027386.png"
     },
     {
@@ -579,7 +642,8 @@ const tablaPeriodica = [
         simbolo: "Gd",
         numero: "64",
         masa: "157.25(3)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027391.png"
     },
     {
@@ -588,7 +652,8 @@ const tablaPeriodica = [
         simbolo: "Tb",
         numero: "65",
         masa: "158.92535(2)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027395.png"
     },
     {
@@ -597,7 +662,8 @@ const tablaPeriodica = [
         simbolo: "Dy",
         numero: "66",
         masa: "162.500(1)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027397.png"
     },
     {
@@ -606,7 +672,8 @@ const tablaPeriodica = [
         simbolo: "Ho",
         numero: "67",
         masa: "164.93032(2)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027402.png"
     },
     {
@@ -615,7 +682,8 @@ const tablaPeriodica = [
         simbolo: "Er",
         numero: "68",
         masa: "167.259(3)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027405.png"
     },
     {
@@ -624,7 +692,8 @@ const tablaPeriodica = [
         simbolo: "Tm",
         numero: "69",
         masa: "168.93421(2)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027409.png"
     },
     {
@@ -633,7 +702,8 @@ const tablaPeriodica = [
         simbolo: "Yb",
         numero: "70",
         masa: "173.04(3)",
-        periodoGrupo: "6",
+        periodo: "6",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027413.png"
     },
     {
@@ -642,7 +712,8 @@ const tablaPeriodica = [
         simbolo: "Lu",
         numero: "71",
         masa: "174.967(1)",
-        periodoGrupo: "6,3",
+        periodo: "6",
+        grupo: "3",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027417.png"
     },
     {
@@ -651,7 +722,8 @@ const tablaPeriodica = [
         simbolo: "Hf",
         numero: "73",
         masa: "178.49(2)",
-        periodoGrupo: "6,4",
+        periodo: "6",
+        grupo: "4",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027245.png"
     },
     {
@@ -660,7 +732,8 @@ const tablaPeriodica = [
         simbolo: "Ta",
         numero: "3",
         masa: "180.9479(1)",
-        periodoGrupo: "6,5",
+        periodo: "6",
+        grupo: "5",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027249.png"
     },
     {
@@ -669,7 +742,8 @@ const tablaPeriodica = [
         simbolo: "W",
         numero: "74",
         masa: "183.84(1)",
-        periodoGrupo: "6,6",
+        periodo: "6",
+        grupo: "6",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027253.png"
     },
     {
@@ -678,7 +752,8 @@ const tablaPeriodica = [
         simbolo: "Re",
         numero: "75",
         masa: "186.207(1)",
-        periodoGrupo: "6,7",
+        periodo: "6",
+        grupo: "7",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027258.png"
     },
     {
@@ -687,7 +762,8 @@ const tablaPeriodica = [
         simbolo: "Os",
         numero: "76",
         masa: "190.23(3)",
-        periodoGrupo: "6,8",
+        periodo: "6",
+        grupo: "8",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027262.png"
     },
     {
@@ -696,7 +772,8 @@ const tablaPeriodica = [
         simbolo: "Ir",
         numero: "77",
         masa: "192.217(3)",
-        periodoGrupo: "6,9",
+        periodo: "6",
+        grupo: "9",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027266.png"
     },
     {
@@ -705,7 +782,8 @@ const tablaPeriodica = [
         simbolo: "Pt",
         numero: "78",
         masa: "195.084(9)",
-        periodoGrupo: "6,10",
+        periodo: "6",
+        grupo: "10",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027270.png"
     },
     {
@@ -714,7 +792,8 @@ const tablaPeriodica = [
         simbolo: "Au",
         numero: "79",
         masa: "196.966569(4)",
-        periodoGrupo: "6,11",
+        periodo: "6",
+        grupo: "11",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027274.png"
     },
     {
@@ -723,7 +802,8 @@ const tablaPeriodica = [
         simbolo: "Hg",
         numero: "80",
         masa: "200.59(2)",
-        periodoGrupo: "6,12",
+        periodo: "6",
+        grupo: "12",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027278.png"
     },
     {
@@ -732,7 +812,8 @@ const tablaPeriodica = [
         simbolo: "Tl",
         numero: "81",
         masa: "204.3833(2)",
-        periodoGrupo: "6,13",
+        periodo: "6",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027281.png"
     },
     {
@@ -741,7 +822,8 @@ const tablaPeriodica = [
         simbolo: "Pb",
         numero: "83",
         masa: "207.2(1)",
-        periodoGrupo: "6,14",
+        periodo: "6",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027286.png"
     },
     {
@@ -750,7 +832,8 @@ const tablaPeriodica = [
         simbolo: "Bi",
         numero: "83",
         masa: "208.98040(1)",
-        periodoGrupo: "6,15",
+        periodo: "6",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027290.png"
     },
     {
@@ -759,7 +842,8 @@ const tablaPeriodica = [
         simbolo: "Po",
         numero: "84",
         masa: "[208.9824]",
-        periodoGrupo: "6,16",
+        periodo: "6",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027295.png"
     },
     {
@@ -768,7 +852,8 @@ const tablaPeriodica = [
         simbolo: "At",
         numero: "85",
         masa: "[209.9871]",
-        periodoGrupo: "6,17",
+        periodo: "6",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027299.png"
     },
     {
@@ -777,7 +862,8 @@ const tablaPeriodica = [
         simbolo: "Rn",
         numero: "86",
         masa: "[222.0176]",
-        periodoGrupo: "6,18",
+        periodo: "6",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027302.png"
     },
     {
@@ -786,7 +872,8 @@ const tablaPeriodica = [
         simbolo: "Fr",
         numero: "87",
         masa: "[223.0197]",
-        periodoGrupo: "7,1",
+        periodo: "7",
+        grupo: "1",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027167.png"
     },
     {
@@ -795,7 +882,8 @@ const tablaPeriodica = [
         simbolo: "Ra",
         numero: "88",
         masa: "[226.0254]",
-        periodoGrupo: "7,2",
+        periodo: "7",
+        grupo: "2",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027171.png"
     },
     {
@@ -804,7 +892,8 @@ const tablaPeriodica = [
         simbolo: "Ac",
         numero: "89",
         masa: "[227.0278]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027421.png"
     },
     {
@@ -813,7 +902,8 @@ const tablaPeriodica = [
         simbolo: "Th",
         numero: "90",
         masa: "232.03806(2)",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027427.png"
     },
     {
@@ -822,7 +912,8 @@ const tablaPeriodica = [
         simbolo: "Pa",
         numero: "91",
         masa: "231.03588(2)",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027432.png"
     },
     {
@@ -831,7 +922,8 @@ const tablaPeriodica = [
         simbolo: "U",
         numero: "92",
         masa: "238.02891(3)",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027436.png"
     },
     {
@@ -840,7 +932,8 @@ const tablaPeriodica = [
         simbolo: "Np",
         numero: "93",
         masa: "[237.0482]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027441.png"
     },
     {
@@ -849,7 +942,8 @@ const tablaPeriodica = [
         simbolo: "Pu",
         numero: "94",
         masa: "[244.0642]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027447.png"
     },
     {
@@ -858,7 +952,8 @@ const tablaPeriodica = [
         simbolo: "Am",
         numero: "95",
         masa: "[243.0614]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027450.png"
     },
     {
@@ -867,7 +962,8 @@ const tablaPeriodica = [
         simbolo: "Cm",
         numero: "96",
         masa: "[247.0703]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027455.png"
     },
     {
@@ -876,7 +972,8 @@ const tablaPeriodica = [
         simbolo: "Bk",
         numero: "97",
         masa: "[247.0703]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027459.png"
     },
     {
@@ -885,7 +982,8 @@ const tablaPeriodica = [
         simbolo: "Cf",
         numero: "98",
         masa: "[251.0796]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027463.png"
     },
     {
@@ -894,7 +992,8 @@ const tablaPeriodica = [
         simbolo: "Es",
         numero: "99",
         masa: "[252.0829]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027465.png"
     },
     {
@@ -903,7 +1002,8 @@ const tablaPeriodica = [
         simbolo: "Fm",
         numero: "100",
         masa: "[257.0951]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027472.png"
     },
     {
@@ -912,7 +1012,8 @@ const tablaPeriodica = [
         simbolo: "Md",
         numero: "101",
         masa: "[258.0986]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027476.png"
     },
     {
@@ -921,7 +1022,8 @@ const tablaPeriodica = [
         simbolo: "No",
         numero: "102",
         masa: "[259.1009]",
-        periodoGrupo: "7",
+        periodo: "7",
+        grupo: "",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027478.png"
     },
     {
@@ -930,7 +1032,8 @@ const tablaPeriodica = [
         simbolo: "Lr",
         numero: "103",
         masa: "[260.1053]",
-        periodoGrupo: "7,3",
+        periodo: "7",
+        grupo: "3",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027480.png"
     },
     {
@@ -939,7 +1042,8 @@ const tablaPeriodica = [
         simbolo: "Rf",
         numero: "104",
         masa: "[261.1087]",
-        periodoGrupo: "7,4",
+        periodo: "7",
+        grupo: "4",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027306.png"
     },
     {
@@ -948,7 +1052,8 @@ const tablaPeriodica = [
         simbolo: "Db",
         numero: "105",
         masa: "[262.1138]",
-        periodoGrupo: "7,5",
+        periodo: "7",
+        grupo: "5",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027310.png"
     },
     {
@@ -957,7 +1062,8 @@ const tablaPeriodica = [
         simbolo: "Sg",
         numero: "106",
         masa: "[263.1182]",
-        periodoGrupo: "7,6",
+        periodo: "7",
+        grupo: "6",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027312.png"
     },
     {
@@ -966,7 +1072,8 @@ const tablaPeriodica = [
         simbolo: "Bh",
         numero: "107",
         masa: "[262.1229]",
-        periodoGrupo: "7,7",
+        periodo: "7",
+        grupo: "7",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027315.png"
     },
     {
@@ -975,7 +1082,8 @@ const tablaPeriodica = [
         simbolo: "Hs",
         numero: "108",
         masa: "[265]",
-        periodoGrupo: "7,8",
+        periodo: "7",
+        grupo: "8",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027319.png"
     },
     {
@@ -984,7 +1092,8 @@ const tablaPeriodica = [
         simbolo: "Mt",
         numero: "109",
         masa: "[266]",
-        periodoGrupo: "7,9",
+        periodo: "7",
+        grupo: "9",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027324.png"
     },
     {
@@ -993,7 +1102,8 @@ const tablaPeriodica = [
         simbolo: "Ds",
         numero: "110",
         masa: "[269]",
-        periodoGrupo: "7,10",
+        periodo: "7",
+        grupo: "10",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027329.png"
     },
     {
@@ -1002,7 +1112,8 @@ const tablaPeriodica = [
         simbolo: "Rg",
         numero: "111",
         masa: "[272]",
-        periodoGrupo: "7,11",
+        periodo: "7",
+        grupo: "11",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027333.png"
     },
     {
@@ -1011,7 +1122,8 @@ const tablaPeriodica = [
         simbolo: "Cn",
         numero: "112",
         masa: "[285]",
-        periodoGrupo: "7,12",
+        periodo: "7",
+        grupo: "12",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027335.png"
     },
     {
@@ -1020,7 +1132,8 @@ const tablaPeriodica = [
         simbolo: "Nh",
         numero: "113",
         masa: "[284]",
-        periodoGrupo: "7,13",
+        periodo: "7",
+        grupo: "13",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027339.png"
     },
     {
@@ -1029,7 +1142,8 @@ const tablaPeriodica = [
         simbolo: "Fl",
         numero: "114",
         masa: "[289]",
-        periodoGrupo: "7,14",
+        periodo: "7",
+        grupo: "14",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027343.png"
     },
     {
@@ -1038,7 +1152,8 @@ const tablaPeriodica = [
         simbolo: "Mc",
         numero: "115",
         masa: "[288]",
-        periodoGrupo: "7,15",
+        periodo: "7",
+        grupo: "15",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027348.png"
     },
     {
@@ -1047,7 +1162,8 @@ const tablaPeriodica = [
         simbolo: "Lv",
         numero: "116",
         masa: "[290]",
-        periodoGrupo: "7,16",
+        periodo: "7",
+        grupo: "16",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027351.png"
     },
     {
@@ -1056,7 +1172,8 @@ const tablaPeriodica = [
         simbolo: "Ts",
         numero: "117",
         masa: "[294]",
-        periodoGrupo: "7,17",
+        periodo: "7",
+        grupo: "17",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027355.png"
     },
     {
@@ -1065,7 +1182,8 @@ const tablaPeriodica = [
         simbolo: "Og",
         numero: "118",
         masa: "[294]",
-        periodoGrupo: "7,18",
+        periodo: "7",
+        grupo: "18",
         img: "https://cdn-icons-png.flaticon.com/128/4027/4027359.png"
     }    
 ]
