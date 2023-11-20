@@ -34,11 +34,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      if (isAuthenticated) {
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1500);
-      }
+      window.location.href = "/";
     }
   }, [isAuthenticated]);
   return (

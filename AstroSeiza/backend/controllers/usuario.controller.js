@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenSecret = "SECRET";
 
-const obtenerUsuarios = (req, res) => {
+const obtenerUsuarios =   (req, res) => {
   db.query("SELECT * FROM usuarios", (error, results) => {
     if (error) {
       res.status(500).json({ message: "Error al obtener los usuarios" });
@@ -55,7 +55,7 @@ const crearUsuario = (req, res) => {
         const encryptedPassword = bcrypt.hashSync(password, 10);
 
         db.query(
-          "INSERT INTO usuarios (nombre, usuario, password, email, foto) VALUES (?, ? ,? ,? , ?)",
+          "INSERT INTO usuarios (nombre, usuario, password, email ) VALUES (?, ? ,? ,? )",
           [nombre, usuario, encryptedPassword, email, foto],
           (error, results) => {
             if (error) {
@@ -76,12 +76,12 @@ const crearUsuario = (req, res) => {
 
 const editarUsuario = (req, res) => {
   const id = req.params.id;
-  const { nombre, usuario, password, email, foto } = req.body;
+  const { nombre, usuario, password, email } = req.body;
   const encryptedPassword = bcrypt.hashSync(password, 10);
 
   db.query(
-    "UPDATE usuarios SET nombre = ?, usuario = ?, password = ?, email =? , foto = ? WHERE id = ?",
-    [nombre, usuario, encryptedPassword, email, foto, id],
+    "UPDATE usuarios SET nombre = ?, usuario = ?, password = ?, email =? ,  WHERE id = ?",
+    [nombre, usuario, encryptedPassword, email,  id],
     (error, results) => {
       if (error) {
         res.status(500).json({ message: "Error al actualizar el usaurio" });
@@ -197,7 +197,6 @@ const profile = (req, res) => {
           id: usuario.id,
           nombre: usuario.nombre,
           email: usuario.email,
-          foto: usuario.foto,
         });
       }
     }

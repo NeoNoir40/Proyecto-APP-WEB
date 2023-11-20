@@ -20,7 +20,7 @@ const ISSLocationMap = () => {
         setIssPosition({
           lat: parseFloat(data.iss_position.latitude),
           lon: parseFloat(data.iss_position.longitude),
-        });
+          });
       } catch (e) {
         setError(e.message);
       } finally {
