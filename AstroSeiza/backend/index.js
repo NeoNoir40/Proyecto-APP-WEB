@@ -19,6 +19,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, './dbimagenes')));
+
 app.get("/", (req, res) => {
   res.send("backend de usarios");
 });
@@ -88,25 +89,28 @@ app.post('/images/upload/:id', fileUpload, async (req, res) => {
     const filePath = path.join(__dirname, '/imagenes', filename);
     const data = fs.readFileSync(filePath);
 
-    // Verificar si ya existe una foto para este usuario
-    const checkQuery = 'SELECT COUNT(*) AS count FROM fotos WHERE usuario_id = ?';
-    const [countResult] = await db.promise().query(checkQuery, [usuario_id]);
+    // Check if the user already has an existing photo
+    const checkQuery = 'SELECT * FROM fotos WHERE usuario_id = ?';
+    const [existingPhoto] = await db.promise().query(checkQuery, [usuario_id]);
 
-    if (countResult[0].count > 0) {
-      // El usuario ya tiene una foto, manejar el error
-      console.error('Ya existe una foto para este usuario');
-      res.status(400).send('Ya existe una foto para este usuario');
-      return;
+    if (existingPhoto.length > 0) {
+      // Update the existing photo
+      const updateQuery = 'UPDATE fotos SET type = ?, name = ?, data = ? WHERE usuario_id = ?';
+      await db.promise().query(updateQuery, [mimetype, originalname, data, usuario_id]);
+
+      console.log('Foto actualizada correctamente');
+      res.send('Imagen actualizada');
+    } else {
+      // Insert a new photo if the user doesn't have one
+      const insertQuery = 'INSERT INTO fotos SET ?';
+      await db.promise().query(insertQuery, { type: mimetype, name: originalname, data, usuario_id });
+
+      console.log('Foto insertada correctamente');
+      res.send('Imagen subida');
     }
 
-    // Insertar la nueva foto
-    const insertQuery = 'INSERT INTO fotos SET ?';
-    await db.promise().query(insertQuery, { type: mimetype, name: originalname, data, usuario_id });
-
-    console.log('Foto insertada correctamente');
-    res.send('Imagen subida');
-
-    // Elimina el archivo después de insertar la foto en la base de datos
+    // Remove the file after processing
+    fs.unlinkSync(filePath);
   } catch (error) {
     console.error('Error al procesar la solicitud:', error);
     res.status(500).send('Error interno del servidor');
@@ -117,16 +121,16 @@ app.get('/images/:id', (req, res) => {
   const id = req.params.id;
 
   db.query('SELECT * FROM fotos WHERE usuario_id = ?', [id], (err, rows) => {
-    
-      if(err) return res.status(500).send('Error interno del servidor');
 
-      if(rows.length === 0) return res.status(404).send('No se encontró la foto');
+    if (err) return res.status(500).send('Error interno del servidor');
 
-      const img = rows[0]; // Tomar solo la primera imagen (puedes ajustar la lógica según tus necesidades)
+    if (rows.length === 0) return res.status(404).send('No se encontró la foto');
 
-      fs.writeFileSync(path.join(__dirname, './dbimagenes', img.name), img.data);
+    const img = rows[0]; // Tomar solo la primera imagen (puedes ajustar la lógica según tus necesidades)
 
-      res.json({ image: img.name }); // Devolver solo el nombre de la imagen
+    fs.writeFileSync(path.join(__dirname, './dbimagenes', img.name), img.data);
+
+    res.json({ image: img.name }); // Devolver solo el nombre de la imagen
 
   });
 });

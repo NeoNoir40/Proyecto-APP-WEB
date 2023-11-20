@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenSecret = "SECRET";
 
-const obtenerUsuarios =   (req, res) => {
+const obtenerUsuarios = (req, res) => {
   db.query("SELECT * FROM usuarios", (error, results) => {
     if (error) {
       res.status(500).json({ message: "Error al obtener los usuarios" });
@@ -63,6 +63,8 @@ const crearUsuario = (req, res) => {
                 .status(500)
                 .json({ message: "Error al crear el usuario" });
             } else {
+              console.log(encryptedPassword);
+
               return res
                 .status(201)
                 .json({ message: "Usuario creado correctamente" });
@@ -81,7 +83,7 @@ const editarUsuario = (req, res) => {
 
   db.query(
     "UPDATE usuarios SET nombre = ?, usuario = ?, password = ?, email =? ,  WHERE id = ?",
-    [nombre, usuario, encryptedPassword, email,  id],
+    [nombre, usuario, encryptedPassword, email, id],
     (error, results) => {
       if (error) {
         res.status(500).json({ message: "Error al actualizar el usaurio" });
@@ -103,6 +105,8 @@ const eliminarUsuario = (req, res) => {
   });
 };
 
+
+
 const login = (req, res) => {
   const { email, password } = req.body;
   db.query(
@@ -115,21 +119,17 @@ const login = (req, res) => {
         res.status(400).json({ message: "Usuario no encontrado" });
       } else {
         const response = resultado[0];
-
+        console.log(response);
         const contraseñaValida = bcrypt.compare(password, response.password);
 
-       
-        
         if (contraseñaValida) {
+          const token = jwt.sign({ id: response.id }, tokenSecret, {
+            expiresIn: "1d",
+          });
+          res.cookie("token", token);
+          console.log(contraseñaValida);
+          res.json({ message: "Login exitoso", token: token });
 
-            const token = jwt.sign({ id: response.id }, tokenSecret, {
-                expiresIn: "1d",
-              });
-      
-              res.cookie("token", token);
-
-              res.cookie("token", token);
-              res.json({ message: "Login exitoso" , token: token  });
         } else {
           console.log(contraseñaValida);
           res.status(400).json({ message: "Contraseña incorrecta" });
@@ -141,34 +141,34 @@ const login = (req, res) => {
 
 
 const verifyToken = async (req, res) => {
-    const { token } = req.cookies;
-    if (!token) return res.json({ authenticated: false });
-  
-    jwt.verify(token, tokenSecret, async (error, user) => {
-      if (error) return res.sendStatus(401);
-  
-      const id = user.id
-      console.log("ID del usuario:", id);
-      console.log("token del:", token);
-  
-      db.query('SELECT * FROM usuarios WHERE id = ?', [id], async (error, results) => {
-        if (error) {
-          res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
-        } else if (results.length === 0) {
-          res.sendStatus(401);
-        } else {
-          const userFound = results[0];
-  
-          return res.json({
-            id: userFound.id,
-            nombre: userFound.nombre,
-            email: userFound.email,
-            // Otros datos del usuario que se deseen incluir en la respuesta
-          });
-        }
-      });
+  const { token } = req.cookies;
+  if (!token) return res.json({ authenticated: false });
+
+  jwt.verify(token, tokenSecret, async (error, user) => {
+    if (error) return res.sendStatus(401);
+
+    const id = user.id
+    console.log("ID del usuario:", id);
+    console.log("token del:", token);
+
+    db.query('SELECT * FROM usuarios WHERE id = ?', [id], async (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
+      } else if (results.length === 0) {
+        res.sendStatus(401);
+      } else {
+        const userFound = results[0];
+
+        return res.json({
+          id: userFound.id,
+          nombre: userFound.nombre,
+          email: userFound.email,
+          // Otros datos del usuario que se deseen incluir en la respuesta
+        });
+      }
     });
-  };
+  });
+};
 
 const logout = (req, res) => {
   // Eliminar la cookie que almacena el token

@@ -27,7 +27,7 @@ const obtenerAdminId = (req, res) => {
 };
 
 const crearAdmin = (req, res) => {
-  const { nombre,  password, email, foto } = req.body;
+  const { nombre, password, email, foto } = req.body;
 
   // Primero, verifica si ya existe un admin con ese email
   db.query(
@@ -72,12 +72,12 @@ const crearAdmin = (req, res) => {
 
 const editarAdmin = (req, res) => {
   const id = req.params.id;
-  const { nombre,  password, email, foto } = req.body;
+  const { nombre, password, email, foto } = req.body;
   const encryptedPassword = bcrypt.hashSync(password, 10);
 
   db.query(
     "UPDATE Admin SET nombre = ?, password = ?, email = ? , foto = ? WHERE id_admin = ?",
-    [nombre,  encryptedPassword, email, foto, id],
+    [nombre, encryptedPassword, email, foto, id],
     (error, results) => {
       if (error) {
         res.status(500).json({ message: "Error al actualizar el usaurio" });
@@ -114,18 +114,20 @@ const login = (req, res) => {
 
         const contraseñaValida = bcrypt.compare(password, response.password);
 
-       
-        
+        console.log("Contraseña Ingresada:", password);
+        console.log("Contraseña Almacenada:", response.password);
+        console.log("¿Contraseña Válida?", contraseñaValida);
+
+
         if (contraseñaValida) {
 
-            const token = jwt.sign({ id: response.id_admin }, tokenSecret, {
-                expiresIn: "1d",
-              });
-      
-              res.cookie("token", token);
+          const token = jwt.sign({ id: response.id_admin }, tokenSecret, {
+            expiresIn: "1d",
+          });
 
-              res.cookie("token", token);
-              res.json({ message: "Login exitoso Admin" , token: token  });
+          res.cookie("token", token);
+
+          res.json({ message: "Login exitoso Admin", token: token });
         } else {
           console.log(contraseñaValida);
           res.status(400).json({ message: "Contraseña incorrecta" });
@@ -137,34 +139,34 @@ const login = (req, res) => {
 
 
 const verifyToken = async (req, res) => {
-    const { token } = req.cookies;
-    if (!token) return res.json({ authenticated: false });
-  
-    jwt.verify(token, tokenSecret, async (error, user) => {
-      if (error) return res.sendStatus(401);
-  
-      const id = user.id
-      console.log("ID del admin:", id);
-      console.log("token del:", token);
-  
-      db.query('SELECT * FROM Admin WHERE id_admin = ?', [id], async (error, results) => {
-        if (error) {
-          res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
-        } else if (results.length === 0) {
-          res.sendStatus(401);
-        } else {
-          const userFound = results[0];
-  
-          return res.json({
-            id: userFound.id,
-            nombre: userFound.nombre,
-            email: userFound.email,
-            // Otros datos del admin que se deseen incluir en la respuesta
-          });
-        }
-      });
+  const { token } = req.cookies;
+  if (!token) return res.json({ authenticated: false });
+
+  jwt.verify(token, tokenSecret, async (error, user) => {
+    if (error) return res.sendStatus(401);
+
+    const id = user.id
+    console.log("ID del admin:", id);
+    console.log("token del:", token);
+
+    db.query('SELECT * FROM Admin WHERE id_admin = ?', [id], async (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
+      } else if (results.length === 0) {
+        res.sendStatus(401);
+      } else {
+        const userFound = results[0];
+
+        return res.json({
+          id: userFound.id,
+          nombre: userFound.nombre,
+          email: userFound.email,
+          // Otros datos del admin que se deseen incluir en la respuesta
+        });
+      }
     });
-  };
+  });
+};
 
 const logout = (req, res) => {
   // Eliminar la cookie que almacena el token

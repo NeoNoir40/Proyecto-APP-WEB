@@ -19,7 +19,6 @@ export default function Login() {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await sigin(data);
-
       Swal.fire({
         position: "center",
         icon: "success",
@@ -34,9 +33,10 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      window.location.href = "/";
+      // window.location.href = "/";
     }
   }, [isAuthenticated]);
+
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <video
