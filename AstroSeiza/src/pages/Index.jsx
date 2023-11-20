@@ -63,6 +63,7 @@ export default function Index() {
                   <h1 className="font-bold text-[30px]">Astronomia</h1>
                 </Link>
               </div>
+              <Link to='/Quimica'>
               <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                 <Lottie
                   animationData={iconquimica}
@@ -70,6 +71,7 @@ export default function Index() {
                 />
                 <h1 className="font-bold text-[30px]">Quimica</h1>
               </div>
+              </Link>
               <Link to="/Fisica">
                 <div className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
                   <Lottie

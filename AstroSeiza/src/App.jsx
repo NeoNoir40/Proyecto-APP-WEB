@@ -19,6 +19,8 @@ import PerfilAdmin from './pages/Admin/PerfilAdmin'
 import UpdateUser from "./pages/Admin/UpdateUser";
 import UpdateAdmin from "./pages/Admin/UpdateAdmin";
 import EditUserByUser from "./pages/EditUser";
+import Nosotros from "./pages/nosotros";
+import Quimica from "./pages/quimica";
 function App() {
   return (
     <AuthProvider>
@@ -33,7 +35,9 @@ function App() {
             <Route path="SingUP" element={<SingUP />} />
             <Route path="/" element={<Index />} />
             <Route path="Astronomia" element={<Astronomia />} />
-            <Route path="*" element={<Error />} />
+            <Route path="/Nosotros" element={<Nosotros />} />
+        <Route path="/Quimica" element={<Quimica/>} />
+        <Route path="*" element={<Error />} />
 
             <Route element={<ProtectedRoute/>}>
               <Route path="/Perfil" element={<Perfil/>} />

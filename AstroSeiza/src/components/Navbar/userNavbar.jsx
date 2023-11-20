@@ -20,15 +20,17 @@ export default function NavbarUser({params}) {
               Inicio
             </li>
           </Link>
+          <Link to="/Nosotros">
           <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
             Nosotros
           </li>
+          </Link>
           <Link to="/Astronomia">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
               Astronomia
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/Quimica">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
               Quimica
             </li>
