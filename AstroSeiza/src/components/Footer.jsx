@@ -5,7 +5,7 @@ export default function Footer() {
           <ul className="flex gap-4 ml-5 p-5">
             <li>Ayuda</li>
             <li>Nosotros</li>
-            <li>Contactanos</li>
+            <li>Contactanoss</li>
           </ul>
         </div>
       </footer>

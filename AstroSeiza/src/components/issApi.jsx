@@ -30,13 +30,13 @@ const ISSLocationMap = () => {
 
     const interval = setInterval(() => {
       fetchISSLocation();
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   const issIcon = new L.Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/5551/5551492.png", 
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/5551/5551492.png",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
   });
@@ -69,7 +69,7 @@ const ISSLocationMap = () => {
           únicas del planeta que compartimos.
         </p>
       </div>
-      
+
       <MapContainer
         center={[issPosition.lat, issPosition.lon]}
         zoom={10}
