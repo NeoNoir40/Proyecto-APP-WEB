@@ -2,6 +2,8 @@ import React from "react";
 import dano from "../assets/img/dano.jpeg"
 import coronado from "../assets/img/coronado.jpg"
 import wilberth from "../assets/img/wilberth.jpg"
+import wil from "../assets/img/wuil.jpeg"
+import coronao from "../assets/img/coronao.jpeg"
 export default function Nosotros() {
     return (
         <>
@@ -52,28 +54,32 @@ export default function Nosotros() {
                 <p className=" text-white font-bold text-3xl mt-6">Valores</p>
             </div>
             <div className=" mb-5">
-                    <p className=" text-white text-[20px] pl-60">
-                        1. Inspiración: Buscamos despertar la pasión por la ciencia, mostrandola atractiva y fácil de entender
-                    </p>
-                    <p className="text-white text-[20px] pl-60">
-                        2. Aprendizaje: Queremos que la gente que use la aplicación, refuerze sus conocimientos o, de lo contrario, los adquiera gracias a nuestra aplicación.
-                    </p>
-                    <p className="text-white text-[20px] pl-60">
-                        3. Accesibilidad: Nuestra aplicacion estará diseñada para que cualquier persona de cualquier edad, sea capaz de utilizarla.
-                    </p>
+                <p className=" text-white text-[20px] pl-60">
+                    1. Inspiración: Buscamos despertar la pasión por la ciencia, mostrandola atractiva y fácil de entender
+                </p>
+                <p className="text-white text-[20px] pl-60">
+                    2. Aprendizaje: Queremos que la gente que use la aplicación, refuerze sus conocimientos o, de lo contrario, los adquiera gracias a nuestra aplicación.
+                </p>
+                <p className="text-white text-[20px] pl-60">
+                    3. Accesibilidad: Nuestra aplicacion estará diseñada para que cualquier persona de cualquier edad, sea capaz de utilizarla.
+                </p>
             </div>
             <div className=" text-white text-2xl mb-7 font-bold text-center">
                 <h2>Miembros del equipo</h2>
             </div>
-            <div className="text-white text-center font-semibold">
-                <ul>
-                    <li className=" h-10"> Cahuich Cruz Wilberth Antony</li>
-                    <img className="w-80 mx-auto block rounded-lg" src={wilberth} alt="" />
-                    <li className=" mt-5 h-10"> Coronado Cob José Antonio</li>
-                    <img className="w-80 mx-auto block rounded-lg" src={coronado} alt="" />
-                    <li className=" mt-5 h-10">Sánchez Martínez Daniel Jesús</li>
+            <div className="text-white text-center justify-center font-semibold flex flex-row">
+                <div className=" mx-10">
+                    <p className=" mb-5"> Cahuich Cruz Wilberth Antony</p>
+                    <img className="w-80 mx-auto block rounded-lg" src={wil} alt="" />
+                </div>
+                <div className=" mx-10">
+                    <p className=" mb-5"> Coronado Cob José Antonio</p>
+                    <img className="w-80 mx-auto block rounded-lg" src={coronao} alt="" />
+                </div>
+                <div className=" mx-10">
+                    <p className=" mb-5">Sánchez Martínez Daniel Jesús</p>
                     <img className="w-80 mx-auto block rounded-lg" src={dano} alt="" />
-                </ul>
+                </div>
             </div>
             <br />
             <br />
