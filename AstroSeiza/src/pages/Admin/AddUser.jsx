@@ -48,12 +48,12 @@ function FormUser() {
 
     return (
         <>
-            <div className="bg-white my-10">
-                <div className="bg-white">
-                    <div className=" flex justify-center items-center bg-white">
+            <div className="min-h-screen bg-white my-10">
+                <div className="bg-white ">
+                    <div className=" flex justify-center items-center ">
                         <form
                             onSubmit={onSubmit}
-                            className=" shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
+                            className=" bg-white mt-[10%] shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
                         >
                             {siginErrors.map((err, i) => (
                                 <div className="bg-red-500 p-2 text-white" key={i}>

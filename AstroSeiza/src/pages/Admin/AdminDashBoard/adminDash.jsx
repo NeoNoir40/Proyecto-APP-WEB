@@ -4,10 +4,8 @@ import SideBar from "../adminComponents/sidebar";
 import React, { useState, useEffect } from "react";
 import Administra from '../adminComponents/img/admin.jpeg';
 import Usuarioo from '../adminComponents/img/userssss.jpeg';
-
 export default function IndexAdmin() {
   const { admin } = useAuth();
-  console.log('admin', admin);
 
   const [asUs, setAdUs] = useState([]);
 
@@ -35,7 +33,7 @@ export default function IndexAdmin() {
             DASHBOARD ASTROSEIZA
           </p>
           <p  className="m-3 text-center text-3xl text-black font-semibold ml-10">
-            ¡Bienvenido Administador!
+            ¡Bienvenido {admin.nombre}!
           </p>
           <p className="text-2xl my-5 font-semibold">
             ¿Qué puedes hacer?

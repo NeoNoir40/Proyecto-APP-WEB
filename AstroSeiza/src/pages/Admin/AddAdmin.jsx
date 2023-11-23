@@ -49,12 +49,13 @@ function FormAdmin() {
     });
 
     return (
-        <div className=" bg-white my-10">
+        
+        <div className=" min-h-screen bg-white my-10">
             <div className="bg-white">
                 <div className=" flex justify-center items-center bg-white">
                     <form
                         onSubmit={onSubmit}
-                        className=" shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
+                        className=" shadow-xl mt-[10%] rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
                     >
                         {siginErrors.map((err, i) => (
                             <div className="bg-red-500 p-2 text-white" key={i}>
