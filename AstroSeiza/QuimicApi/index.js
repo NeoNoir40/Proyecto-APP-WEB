@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express();
 //
 const quimicApi = require("./routes/quimicApi.routes");
-const categApi = require("./routes/categApi.routes")
+const categApi = require("./routes/categApi.routes");
 //midlware
 app.use(cors())
 app.use(express.json());

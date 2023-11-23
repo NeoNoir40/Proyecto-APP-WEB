@@ -83,9 +83,9 @@ export default function quimica() {
                     className="h-[300px] w-[300px]"
                 />
                 <div className=" ml-10">
-                    <p className=" text-white text-center font-bold text-1xl container ">
+                    <p className=" text-white text-center text-1xl container ">
                         La química es una ciencia que tiene por finalidad no sólo descubrir,<br />
-                        sino también, y sobre todo, crear, ya que es el arte de hacer compleja la materia.
+                        sino también, crear, ya que es el arte de hacer compleja la materia.
                     </p>
                 </div>
 
@@ -93,8 +93,8 @@ export default function quimica() {
 
             <div className="flex flex-row p-5 justify-center items-center">
                 <div className=" mx-20">
-                    <h1 className="text-white font-bold text-2xl p-5 mb-5">Principios de la quimica moderna</h1>
-                    <p className=" text-white font-bold text-1xl ">
+                    <h1 className="text-white font-bold text-2xl p-5 mb-5">Principios de la química moderna</h1>
+                    <p className=" text-white text-1xl ">
                         La química moderna se rige por el llamado principio cuántico,<br />
                         fruto de la teoría atómica que considera a la materia desde diferentes niveles de complejidad,<br />
                         como son: Materia. Cualquier cosa que tenga masa, volumen y esté compuesta de partículas.<br />
@@ -168,7 +168,7 @@ export default function quimica() {
                 </div>
             </div>
             <div className=" mb-10 flex justify-center flex-col">
-                <p className="text-white font-bold text-1xl mt-[40px] text-center">
+                <p className="text-white text-1xl mt-[40px] text-center">
                     En la tabla periódica, se puede observar que los elementos químicos cuentan con unos colores diferentes entre ellos,
                     <br />
                     estos colores se deben a que forman parte de una categoría en particular, usando de ejemplo los elementos, te mostraré la categorías,
@@ -220,7 +220,7 @@ export default function quimica() {
                 imagen={dinmolecula}
             />
 
-            <h1 className=" text-white text-center font-bold text-3xl mt-10">Representacion orbital molecular</h1>
+            <h1 className=" text-white text-center font-bold text-3xl mt-10">Representación orbital molecular</h1>
             <div className="justify-center items-center flex p-10">
                 <Lottie
                     animationData={orbital}
