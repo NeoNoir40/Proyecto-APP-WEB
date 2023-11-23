@@ -21,6 +21,8 @@ import UpdateAdmin from "./pages/Admin/UpdateAdmin";
 import EditUserByUser from "./pages/EditUser";
 import Nosotros from "./pages/nosotros";
 import Quimica from "./pages/quimica";
+import FormAdmin from "./pages/Admin/AddAdmin";
+import FormUser from "./pages/Admin/AddUser";
 function App() {
   return (
     <AuthProvider>
@@ -51,6 +53,8 @@ function App() {
             <Route path="indexAdmin" element={<IndexAdmin />} />
             <Route path="PerfilAdmin" element={<PerfilAdmin />} />
             <Route path="usuarios" element={<UsuariosAdmin/>} />
+            <Route path='/AddAdmin' element={<FormAdmin/>}></Route>
+            <Route path="/AddUser" element={<FormUser/>} ></Route>
             </Route>
 
             <Route path="/Fisica" element={<Physical/>}/>

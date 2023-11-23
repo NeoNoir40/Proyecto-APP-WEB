@@ -147,14 +147,14 @@ export default function Perfil() {
         <div className="flex flex-row gap-5">
           <Link to={`/EditarUsuario/${id}`}>
             <div className="flex flex-row hover:scale-105 transition-shadow items-center border rounded-[7px_7px_7px_7px] ml-auto mr-auto w-auto p-1">
-              <BiEdit className="text-white my-1" size={22} />
+              <BiEdit className="text-white my-1 ml-2 mr-2" size={22} />
               <button className=" flex flex-row text-white ml-auto mr-auto text-xl">
-                Editar Usuario
+                Editar Perfil
               </button>
             </div>
           </Link>
           <div className="flex flex-row hover:scale-105 transition-shadow items-center border rounded-[7px_7px_7px_7px] ml-auto mr-auto w-auto p-1">
-            <RiDeleteBin5Fill className="text-white my-1" size={22} />
+            <RiDeleteBin5Fill className="text-white my-1 ml-2 mr-2" size={22} />
             <button
               onClick={() => handleDelete(id)}
               className=" flex flex-row text-white ml-auto mr-auto text-xl"
@@ -170,12 +170,12 @@ export default function Perfil() {
           <>
             <div>
               <div className="flex flex-col mt-10">
-                <div className="bg-white rounded-md">
-                  <input id="fileinput" onChange={selectedHandler} type="file" className="" placeholder="Inserte su imagen aca" />
+                <div className=" bg-transparent rounded-[5px_5px_5px_5px]">
+                  <input id="fileinput" onChange={selectedHandler} type="file" className="cursor-pointer rounded-[5px_5px_5px_5px] bg-transparent border-2 w-42 text-white" placeholder="Inserte su imagen aca" />
                 </div>
                 <div className="flex flex-row gap-5 justify-center items-center mt-5">
-                  <button className="bg-yellow-500 rounded-sm w-1/4 p-2 text-white" onClick={sendHandler}> Subir</button>
-                  <button className="bg-red-500 rounded-sm w-1/4 p-2 text-white" onClick={closeWindow}>Cancelar</button>
+                  <button className="bg-yellow-500 rounded-[5px_5px_5px_5px] w-1/4 p-2 text-white" onClick={sendHandler}> Subir</button>
+                  <button className="bg-red-500 rounded-[5px_5px_5px_5px] w-1/4 p-2 text-white" onClick={closeWindow}>Cancelar</button>
                 </div>
               </div>
 
@@ -184,8 +184,8 @@ export default function Perfil() {
           </>
 
         ) : (
-          <div className="flex flex-row hover:scale-105 transition-shadow items-center border rounded-[7px_7px_7px_7px] ml-auto mr-auto w-auto p-1">
-            <MdOutlineAddAPhoto className="text-white my-1" size={22} />
+          <div className="flex flex-row my-5 hover:scale-105 transition-shadow items-center border rounded-[7px_7px_7px_7px] ml-auto mr-auto w-auto p-1">
+            <MdOutlineAddAPhoto className="text-white my-1 ml-2 mr-2" size={22} />
             <button
               className=" flex flex-row text-white ml-auto mr-auto text-xl"
               onClick={openWindow}

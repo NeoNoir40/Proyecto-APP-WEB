@@ -13,14 +13,14 @@ export default function Astronomia() {
         <AstroSong />
       </>
 
-      <div className="grid p-20">
+      <div className="grid p-20 ">
 
-        <div className="bg-white   w-[650px]">
+        <div className="bg-white  rounded-[5px_5px_5px_5px] w-[650px]">
           <p className="text-red-600  font-bold text-[12px]">
-            Nota: si estas en un dispositivo en el que la resolucion nativa no
-            sea 1920 x 1280, es posible que la pagina no se vea correctamente,
-            de igual menera si el dipsotivio tiene algun tipo de zoom activado,
-            se recomienda desactivarlo para una mejor experiencia
+            Nota: si estás en un dispositivo en el que la resolución nativa no
+            sea 1920 x 1280, es posible que la página no se vea correctamente,
+            de igual menera si el dipsotivio tiene algún tipo de zoom activado,
+            se recomienda desactivarlo para una mejor experiencia.
           </p>
         </div>
         <>

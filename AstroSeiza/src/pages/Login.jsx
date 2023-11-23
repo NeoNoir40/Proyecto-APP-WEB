@@ -24,7 +24,7 @@ export default function Login() {
       setShow(true);
     } catch (error) {
       console.log(error);
-      setShow(false); 
+      setShow(false);
     }
   });
 
@@ -57,10 +57,10 @@ export default function Login() {
         <div className=" h-full w-1/2 flex flex-col justify-center items-center ">
           <div className="flex flex-col bg-white p-20 rounded-md ">
             <h1 className="text-[25px] font-bold text-center mb-2">
-              Inicio de sesion
+              Inicio de Sesión
             </h1>
             <p className="mb-2">
-              Bienvenido, ingresa tus datos de para inciar sesion
+              Bienvenido, ingresa tus datos de para iniciar sesión
             </p>
             {siginErrors.map((err, i) => (
               <div className="bg-red-500 p-2 text-white" key={i}>
@@ -72,7 +72,7 @@ export default function Login() {
                 <input
                   {...register("email", { required: true })}
                   type="email"
-                  placeholder="Correo electronico"
+                  placeholder="Correo electrónico"
                   className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
                 />
                 {errors.email && (
@@ -90,10 +90,10 @@ export default function Login() {
                   <span className="text-red-500">Este campo es requerido</span>
                 )}
               </div>
-              <p className="mb-2">Olvide mi contraseña</p>
+              <p className="mb-2">Olvidé mi contraseña</p>
               <div>
                 <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors ">
-                  Inciar Sesion
+                  Iniciar Sesión
                 </button>
               </div>
               <div>
@@ -104,7 +104,7 @@ export default function Login() {
                 </Link>
               </div>
               <p className="text-center text-gray-400">
-                otras formas de inciar sesion
+                Otras formas de iniciar sesión
               </p>
               <div>
                 <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors">

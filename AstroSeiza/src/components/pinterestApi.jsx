@@ -59,7 +59,7 @@ export default function PinterestApi() {
     <div className="flex flex-colum justify-center m-auto p-[100px]">
       <div className=" h-[400px] w-[1100px] text-white">
         <h1 className="text-center font-bold text-[20px]">
-          Dato dario de la nasa
+          Dato Diario De La Nasa
         </h1>
         <div className="mt-10">
           <div className="flex gap-4 m-auto p-2 ">
@@ -75,7 +75,7 @@ export default function PinterestApi() {
               />
             )}
 
-            <div className="">
+            <div className=" my-5">
               <p>Fecha: {nasa.date}</p>
               <p>Explicación: {traduccion || nasa.explanation}</p>
               <p>Titulo: {nasa.title}</p>

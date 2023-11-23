@@ -91,7 +91,7 @@ export default function TypeOfAstros() {
             </h1>
             <p className="text-center text-white text-[20px] p-4">
               Haga click en cualquiera de los siguientes iconos para ver
-              imagenes acerca de los siguientes astros:
+              imágenes acerca de los siguientes astros:
             </p>
           </div>
 

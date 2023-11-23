@@ -14,12 +14,12 @@ export default function AstronomiStartModule() {
         <div className="grid  text-white">
           <div className=" h-12 w-auto">
             <h1 className=" font-bold text-[30px] mt-20 text-center">
-              Astronomia
+              Astronomía
             </h1>
           </div>
           <div className=" h-[140px] w-[650px]">
             <p className="text-[20px] ">
-              La astronomia es la rama de la ciencia que se enfoca a estudiar
+              La astronomía es la rama de la ciencia que se enfoca a estudiar
               los astros (estrellas, planetas, asteroides..etc), en este
               apartado podras encontrar informacion acerca de los astros y sus
               fenomenos,.

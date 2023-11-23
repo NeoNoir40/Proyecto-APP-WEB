@@ -20,7 +20,7 @@ export default function Index() {
         <div className="relative  p-[250px] mb-[100px] flex flex-col justify-center items-center m-auto ">
           <div className="flex border-solid border border-white">
             <h2 className="text-white text-[20px] font-serif flex h-[250px] p-24 ">
-              "La tierra es un lugar maravilloso , pero es solo un punto azul
+              "La tierra es un lugar maravilloso, pero es solo un punto azul
               pálido en un vasto océano cósmico."- Carl Sagan
             </h2>
           </div>
@@ -36,20 +36,20 @@ export default function Index() {
           <div className="flex flex-colum justify-center  ">
             <div className=" h-[330px] w-[1300px]   ">
               <p className="text-center text-[20px] ">
-                Durante su estancia en la aplicacion web, podran encontrar
-                informacion interesante acerca de la Astronomia, Fisica y
-                Quimica, como pono ejemplo cuales son los cuerpos celestes o los
+                Durante su estancia en la Aplicación Web, podrán encontrar
+                información interesante acerca de la Astronomía, Física y
+                Química, cómo por ejemplo cuáles son los cuerpos celestes o los
                 atros del espacio, datos interesantes acerca del espacio y la
-                tierra, en los apartados de Quimica y Fisica podran encontrar
+                tierra, en los apartados de Química y Física podrán encontrar
                 datos interesantes de como esas materias han contribuido a la
-                ciencia , aportando conociemiento y como mejoro la tecnologia
-                del planeta tierra
+                ciencia, aportando conocimiento y como mejoró la tecnología
+                del planeta tierra.
               </p>
             </div>
           </div>
           <div className="text-[20px]">
             <p>
-              Aqui podras encontrar informacion especifica de los siguientes
+              Aquí podras encontrar información específica de los siguientes
               apartados:
             </p>
             <div className="flex flex-colum justify-center">
@@ -60,7 +60,7 @@ export default function Index() {
                     className="h-[400px] w-[400px]"
                   />
 
-                  <h1 className="font-bold text-[30px]">Astronomia</h1>
+                  <h1 className="font-bold text-[30px]">Astronomía</h1>
                 </Link>
               </div>
               <Link to='/Quimica'>
@@ -69,7 +69,7 @@ export default function Index() {
                   animationData={iconquimica}
                   className="h-[400px] w-[400px] "
                 />
-                <h1 className="font-bold text-[30px]">Quimica</h1>
+                <h1 className="font-bold text-[30px]">Química</h1>
               </div>
               </Link>
               <Link to="/Fisica">
@@ -78,7 +78,7 @@ export default function Index() {
                     animationData={iconfisica}
                     className="h-[400px] w-[400px]"
                   />
-                  <h1 className="font-bold text-[30px]">Fisica</h1>
+                  <h1 className="font-bold text-[30px]">Física</h1>
                 </div>
               </Link>
             </div>
@@ -88,15 +88,15 @@ export default function Index() {
       <div className="flex flex-colum justify-center mt-[40px] mb-[40px] ">
         <div className="withus text-white   text-center rounded-xl ">
           <h2 className="font-bold text-[20px]">
-            Unete a nuestra comunidad y se un Quimica,Astronomo, Fisico,
-            Aprenderas nuevas cosas en nuestras secciones informativas acerca
-            del espacio, la quimica y la fisica, Solo haz click en el boton para
-            registrarte! , es gratis
+            Únete a nuestra comunidad y se un Químico, Astrónomo, Físico,
+            Aprenderás nuevas cosas en nuestras secciones informativas acerca
+            del espacio, la química y la física. Solo haz click en el botón para
+            registrarte!, es gratis.
           </h2>
           <Link to={"/SingUP"}>
             <div className="mt-10  hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
               <button className="bg-white border-2 border-solid  border-yellow-300 rounded-md text-black m-auto p-1 text-[15px]">
-                Registrate
+                Regístrate
               </button>
             </div>
           </Link>

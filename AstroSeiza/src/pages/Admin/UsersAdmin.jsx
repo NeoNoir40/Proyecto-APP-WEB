@@ -8,30 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function IndexAdmin() {
+
   const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const { CreateUser, error: siginErrors } = useAuth();
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      await CreateUser(data);
-      fetchUsers();
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Se ah creado correctamente el usuario",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  });
 
   const [userInfo, setUserInfo] = useState([]);
   const [popWindows, setPopWindow] = useState(false);
@@ -97,104 +75,17 @@ export default function IndexAdmin() {
         <SideBar />
         <div className="texto h-full w-full">
           <div className="m-3 text-xl text-black font-semibold text-center">
-            DASHBOARD ASTROSEIZA
+            DASHBOARD USUARIOS
           </div>
 
-          {popWindows ? (
-            <>
-              <div>
-                <div className=" w-full">
-                  <div className=" flex justify-center items-center">
-                    <form
-                      onSubmit={onSubmit}
-                      className=" shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
-                    >
-                      {siginErrors.map((err, i) => (
-                        <div className="bg-red-500 p-2 text-white" key={i}>
-                          {err}
-                        </div>
-                      ))}
-
-                      <label htmlFor="">Nombre</label>
-                      {errors.nombre && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("nombre", { required: true })}
-                        className="w-full text-black my-2 bg-t ransparent border-b border-black outline-none focus:outline-none"
-                        type="text"
-                        placeholder="Ingresa el nombre"
-                      />
-
-                      <label htmlFor="">Usuario</label>
-                      {errors.usuario && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("usuario", { required: true })}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-                        type="text"
-                        placeholder="Ingresa el usuario"
-                      />
-                      <label htmlFor="">Email</label>
-                      {errors.email && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("email", { required: true })}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-                        type="text"
-                        placeholder="Ingresa el email"
-                      />
-                      <label htmlFor="">Contraseña</label>
-                      {errors.password && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("password", { required: true })}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-                        type="password"
-                        placeholder="Ingresa el contraseña"
-                      />
-
-                      <div className="flex flex-row items-center justify-center  ">
-                        <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
-                          Crear
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center p-10">
-                  <button
-                    onClick={closePopWindows}
-                    className="bg-red-500  text-white font-bold py-2 px-4 rounded  hover:bg-red-400 transition-colors"
-                  >
-                    Cerrar ventana
-                  </button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
               <div className="flex items-center justify-center">
                 <button
-                  onClick={openPopWindows}
+                  onClick={() => navigate('/AddUser')}
                   className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
                 >
-                  Agregar usuario/s
+                  Agregar Usuario/s
                 </button>
               </div>
-            </>
-          )}
 
           <div className=" flex flex-col justify-center items-center my-3">
             {userInfo.length > 0 ? (

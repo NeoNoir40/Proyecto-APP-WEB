@@ -27,17 +27,17 @@ export default function NavbarUser({params}) {
           </Link>
           <Link to="/Astronomia">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
-              Astronomia
+              Astronomía
             </li>
           </Link>
           <Link to="/Quimica">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
-              Quimica
+              Química
             </li>
           </Link>
           <Link to="/Fisica">
             <li className=" hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs ">
-              Fisica
+              Física
             </li>
           </Link>
           <Link to="/Perfil">
@@ -56,7 +56,7 @@ export default function NavbarUser({params}) {
           }}
         >
           <button className="  w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-2 text-center  hover:scale-105 transition-all hover:contrast-125 hover:shadow-xs  ">
-            Cerrar Sesion
+            Cerrar Sesión
           </button>
         </Link>
       </div>

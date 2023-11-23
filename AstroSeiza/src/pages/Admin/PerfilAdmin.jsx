@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 export default function PerfilAdmin() {
   const navigate = useNavigate();
 
@@ -97,92 +98,15 @@ export default function PerfilAdmin() {
         <SideBar />
         <div className="texto h-full w-full">
           <div className="m-3 text-xl text-black font-semibold text-center">
-            Dashboard Perfil Administradores
+            DASHBOARD ADMINISTRADORES
           </div>
-
-          {popWindows ? (
-            <>
-              <div>
-                <div className=" w-full">
-                  <div className=" flex justify-center items-center">
-                    <form
-                      onSubmit={onSubmit}
-                      className=" shadow-xl rounded-xl p-10 border-black border-x-2  border-y-2 flex flex-col w-1/4 gap-2 "
-                    >
-                      {siginErrors.map((err, i) => (
-                        <div className="bg-red-500 p-2 text-white" key={i}>
-                          {err}
-                        </div>
-                      ))}
-
-                      <label htmlFor="">Nombre</label>
-                      {errors.nombre && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("nombre", { required: true })}
-                        className="w-full text-black my-2 bg-t ransparent border-b border-black outline-none focus:outline-none"
-                        type="text"
-                        placeholder="Ingresa el nombre"
-                      />
-
-                      <label htmlFor="">Email</label>
-                      {errors.email && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("email", { required: true })}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-                        type="text"
-                        placeholder="Ingresa el email"
-                      />
-                      <label htmlFor="">Contraseña</label>
-                      {errors.password && (
-                        <span className="text-red-500">
-                          Este campo es requerido
-                        </span>
-                      )}
-                      <input
-                        {...register("password", { required: true })}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none"
-                        type="password"
-                        placeholder="Ingresa el contraseña"
-                      />
-
-                      <div className="flex flex-row items-center justify-center  ">
-                        <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
-                          Crear
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center p-10">
-                  <button
-                    onClick={closePopWindows}
-                    className="bg-red-500  text-white font-bold py-2 px-4 rounded  hover:bg-red-400 transition-colors"
-                  >
-                    Cerrar ventana
-                  </button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
               <div className="flex items-center justify-center">
-                <button
-                  onClick={openPopWindows}
+             <button onClick={() => navigate(`/AddAdmin`)}
                   className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
                 >
-                  Agregar usuario/s
+                  Agregar Admin/s
                 </button>
               </div>
-            </>
-          )}
 
           <div className=" flex flex-col justify-center items-center my-3">
             {userInfo.length > 0 ? (
@@ -191,7 +115,6 @@ export default function PerfilAdmin() {
                   <tr>
                     <th className="w-44 p-3 text-blue-950 uppercase">id</th>
                     <th className="w-1/5">Nombre</th>
-                    <th className="w-1/5">Usuario</th>
                     <th className="w-1/5">Email</th>
                     <th className="w-1/5">Actualizar</th>
                     <th className="w-1/5">Eliminar</th>
@@ -205,9 +128,6 @@ export default function PerfilAdmin() {
                       </td>
                       <td className="p-3 border-y-2 border-black">
                         {user.nombre}
-                      </td>
-                      <td className="p-3 border-y-2 border-black">
-                        {user.usuario}
                       </td>
                       <td className="p-3 border-y-2 border-black">
                         {user.email}

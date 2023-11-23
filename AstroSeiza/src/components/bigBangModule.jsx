@@ -15,7 +15,7 @@ export default function BigBangModule() {
         <div className="grid  text-white">
           <div className=" h-12 w-auto">
             <h1 className=" font-bold text-[30px]  text-center">
-              Teoria del big bang
+              Teoría del big bang
             </h1>
           </div>
           <div className=" h-[140px] w-[650px]">

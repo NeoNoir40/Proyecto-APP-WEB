@@ -1,7 +1,7 @@
 import video from "../../assets/videos/backgroundVideo.mp4";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/context/AuthContext";
-import { useEffect , useState} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
@@ -39,7 +39,7 @@ export default function LoginAdmin() {
       setTimeout(() => {
         navigate("/indexAdmin");
       }, 1500);
-      
+
     }
   }, [isAuthenticatedAdmin]);
   return (
@@ -91,10 +91,10 @@ export default function LoginAdmin() {
               </div>
               <div>
                 <button className="w-full text-[#060606] my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center hover:bg-blue-950 hover:text-gray-100 transition-colors ">
-                  Inciar Sesion
+                  Iniciar Sesión
                 </button>
               </div>
-             
+
             </form>
           </div>
         </div>
