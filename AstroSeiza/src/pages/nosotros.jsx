@@ -40,7 +40,7 @@ export default function Nosotros() {
             <div className="text-white text-center text-4xl font-bold p-10">
                 <p>Filosofía de AstroSeiza</p>
             </div>
-            <div className=" mb-5 ml-10 justify-center flex flex-col items-center">
+            <div className=" mb-5 justify-center flex flex-col items-center">
                 <p className=" text-white font-bold text-3xl p-5">Misión</p>
                 <p className="text-white text-[20px] text-center container ">
                     Inculcar la curiosidad y el amor por la ciencia, proporcionando una aplicación que enseñe los principios de la ciencia.
